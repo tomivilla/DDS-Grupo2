@@ -1,0 +1,18 @@
+[
+		{
+		"nombre": "Tomas",
+		"apellido": "Villa",
+		"nombreUsuario": "tomivilla",
+		"contraseña": "contraseña123",
+		"tipoDni": "DNI",
+		"dni": 38132912
+		},
+		{
+		"nombre": "Pepito",
+		"apellido": "Perez",
+		"nombreUsuario": "ppperez",
+		"contraseña": "hola2931",
+		"tipoDni": "DNI",
+		"dni": 38132432
+		}
+]
