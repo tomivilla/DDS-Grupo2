@@ -65,5 +65,43 @@ public class Cliente extends Usuario{
 		this.transformador = transformador;
 	}
 	
+	public boolean hayDispositivoEncendido() {
+		
+		boolean respuesta = false;
+		
+		for (Dispositivo dispositivo : getDispositivos()) {
+			if (dispositivo.isEstado()==true) {
+				respuesta = true;
+			}
+		}
+		
+		return respuesta;
+	}
 	
+	public int getCantidadDispositivosEncendidos() {
+		
+		int cantidad = 0;
+		
+		for (Dispositivo dispositivo : getDispositivos()) {
+			if (dispositivo.isEstado()) {
+				cantidad ++;
+			}
+		}
+		
+		return cantidad;
+	}
+	
+	public int getCantidadDispositivosApagados() {
+		
+		int cantidad = 0;
+		
+		cantidad = getCantidadDispositivos() - this.getCantidadDispositivosEncendidos();
+		
+		return cantidad;
+	}
+	
+	public int getCantidadDispositivos() {
+		
+		return getDispositivos().size();
+	}
 }

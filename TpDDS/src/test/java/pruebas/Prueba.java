@@ -11,12 +11,10 @@ public class Prueba {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String rutaArchivos = "C:\\Users\\tomas.villa\\eclipse-workspace\\TpDDS\\src\\main\\resources\\archivos\\";
-		String contenido = null;
+		String rutaArchivos = "./src/main/resources/archivos/";
 		List<Dispositivo> dispositivos = null;
 		List<Usuario> usuarios= null;
 		
-//		contenido = CargarDispositivos.leerArchivo("C:\\Users\\tomas.villa\\eclipse-workspace\\TpDDS\\src\\main\\resources\\archivos\\JsonDispositivos");
 		dispositivos = CargarDispositivos.cargarDispositivos(rutaArchivos + "JsonDispositivos");
 
 		System.out.println(dispositivos.size());
