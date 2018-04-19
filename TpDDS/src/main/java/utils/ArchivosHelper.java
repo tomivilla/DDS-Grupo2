@@ -22,7 +22,7 @@ public class ArchivosHelper {
 			br = new BufferedReader(fr);
  
 			// Lectura del fichero
-			System.out.println("Leyendo el contendio del archivo.txt");
+			System.out.println("Leyendo el contendio del archivo: "+archivo.getName());
 			String linea;
 			while((linea=br.readLine())!=null)
 				contenido += linea;
