@@ -70,7 +70,7 @@ public class Cliente extends Usuario{
 		boolean respuesta = false;
 		
 		for (Dispositivo dispositivo : getDispositivos()) {
-			if (dispositivo.isEstado()==true) {
+			if (dispositivo.isEncendido()) {
 				respuesta = true;
 			}
 		}
@@ -83,7 +83,7 @@ public class Cliente extends Usuario{
 		int cantidad = 0;
 		
 		for (Dispositivo dispositivo : getDispositivos()) {
-			if (dispositivo.isEstado()) {
+			if (dispositivo.isEncendido()) {
 				cantidad ++;
 			}
 		}

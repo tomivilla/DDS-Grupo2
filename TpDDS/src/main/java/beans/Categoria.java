@@ -6,61 +6,129 @@ public class Categoria {
 	
 	private String unidad;
 		
-	private float cargoFijo;
+	private double cargoFijo;
 	
-	private float cargoVariable;
+	private double cargoVariable;
+	
+	
+	public Categoria() {
+		
+	}
 
-	public Categoria(String categoria, String unidad, float cargoFijo, float cargoVariable) {
+	public Categoria(String categoria, String unidad, double cargoFijo, double cargoVariable) {
 		this.cargoFijo = cargoFijo;
 		this.cargoVariable = cargoVariable;
 		this.categoria = categoria;
 		this.unidad = unidad;
 	}
+
+
 	
-	public float GetcargoFijo() {
-		return this.GetcargoFijo()
-	}
-	
-	public floar GetCargoVariable() {
-		return this.GetCargoVariable();
-	}
-	
-	public void SetCargoVariable(float cargoVariable) {
-		this.cargoVariable = cargoVariable;
-	}
-	
-	public void SetCargoFijo(floar cargoFijo) {
-		this.cargoFijo = cargoFijo;
-	}
 	public String getCategoria() {
 		return categoria;
 	}
+
+
+
 
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 
+
+
+
 	public String getUnidad() {
 		return unidad;
 	}
+
+
+
 
 	public void setUnidad(String unidad) {
 		this.unidad = unidad;
 	}
 
-	
-	public Categoria calcularCategoria(float ConsumoMensual) {
+
+
+
+	public double getCargoFijo() {
+		return cargoFijo;
+	}
+
+
+
+
+	public void setCargoFijo(double cargoFijo) {
+		this.cargoFijo = cargoFijo;
+	}
+
+
+
+
+	public double getCargoVariable() {
+		return cargoVariable;
+	}
+
+
+
+
+	public void setCargoVariable(double cargoVariable) {
+		this.cargoVariable = cargoVariable;
+	}
+
+
+
+
+	public Categoria calcularCategoria(double consumoMensual) {
 	    Categoria cat = new Categoria();	
-		if(consumoMensual < 150) {cat.categoria = "R1", cat.cargoFijo = 18.76, cat.cargoVariable =18.76}
-		if(consumoMensual > 150 and consumoMensual<=325) {cat.categoria = "R2", cat.cargoFijo = 35.32, cat.cargoVariable =0.644}
-		if(consumoMensual > 325 and consumoMensual<=400) {cat.categoria = "R3", cat.cargoFijo = 60.71, cat.cargoVariable =0.644}
-		if(consumoMensual > 400 and consumoMensual<=450) {cat.categoria = "R4", cat.cargoFijo = 71.74, cat.cargoVariable =0.738}		
-		if(consumoMensual > 450 and consumoMensual<=500) {cat.categoria = "R5", cat.cargoFijo = 110.38, cat.cargoVariable =0.794}
-		if(consumoMensual > 500 and consumoMensual<=600) {cat.categoria = "R6", cat.cargoFijo = 220.75, cat.cargoVariable =0.832}
-		if(consumoMensual > 600 and consumoMensual<=700) {cat.categoria = "R7", cat.cargoFijo = 443.59, cat.cargoVariable =0.851}
-		if(consumoMensual > 700 and consumoMensual<=1400) {cat.categoria = "R8", cat.cargoFijo = 545.96, cat.cargoVariable =0.851}
-		if(consumoMensual > 1400) {cat.categoria = "R9", cat.cargoFijo = 887.19, cat.cargoVariable =0.851}
+		if(consumoMensual < 150) {
+			cat.setCategoria("R1"); 
+			cat.setCargoFijo(18.76); 
+			cat.setCargoVariable(18.76);
 		}
+		if(150 < consumoMensual && consumoMensual<=325) {
+			cat.setCategoria("R2"); 
+			cat.setCargoFijo(35.32); 
+			cat.setCargoVariable(0.644);
+		}
+		if(325 < consumoMensual && consumoMensual<=400) {
+			cat.setCategoria("R3"); 
+			cat.setCargoFijo(60.71); 
+			cat.setCargoVariable(0.644);
+		}
+		if(400 < consumoMensual && consumoMensual<=450) {
+			cat.setCategoria("R4"); 
+			cat.setCargoFijo(71.74); 
+			cat.setCargoVariable(0.738);
+		}		
+		if(450 < consumoMensual && consumoMensual<=500) {
+			cat.setCategoria("R5"); 
+			cat.setCargoFijo(110.38); 
+			cat.setCargoVariable(0.794);
+		}
+		if(500 < consumoMensual && consumoMensual<=600) {
+			cat.setCategoria("R6"); 
+			cat.setCargoFijo(220.75); 
+			cat.setCargoVariable(0.832);
+		}
+		if(600 < consumoMensual && consumoMensual<=700) {
+			cat.setCategoria("R7"); 
+			cat.setCargoFijo(443.59); 
+			cat.setCargoVariable(0.851);
+		}
+		if(700 < consumoMensual && consumoMensual<=1400) {
+			cat.setCategoria("R8"); 
+			cat.setCargoFijo(545.96); 
+			cat.setCargoVariable(0.851);
+		}
+		if(consumoMensual > 1400) {
+			cat.setCategoria("R9"); 
+			cat.setCargoFijo(887.19); 
+			cat.setCargoVariable(0.851);
+		}
+		return cat;
+	}
 	
 	
 }

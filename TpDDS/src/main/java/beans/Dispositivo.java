@@ -6,7 +6,7 @@ public class Dispositivo {
 	
 	private double consumo;
 	
-	private boolean Encendido;
+	private boolean encendido;
 	
 
 	public String getNombreGenerico() {
@@ -25,12 +25,12 @@ public class Dispositivo {
 		this.consumo = consumo;
 	}
 
-	public boolean isEstado() {
-		return Encendido;
+	public boolean isEncendido() {
+		return encendido;
 	}
 
-	public void setEstado(boolean estado) {
-		this.Encendido = estado;
+	public void setEncendido(boolean encendido) {
+		this.encendido = encendido;
 	}
 	
 	

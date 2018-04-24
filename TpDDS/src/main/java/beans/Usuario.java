@@ -8,7 +8,7 @@ public class Usuario {
 	
 	private String nombreUsuario;
 	
-	private String contraseña;
+	private String contrasena;
 	
 	private String tipoDni;
 	
@@ -39,11 +39,11 @@ public class Usuario {
 	}
 
 	public String getContraseña() {
-		return contraseña;
+		return contrasena;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContraseña(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	public String getTipoDni() {

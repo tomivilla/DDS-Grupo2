@@ -5,19 +5,26 @@ public class Zona {
 private String zona;
 private List<Transformador> transformadores;
 
-public Zona() {
-	this.zona = new ArrayList<Transformador>();
-}
 public void addTransformador(Transformador sTransformador) {
 	this.transformadores.add(sTransformador);	
 }
 
-public String GetZona() {
-	this.zona;
+public String getZona() {
+	return zona;
 }
 
-public void SetZona(String zona) {
+public void setZona(String zona) {
 	this.zona = zona;
 }
+
+public List<Transformador> getTransformadores() {
+	return transformadores;
+}
+
+public void setTransformadores(List<Transformador> transformadores) {
+	this.transformadores = transformadores;
+}
+
+
 
 }
