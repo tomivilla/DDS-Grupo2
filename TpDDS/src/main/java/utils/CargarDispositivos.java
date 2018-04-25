@@ -14,14 +14,15 @@ import beans.Dispositivo;
 public class CargarDispositivos {
 
 	
-	public static List<Dispositivo> cargarDispositivos(String nombreArchivo){
+	public static List<Dispositivo> cargarDispositivos(long dni){
 		
 		Gson gson = new Gson();
 		List<Dispositivo> dispositivos = null;
 		Type listType = new TypeToken<ArrayList<Dispositivo>>(){}.getType();
+		String ruta = "./src/main/resources/archivos/";
 		
 		try {
-			String json = ArchivosHelper.leerArchivo(nombreArchivo);
+			String json = ArchivosHelper.leerArchivo(ruta + dni);
 			
 			dispositivos = gson.fromJson(json, listType);
 			

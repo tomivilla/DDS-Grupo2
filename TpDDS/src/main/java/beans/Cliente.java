@@ -1,6 +1,6 @@
 package beans;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Cliente extends Usuario{
@@ -9,7 +9,7 @@ public class Cliente extends Usuario{
 	
 	private Direccion domicilioHogar;
 	
-	private Calendar fechaAlta;
+	private Date fechaAlta;
 	
 	private Categoria categoria;
 	
@@ -33,11 +33,11 @@ public class Cliente extends Usuario{
 		this.domicilioHogar = domicilioHogar;
 	}
 
-	public Calendar getFechaAlta() {
+	public Date getFechaAlta() {
 		return fechaAlta;
 	}
 
-	public void setFechaAlta(Calendar fechaAlta) {
+	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
 

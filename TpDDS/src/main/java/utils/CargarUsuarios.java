@@ -10,19 +10,20 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import beans.Usuario;
+import beans.UsuariosResponse;
 
 public class CargarUsuarios {
 
-	public static List<Usuario> cargarUsuarios(String nombreArchivo){
+	public static UsuariosResponse cargarUsuarios(String nombreArchivo){
 		
 		Gson gson = new Gson();
-		List<Usuario> usuarios = null;
-		Type listType = new TypeToken<ArrayList<Usuario>>(){}.getType();
+		UsuariosResponse usuarios = new UsuariosResponse();
+//		Type listType = new TypeToken<ArrayList<Usuario>>(){}.getType();
 		
 		try {
 			String json = ArchivosHelper.leerArchivo(nombreArchivo);
 			
-			usuarios = gson.fromJson(json, listType);
+			usuarios = gson.fromJson(json, UsuariosResponse.class);
 			
 			return usuarios;
 			

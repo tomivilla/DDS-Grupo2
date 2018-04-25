@@ -17,7 +17,9 @@ import utils.CargarDispositivos;
 public class CargadorDeDispositivosTest {
 	
 	private String ruta;
-	List<Dispositivo> dispositivos;
+	private List<Dispositivo> dispositivos;
+	private long dni1;
+	private long dni2;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -29,7 +31,8 @@ public class CargadorDeDispositivosTest {
 
 	@Before
 	public void setUp() throws Exception {
-		ruta = "./src/main/resources/archivos/";
+		dni1 = 38132912;
+		dni2 = 38132432;
 		dispositivos = null;
 	}
 
@@ -41,7 +44,7 @@ public class CargadorDeDispositivosTest {
 
 	@Test
 	public void test() {
-		dispositivos = CargarDispositivos.cargarDispositivos(ruta + "JsonDispositivos");
+		dispositivos = CargarDispositivos.cargarDispositivos(dni1);
 		Assert.assertEquals(2, dispositivos.size());
 	}
 

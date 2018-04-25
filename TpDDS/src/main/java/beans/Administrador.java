@@ -1,6 +1,6 @@
 package beans;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import org.joda.time.DateTime;
 import org.joda.time.Months;
@@ -9,7 +9,7 @@ public class Administrador extends Usuario{
 
 	private int idUsuario;
 	
-	private Calendar fechaAlta;
+	private Date fechaAlta;
 
 	public int getIdUsuario() {
 		return idUsuario;
@@ -18,18 +18,18 @@ public class Administrador extends Usuario{
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-
-	public Calendar getFechaAlta() {
+	
+	public Date getFechaAlta() {
 		return fechaAlta;
 	}
 
-	public void setFechaAlta(Calendar fechaAlta) {
+	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
-	
+
 	public int getMesesDeAntiguedad() {
 		DateTime hoy = new DateTime();
-		DateTime fechaAlta = new DateTime(getFechaAlta().getTimeInMillis());
+		DateTime fechaAlta = new DateTime(getFechaAlta());
 		
 		Months meses = Months.monthsBetween(fechaAlta, hoy);
 		
