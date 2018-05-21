@@ -7,7 +7,8 @@ public class Dispositivo {
 	private double consumo;
 	
 	private boolean encendido;
-	
+    
+	private boolean modoAhorroDeEnergia;
 
 	public String getNombreGenerico() {
 		return nombreGenerico;
@@ -32,6 +33,13 @@ public class Dispositivo {
 	public void setEncendido(boolean encendido) {
 		this.encendido = encendido;
 	}
+
+	public boolean isModoAhorroDeEnergia() {
+		return modoAhorroDeEnergia;
+	}
+
+	public void setModoAhorroDeEnergia(boolean modoAhorroDeEnergia) {
+		this.modoAhorroDeEnergia = modoAhorroDeEnergia;
+	}
 	
-	
-}
+	}
