@@ -2,40 +2,43 @@ package beans;
 
 import java.util.Random;
 
-public abstract class  Dispositivo {
+public abstract class Dispositivo {
 
 	protected String nombreGenerico;
 	protected Adaptador adaptador = null;
 	protected double consumoPeriodo;
-	protected long idFabrica;
-	protected Fabricante fabricante;	
-    protected int periodo = 30;
-    public Dispositivo() {
-		// por ahora que gener un numero random como id
+	protected long id;
+	protected long idFabricante;
+	protected int periodo = 30;
+
+	public Dispositivo() {
+		// por ahora que genere un numero random como id
 
 		Random aleatorio = new Random(System.currentTimeMillis());
-		idFabrica = aleatorio.nextLong();
+		id = aleatorio.nextLong();
 		aleatorio.setSeed(System.currentTimeMillis());
-		this.setId(idFabrica);
-	
+		this.setId(id);
+
 	}
+
 	public double getConsumoPeriodo() {
 		return consumoPeriodo;
 	}
+
 	public double getConsumoHoras(int horas) {
-		return (consumoPeriodo / (periodo * 24 )) * horas ;
+		return (consumoPeriodo / (periodo * 24)) * horas;
 	}
-	
+
 	public String getNombreGenerico() {
 		return nombreGenerico;
 	}
 
 	public long getId() {
-	 return this.idFabrica;
+		return this.id;
 	}
 
 	public void setId(long id) {
-		this.idFabrica = id;
+		this.id = id;
 	}
 
 	public void setNombreGenerico(String nombreGenerico) {
@@ -54,13 +57,12 @@ public abstract class  Dispositivo {
 		this.adaptador = adaptador;
 	}
 
-	public Fabricante getFabricante() {
-		return fabricante;
+	public long getIdFabricante() {
+		return idFabricante;
 	}
 
-	public void setFabricante(Fabricante fabricante) {
-		this.fabricante = fabricante;
+	public void setIdFabricante(long idFabricante) {
+		this.idFabricante = idFabricante;
 	}
-	
-	
-	}
+
+}

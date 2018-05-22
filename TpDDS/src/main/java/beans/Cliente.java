@@ -14,7 +14,7 @@ public class Cliente extends Usuario{
 	private Transformador transformador;
 	private int puntos = 0;
 	
-	public DispositivoInteligente convertirDispositivo(DispositivoEstandard dispositivoAConvertir, Adaptador adaptador)  {
+	public DispositivoInteligente convertirDispositivo(DispositivoEstandar dispositivoAConvertir, Adaptador adaptador)  {
     //Lanzar excepcion en caso que no exista en listas 
 	if(ExisteEnLista(dispositivoAConvertir) && ExisteEnLista(adaptador)) {
 		DispositivoInteligenteAdapter adapter = new DispositivoInteligenteAdapter(dispositivoAConvertir,adaptador);
@@ -30,7 +30,7 @@ public class Cliente extends Usuario{
 	}
 	
 
-	private boolean ExisteEnLista( DispositivoEstandard dispositivo) {
+	private boolean ExisteEnLista( DispositivoEstandar dispositivo) {
 		for(Dispositivo dis :dispositivos ) {
 				if(dispositivo.getId() == dis.getId()) {
 					return true;

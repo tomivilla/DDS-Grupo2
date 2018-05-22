@@ -14,16 +14,20 @@ public class DispositivoInteligente extends Dispositivo {
 		return encendido;
 	}
 
-	public void setEncendido(boolean encendido) {
-		this.encendido = encendido;
+	public void encender() {
+		this.encendido = true;
+	}
+	
+	public void apagar() {
+		this.encendido = false;
 	}
 
 	public boolean isModoAhorroEnergia() {
 		return modoAhorroEnergia;
 	}
 
-	public void setModoAhorroEnergia(boolean modoAhorroEnergia) {
-		this.modoAhorroEnergia = modoAhorroEnergia;
+	public void activaAhorroEnergia() {
+		this.modoAhorroEnergia = true;
 	}
 
 	public boolean isRegistrado() {
@@ -32,6 +36,10 @@ public class DispositivoInteligente extends Dispositivo {
 
 	public void setRegistrado(boolean registrado) {
 		this.registrado = registrado;
+	}
+	
+	public boolean isApagado() {
+		return !encendido;
 	}
 
 }

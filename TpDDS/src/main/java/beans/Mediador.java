@@ -1,22 +1,25 @@
 package beans;
 
 import java.util.*;
+
 public class Mediador {
 
-List<Fabricante> fabricas = new ArrayList<Fabricante>();
+	List<Fabricante> fabricantes = new ArrayList<Fabricante>();
 
-public void enviarMensaje(long idFabrica, String mensaje) {
-	for(Fabricante fab : fabricas) {
-		fab.recibirMensaje(idFabrica, mensaje);
+	public void enviarMensaje(long idFabricante, long idDispositivo, String mensaje) {
+		for (Fabricante fab : fabricantes) {
+			if (fab.getId() == idFabricante) {
+				fab.recibirMensaje(idDispositivo, mensaje);
+			}
+		}
 	}
-}
 
-public List<Fabricante> getFabricas() {
-	return fabricas;
-}
+	public List<Fabricante> getFabricantes() {
+		return fabricantes;
+	}
 
-public void setFabricas(List<Fabricante> fabricas) {
-	this.fabricas = fabricas;
-}
+	public void setFabricas(List<Fabricante> fabricantes) {
+		this.fabricantes = fabricantes;
+	}
 
 }

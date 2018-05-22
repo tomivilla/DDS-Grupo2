@@ -2,20 +2,20 @@ package beans;
 
 public class DispositivoInteligenteAdapter extends DispositivoInteligente {
 
-	private DispositivoEstandard dispositivoAConvertir;
+	private DispositivoEstandar dispositivoAConvertir;
 
-	public DispositivoInteligenteAdapter(DispositivoEstandard dispositivo, Adaptador sAdaptador ) {
+	public DispositivoInteligenteAdapter(DispositivoEstandar dispositivo, Adaptador sAdaptador ) {
 		this.setDispositivoAConvertir(dispositivo);
-		setAdaptador(sAdaptador);
-		setModoAhorroEnergia(false);
-		setRegistrado(true);
+		this.setAdaptador(sAdaptador);
+		this.modoAhorroEnergia = false;
+		this.setRegistrado(true);
 	}
 	
-	public DispositivoEstandard getDispositivoAConvertir() {
+	public DispositivoEstandar getDispositivoAConvertir() {
 		return dispositivoAConvertir;
 	}
 
-	public void setDispositivoAConvertir(DispositivoEstandard dispositivoAConvertir) {
+	public void setDispositivoAConvertir(DispositivoEstandar dispositivoAConvertir) {
 		this.dispositivoAConvertir = dispositivoAConvertir;
 	}
 		

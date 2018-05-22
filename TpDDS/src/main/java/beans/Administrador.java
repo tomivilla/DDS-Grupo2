@@ -15,7 +15,7 @@ public class Administrador extends Usuario{
 		return idUsuario;
 	}
 
-	public void SetConsumoPromedio(double consumoPromedio, DispositivoEstandard dispositivo) {
+	public void SetConsumoPromedio(double consumoPromedio, DispositivoEstandar dispositivo) {
 	  dispositivo.setConsumo(consumoPromedio);		
 		
 	}

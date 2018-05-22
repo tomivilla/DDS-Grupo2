@@ -10,8 +10,8 @@ public class FabricanteLG extends Fabricante {
 	private Mediador mediador;
 
 	
-	public void recibirMensaje(long idFabrica, String mensaje) {
-		DispositivoInteligente dispo = GetDispositivoById(idFabrica);
+	public void recibirMensaje(long idDispositivo, String mensaje) {
+		DispositivoInteligente dispo = getDispositivoById(idDispositivo);
 		if(dispo != null) {
 			this.setDispositivo(dispo);
 			switch(mensaje) {
@@ -22,33 +22,25 @@ public class FabricanteLG extends Fabricante {
 			}
 		}
 	}
-	private DispositivoInteligente GetDispositivoById(long idFabrica) {
-		for(Dispositivo dis : dispositivos) {
-			if((dis instanceof DispositivoInteligente) && (dis.getId() == idFabrica)) {
-				return (DispositivoInteligente) dis;
-			}
-		}
-		return null;
-	}
 	
 	public void ResetiarConsumoPeriodo() {
 		dispositivo.setConsumo(0);
 	}
 	public void EncenderModoAhorroEnergia() {
-		dispositivo.setModoAhorroEnergia(true);
+		dispositivo.activaAhorroEnergia();
 	}
 
 	public void EncenderDispositivo() {
 		if(dispositivo.isModoAhorroEnergia()) {
 			if(!dispositivo.isEncendido()) {
-		        dispositivo.setEncendido(true);
+		        dispositivo.encender();;
 		     }
 		}
 	}
 
 	public void ApagarDispositivo() {
 		if(dispositivo.isEncendido()) {
-		   dispositivo.setEncendido(false);
+		   dispositivo.apagar();
 		}
 	}
 	public DispositivoInteligente getDispositivo() {
@@ -69,5 +61,6 @@ public class FabricanteLG extends Fabricante {
 	public void setDispositivos(List<Dispositivo> dispositivos) {
 		this.dispositivos = dispositivos;
 	}
+
 
 }
