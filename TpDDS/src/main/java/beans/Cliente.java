@@ -1,22 +1,54 @@
 package beans;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Cliente extends Usuario{
 
 	private long telefono;
 	
 	private Direccion domicilioHogar;
-	
 	private Date fechaAlta;
-	
 	private Categoria categoria;
-	
-	private List<Dispositivo> dispositivos;
-	
+	private List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
+	private List<Adaptador> adaptadores = new ArrayList<Adaptador>();
 	private Transformador transformador;
+	private int puntos = 0;
+	
+	public DispositivoInteligente convertirDispositivo(DispositivoEstandard dispositivoAConvertir, Adaptador adaptador)  {
+    //Lanzar excepcion en caso que no exista en listas 
+	if(ExisteEnLista(dispositivoAConvertir) && ExisteEnLista(adaptador)) {
+		DispositivoInteligenteAdapter adapter = new DispositivoInteligenteAdapter(dispositivoAConvertir,adaptador);
+		this.puntos =+ 10;
+		return adapter;
+    }
+		return null;
+	}
+	
+	public void RegistrarDispositivo(DispositivoInteligente dispositivo) {
+		dispositivo.setRegistrado(true);
+		this.puntos =+ 15;
+	}
+	
 
+	private boolean ExisteEnLista( DispositivoEstandard dispositivo) {
+		for(Dispositivo dis :dispositivos ) {
+				if(dispositivo.getId() == dis.getId()) {
+					return true;
+				}
+			
+		}
+		return false;
+	}
+	
+	private boolean ExisteEnLista( Adaptador adaptador) {
+		for(Adaptador ad :adaptadores ) {
+			if(ad.getId() == adaptador.getId()) {
+					return true;
+				}
+			}
+		return false;
+	}
+	
 	public long getTelefono() {
 		return telefono;
 	}
@@ -70,7 +102,8 @@ public class Cliente extends Usuario{
 		boolean respuesta = false;
 		
 		for (Dispositivo dispositivo : getDispositivos()) {
-			if (dispositivo.isEncendido()) {
+		 if(dispositivo instanceof DispositivoInteligente)	
+			if (((DispositivoInteligente) dispositivo).isEncendido()) {
 				respuesta = true;
 			}
 		}
@@ -83,10 +116,12 @@ public class Cliente extends Usuario{
 		int cantidad = 0;
 		
 		for (Dispositivo dispositivo : getDispositivos()) {
-			if (dispositivo.isEncendido()) {
+		   if(dispositivo instanceof DispositivoInteligente)	
+			if (((DispositivoInteligente) dispositivo).isEncendido()) {
 				cantidad ++;
 			}
 		}
+		
 		
 		return cantidad;
 	}
@@ -104,4 +139,19 @@ public class Cliente extends Usuario{
 		
 		return getDispositivos().size();
 	}
+
+	public List<Adaptador> getAdaptadores() {
+		return adaptadores;
+	}
+
+	public void setAdaptadores(List<Adaptador> adaptadores) {
+		this.adaptadores = adaptadores;
+	}
+
+	public int getPuntos() {
+		return puntos;
+	}
+
+
+	
 }

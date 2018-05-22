@@ -1,5 +1,9 @@
 package beans;
 
-public class DispositivoEstandard {
+public class DispositivoEstandard extends Dispositivo {
 
+	public String getNombreGenerico() {
+		return "Dispositivo Estandard";
+	}
+	
 }

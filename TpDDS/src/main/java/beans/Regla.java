@@ -2,20 +2,20 @@ package beans;
 
 public class Regla {
 
-Dispositivo dispositivo;	
+DispositivoInteligente dispositivo;	
 ActuadorStrategy acciones;
 SensorStrategy mediciones;
 
-public Regla(Dispositivo dispositivo) {
+public Regla(DispositivoInteligente dispositivo) {
  this.setDispositivo(dispositivo);		
 }
 
-public Dispositivo getDispositivo() {
+public DispositivoInteligente getDispositivo() {
 	return dispositivo;
 }
 
 
-public void setDispositivo(Dispositivo dispositivo) {
+public void setDispositivo(DispositivoInteligente dispositivo) {
 	this.dispositivo = dispositivo;
 }
 
