@@ -18,7 +18,7 @@ public class Mediador {
 		return fabricantes;
 	}
 
-	public void setFabricas(List<Fabricante> fabricantes) {
+	public void setFabricantes(List<Fabricante> fabricantes) {
 		this.fabricantes = fabricantes;
 	}
 

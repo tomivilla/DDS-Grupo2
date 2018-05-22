@@ -4,26 +4,22 @@ import java.util.List;
 
 public class Fabricante {
 
-	private List<Dispositivo> dispositivos;
-
-	private Mediador mediador;
+	private List<DispositivoInteligente> dispositivos;
 
 	private long id;
 
-	public List<Dispositivo> getDispositivos() {
+	
+	public Fabricante(List<DispositivoInteligente> dispositivos, long id) {
+		this.dispositivos = dispositivos;
+		this.id = id;
+	}
+
+	public List<DispositivoInteligente> getDispositivos() {
 		return dispositivos;
 	}
 
-	public void setDispositivos(List<Dispositivo> dispositivos) {
+	public void setDispositivos(List<DispositivoInteligente> dispositivos) {
 		this.dispositivos = dispositivos;
-	}
-
-	public Mediador getMediador() {
-		return mediador;
-	}
-
-	public void setMediador(Mediador mediador) {
-		this.mediador = mediador;
 	}
 
 	public long getId() {
@@ -35,7 +31,7 @@ public class Fabricante {
 	}
 
 	public void recibirMensaje(long idDispositivo, String mensaje) {
-		
+				
 	}
 
 	public DispositivoInteligente getDispositivoById(long idDispositivo) {

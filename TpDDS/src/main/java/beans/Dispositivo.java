@@ -20,6 +20,16 @@ public class Dispositivo {
 		this.setId(id);
 
 	}
+	
+	
+
+	public Dispositivo(String nombreGenerico, long idFabricante, long id) {
+		this.nombreGenerico = nombreGenerico;
+		this.id = id;
+		this.idFabricante = idFabricante;
+	}
+
+
 
 	public double getConsumo() {
 		return consumo;

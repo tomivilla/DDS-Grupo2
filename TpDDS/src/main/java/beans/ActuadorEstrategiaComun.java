@@ -6,12 +6,12 @@ public class ActuadorEstrategiaComun extends ActuadorStrategy {
 		super(dispositivo);
 		// TODO Auto-generated constructor stub
 	}
-	public void EncenderModoAhorroEnergia() {
+	public void encenderModoAhorroEnergia() {
 		super.mediador.enviarMensaje(dispositivo.getIdFabricante(), dispositivo.getId(), "EncenderModoAhorro");
 	}
 
-	public void EncenderDispositivo() {
-		if (!dispositivo.isEncendido()) {
+	public void encenderDispositivo() {
+		if (dispositivo.isApagado()) {
 			super.mediador.enviarMensaje(dispositivo.getIdFabricante(), dispositivo.getId(), "Encender");			
 		}
 		if (dispositivo.isModoAhorroEnergia()) {
@@ -19,12 +19,12 @@ public class ActuadorEstrategiaComun extends ActuadorStrategy {
 		}
 	}
 
-	public void ApagarDispositivo() {
+	public void apagarDispositivo() {
 		if (dispositivo.isEncendido()) {
 			super.mediador.enviarMensaje(dispositivo.getIdFabricante(), dispositivo.getId(), "Apagar");			
 		}
 	}
-	public void ResetiarConsumoEnPeriodo() {
+	public void resetiarConsumoEnPeriodo() {
 		super.mediador.enviarMensaje(dispositivo.getIdFabricante(), dispositivo.getId(), "ResetiarConsumoPeriodo");
 	}
 }

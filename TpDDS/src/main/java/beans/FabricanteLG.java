@@ -5,9 +5,12 @@ import java.util.List;
 
 public class FabricanteLG extends Fabricante {
  
-	private List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
+	public FabricanteLG(List<DispositivoInteligente> dispositivos, long id) {
+		super(dispositivos, id);
+		// TODO Auto-generated constructor stub
+	}
+	private List<DispositivoInteligente> dispositivos = new ArrayList<DispositivoInteligente>();
 	private DispositivoInteligente dispositivo ;
-	private Mediador mediador;
 
 	
 	public void recibirMensaje(long idDispositivo, String mensaje) {
@@ -15,30 +18,31 @@ public class FabricanteLG extends Fabricante {
 		if(dispo != null) {
 			this.setDispositivo(dispo);
 			switch(mensaje) {
-			case "Encender" : EncenderDispositivo();
-			case "Apagar" : ApagarDispositivo();
-			case "EncenderModoAhorro" : EncenderModoAhorroEnergia();
-			case "ResetiarConsumoPeriodo": ResetiarConsumoPeriodo();
+			case "Encender" : encenderDispositivo();
+			case "Apagar" : apagarDispositivo();
+			case "EncenderModoAhorro" : encenderModoAhorroEnergia();
+			case "ResetiarConsumoPeriodo": resetiarConsumoPeriodo();
+			case "ApagarModoAhorro": apagarModoAhorro();
 			}
 		}
 	}
 	
-	public void ResetiarConsumoPeriodo() {
+	private void apagarModoAhorro() {
+		dispositivo.apagarAhorroEnergia();		
+	}
+
+	public void resetiarConsumoPeriodo() {
 		dispositivo.setConsumo(0);
 	}
-	public void EncenderModoAhorroEnergia() {
+	public void encenderModoAhorroEnergia() {
 		dispositivo.activaAhorroEnergia();
 	}
 
-	public void EncenderDispositivo() {
-		if(dispositivo.isModoAhorroEnergia()) {
-			if(!dispositivo.isEncendido()) {
-		        dispositivo.encender();;
-		     }
-		}
+	public void encenderDispositivo() {
+			dispositivo.encender();
 	}
 
-	public void ApagarDispositivo() {
+	public void apagarDispositivo() {
 		if(dispositivo.isEncendido()) {
 		   dispositivo.apagar();
 		}
@@ -49,16 +53,11 @@ public class FabricanteLG extends Fabricante {
 	public void setDispositivo(DispositivoInteligente dispositivo) {
 		this.dispositivo = dispositivo;
 	}
-	public Mediador getMediador() {
-		return mediador;
-	}
-	public void setMediador(Mediador mediador) {
-		this.mediador = mediador;
-	}
-	public List<Dispositivo> getDispositivos() {
+
+	public List<DispositivoInteligente> getDispositivos() {
 		return dispositivos;
 	}
-	public void setDispositivos(List<Dispositivo> dispositivos) {
+	public void setDispositivos(List<DispositivoInteligente> dispositivos) {
 		this.dispositivos = dispositivos;
 	}
 
