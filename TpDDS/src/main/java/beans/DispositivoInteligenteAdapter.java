@@ -20,7 +20,7 @@ public class DispositivoInteligenteAdapter extends DispositivoInteligente {
 	}
 		
 	public void setConsumo(double consumo) {
-		consumo = dispositivoAConvertir.getConsumo();	}
+		consumoPeriodo = dispositivoAConvertir.getConsumoPeriodo();	}
  
     public void setId(long id) {
     	id = dispositivoAConvertir.getId();

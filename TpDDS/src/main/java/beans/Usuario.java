@@ -8,6 +8,7 @@ public class Usuario {
 	
 	private String nombreUsuario;
 	
+	
 	private String contrasena;
 	
 	private String tipoDni;

@@ -4,7 +4,7 @@ public class Regla {
 
 DispositivoInteligente dispositivo;	
 ActuadorStrategy acciones;
-SensorStrategy mediciones;
+Sensores mediciones;
 
 public Regla(DispositivoInteligente dispositivo) {
  this.setDispositivo(dispositivo);		
