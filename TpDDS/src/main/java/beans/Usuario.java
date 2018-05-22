@@ -2,19 +2,15 @@ package beans;
 
 public class Usuario {
 
+	// Atributos
 	private String nombre;
-	
 	private String apellido;
-	
 	private String nombreUsuario;
-	
-	
-	private String contrasena;
-	
+	private String contrasenia;
 	private String tipoDni;
-	
 	private long dni;
 
+	// Getters & Setters
 	public String getNombre() {
 		return nombre;
 	}
@@ -39,12 +35,12 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 	}
 
-	public String getContraseña() {
-		return contrasena;
+	public String getContrasenia() {
+		return contrasenia;
 	}
 
-	public void setContraseña(String contrasena) {
-		this.contrasena = contrasena;
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
 	}
 
 	public String getTipoDni() {
