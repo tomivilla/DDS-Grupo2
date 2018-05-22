@@ -2,14 +2,14 @@ package beans;
 
 import java.util.Random;
 
-public abstract class Dispositivo {
+public class Dispositivo {
 
-	protected String nombreGenerico;
-	protected Adaptador adaptador = null;
-	protected double consumoPeriodo;
-	protected long id;
-	protected long idFabricante;
-	protected int periodo = 30;
+	private String nombreGenerico;
+	private Adaptador adaptador = null;
+	private double consumo;
+	private long id;
+	private long idFabricante;
+	private int periodo = 30;
 
 	public Dispositivo() {
 		// por ahora que genere un numero random como id
@@ -21,12 +21,12 @@ public abstract class Dispositivo {
 
 	}
 
-	public double getConsumoPeriodo() {
-		return consumoPeriodo;
+	public double getConsumo() {
+		return consumo;
 	}
 
 	public double getConsumoHoras(int horas) {
-		return (consumoPeriodo / (periodo * 24)) * horas;
+		return (consumo / (periodo * 24)) * horas;
 	}
 
 	public String getNombreGenerico() {
@@ -46,7 +46,7 @@ public abstract class Dispositivo {
 	}
 
 	public void setConsumo(double consumo) {
-		this.consumoPeriodo = consumo;
+		this.consumo = consumo;
 	}
 
 	public Adaptador Adaptador() {
