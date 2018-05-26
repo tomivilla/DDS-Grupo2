@@ -1,39 +1,17 @@
 package beans;
 
-import java.util.Random;
-
 public class Dispositivo {
 
 	private String nombreGenerico;
 	private Adaptador adaptador = null;
 	private double consumo;
 	private int periodo = 30;
-<<<<<<< HEAD
     private Fabricante fabricante;
-    
-=======
+   
 
 	public Dispositivo() {
-		// por ahora que genere un numero random como id
-
-		Random aleatorio = new Random(System.currentTimeMillis());
-		id = aleatorio.nextLong();
-		aleatorio.setSeed(System.currentTimeMillis());
-		this.setId(id);
-
 	}
 	
-	
-
-	public Dispositivo(String nombreGenerico, long idFabricante, long id) {
-		this.nombreGenerico = nombreGenerico;
-		this.id = id;
-		this.idFabricante = idFabricante;
-	}
-
-
-
->>>>>>> def33656f3edf1a70cf2d9566a201dab05b91fc5
 	public double getConsumo() {
 		return consumo;
 	}

@@ -12,7 +12,6 @@ public class DispositivoInteligente extends Dispositivo {
 
 	public DispositivoInteligente(String nombreGenerico, long idFabricante, boolean encendido,
 			boolean modoAhorroEnergia, boolean registrado, long id) {
-		super(nombreGenerico, idFabricante, id);
 		this.encendido = encendido;
 		this.modoAhorroEnergia = modoAhorroEnergia;
 		this.registrado = registrado;

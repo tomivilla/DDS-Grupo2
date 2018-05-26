@@ -6,19 +6,13 @@ public abstract class Fabricante {
 
 
 	private long idFabricante;
-
-	public abstract void EjecutarAccion(double idFabricante, Actuador accion);
-
-	public long getIdFabricante() {
-		return idFabricante;
 	private List<DispositivoInteligente> dispositivos;
 
-	private long id;
+	abstract void EjecutarAccion(double idFabricante, Actuador accion);
 
 	
-	public Fabricante(List<DispositivoInteligente> dispositivos, long id) {
+	public Fabricante(List<DispositivoInteligente> dispositivos) {
 		this.dispositivos = dispositivos;
-		this.id = id;
 	}
 
 	public List<DispositivoInteligente> getDispositivos() {
@@ -29,27 +23,24 @@ public abstract class Fabricante {
 		this.dispositivos = dispositivos;
 	}
 
-	public long getId() {
-		return id;
+	public long getIdFabricante() {
+		return idFabricante;
 	}
 
 	public void setIdFabricante(long idFabricante) {
 		this.idFabricante = idFabricante;
 	}
 
-<<<<<<< HEAD
-=======
 	public void recibirMensaje(long idDispositivo, String mensaje) {
 				
 	}
 
 	public DispositivoInteligente getDispositivoById(long idDispositivo) {
 		for (Dispositivo dis : dispositivos) {
-			if ((dis instanceof DispositivoInteligente) && (dis.getId() == idDispositivo)) {
+			if ((dis instanceof DispositivoInteligente) && (dis.getFabricante().getIdFabricante() == idDispositivo)) {
 				return (DispositivoInteligente) dis;
 			}
 		}
 		return null;
 	}
->>>>>>> def33656f3edf1a70cf2d9566a201dab05b91fc5
 }
