@@ -1,0 +1,9 @@
+Patrones Utilizados:
+
+La clase DispositivoInteligenteAdapter se utiliza para la conversion de un dispositivo estandard en uno inteligente. Forman el patron Adapter.
+
+
+Las clase Sensor, Regla, Sensor1 ( sensor concreto) , regla1, regla2 (observadoras concretas). Forman el patron Observer
+
+La clase ActuadorAdapter, Fabricante y FabricanteLG( fabricante concreto) forman el patron Adapter.
+
