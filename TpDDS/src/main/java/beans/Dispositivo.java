@@ -7,20 +7,9 @@ public class Dispositivo {
 	private String nombreGenerico;
 	private Adaptador adaptador = null;
 	private double consumo;
-	private long id;
-	private long idFabricante;
 	private int periodo = 30;
-
-	public Dispositivo() {
-		// por ahora que genere un numero random como id
-
-		Random aleatorio = new Random(System.currentTimeMillis());
-		id = aleatorio.nextLong();
-		aleatorio.setSeed(System.currentTimeMillis());
-		this.setId(id);
-
-	}
-
+    private Fabricante fabricante;
+    
 	public double getConsumo() {
 		return consumo;
 	}
@@ -33,13 +22,6 @@ public class Dispositivo {
 		return nombreGenerico;
 	}
 
-	public long getId() {
-		return this.id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public void setNombreGenerico(String nombreGenerico) {
 		this.nombreGenerico = nombreGenerico;
@@ -57,12 +39,12 @@ public class Dispositivo {
 		this.adaptador = adaptador;
 	}
 
-	public long getIdFabricante() {
-		return idFabricante;
+	public Fabricante getFabricante() {
+		return fabricante;
 	}
 
-	public void setIdFabricante(long idFabricante) {
-		this.idFabricante = idFabricante;
+	public void setFabricante(Fabricante fabricante) {
+		this.fabricante = fabricante;
 	}
 
 }

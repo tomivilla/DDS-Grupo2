@@ -23,8 +23,8 @@ public class DispositivoInteligenteAdapter extends DispositivoInteligente {
 		consumo = dispositivoAConvertir.getConsumo();	
 	}
  
-    public void setId(long id) {
-    	id = dispositivoAConvertir.getId();
+    public void setFabricante(Fabricante fabricante) {
+    	fabricante = dispositivoAConvertir.getFabricante();
     }
     
 }

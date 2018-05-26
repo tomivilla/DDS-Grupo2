@@ -1,49 +1,19 @@
 package beans;
 
-import java.util.List;
+import java.util.*;
 
-public class Fabricante {
+public abstract class Fabricante {
 
-	private List<Dispositivo> dispositivos;
+	private long idFabricante;
 
-	private Mediador mediador;
+	public abstract void EjecutarAccion(double idFabricante, Actuador accion);
 
-	private long id;
-
-	public List<Dispositivo> getDispositivos() {
-		return dispositivos;
+	public long getIdFabricante() {
+		return idFabricante;
 	}
 
-	public void setDispositivos(List<Dispositivo> dispositivos) {
-		this.dispositivos = dispositivos;
+	public void setIdFabricante(long idFabricante) {
+		this.idFabricante = idFabricante;
 	}
 
-	public Mediador getMediador() {
-		return mediador;
-	}
-
-	public void setMediador(Mediador mediador) {
-		this.mediador = mediador;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public void recibirMensaje(long idDispositivo, String mensaje) {
-		
-	}
-
-	public DispositivoInteligente getDispositivoById(long idDispositivo) {
-		for (Dispositivo dis : dispositivos) {
-			if ((dis instanceof DispositivoInteligente) && (dis.getId() == idDispositivo)) {
-				return (DispositivoInteligente) dis;
-			}
-		}
-		return null;
-	}
 }

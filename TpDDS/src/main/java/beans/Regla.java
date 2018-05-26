@@ -1,37 +1,47 @@
 package beans;
+import java.util.*;
+public  class Regla {
 
-public class Regla {
+	List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
+	List<Actuador> acciones;
+	List<Sensor> mediciones;
 
-	DispositivoInteligente dispositivo;
-	ActuadorStrategy acciones;
-	Sensor mediciones;
-
-	public Regla(DispositivoInteligente dispositivo) {
-		this.setDispositivo(dispositivo);
+	public Regla(List<Dispositivo> dispositivo) {
+		this.setDispositivos(dispositivo);
+	}
+	
+	public void RealizarAcciones() {
+		for(Actuador accion: acciones) {
+			for(Dispositivo dispositivo : dispositivos) {
+			if(dispositivo instanceof DispositivoInteligente ) {
+			ActuadorAdapter.EjecutarAccionEnFabricante(dispositivo.getFabricante().getIdFabricante(), accion);
+			}
+		}
+		}
 	}
 
-	public DispositivoInteligente getDispositivo() {
-		return dispositivo;
+	public List<Dispositivo> getDispositivo() {
+		return dispositivos;
 	}
 
-	public void setDispositivo(DispositivoInteligente dispositivo) {
-		this.dispositivo = dispositivo;
+	public void setDispositivos(List<Dispositivo> dispositivo) {
+		this.dispositivos = dispositivo;
 	}
 
-	public ActuadorStrategy getAcciones() {
+	public List<Actuador> getAcciones() {
 		return acciones;
 	}
 
-	public void setAcciones(ActuadorStrategy acciones) {
+	public void AgregarAcciones(List<Actuador> acciones) {
 		this.acciones = acciones;
 	}
 
-	public Sensor getMediciones() {
+	public List<Sensor> getMediciones() {
 		return mediciones;
 	}
 
-	public void setMediciones(Sensor mediciones) {
-		this.mediciones = mediciones;
+	public void agregarMediciones(List<Sensor> mediciones) {
+		this.mediciones = mediciones ;
 	}
 
 }

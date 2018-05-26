@@ -1,15 +1,19 @@
 package beans;
-
-public class Sensor {
+import java.util.*;
+public  class Sensor {
 
 	private String unidadTiempo;
 	private String magnitud;
-
+    protected List<Regla> observadores ;
 	public Sensor(String unidadTiempo, String magnitud) {
 		this.unidadTiempo = unidadTiempo;
 		this.magnitud = magnitud;
 	}
 
+	public void AccionarReglaObservadora() {
+		
+	}
+	
 	public String getUnidadTiempo() {
 		return unidadTiempo;
 	}
