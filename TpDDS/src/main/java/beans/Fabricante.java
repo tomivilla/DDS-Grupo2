@@ -4,14 +4,13 @@ import java.util.*;
 
 public abstract class Fabricante {
 
-<<<<<<< HEAD
+
 	private long idFabricante;
 
 	public abstract void EjecutarAccion(double idFabricante, Actuador accion);
 
 	public long getIdFabricante() {
 		return idFabricante;
-=======
 	private List<DispositivoInteligente> dispositivos;
 
 	private long id;
@@ -32,7 +31,6 @@ public abstract class Fabricante {
 
 	public long getId() {
 		return id;
->>>>>>> def33656f3edf1a70cf2d9566a201dab05b91fc5
 	}
 
 	public void setIdFabricante(long idFabricante) {
