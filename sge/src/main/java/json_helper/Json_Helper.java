@@ -16,13 +16,9 @@ import Estado.Apagado;
 import Estado.Encendido;
 import Estado.Estado;
 import dispositivo.Dispositivo;
-<<<<<<< HEAD:sge/src/main/java/json_helper/Json_Helper.java
 import dispositivo.DispositivoEstandar;
 import dispositivo.DispositivoInteligente;
 import dispositivo.Periodo;
-=======
-import dispositivo.*;
->>>>>>> ad5562c5626f5fd8ccb55447eff972eba8ce5610:TPDDS-Grupo8/sge/src/main/java/json_helper/Json_Helper.java
 import sensor.Sensor;
 import sensor.SensorDeMovimiento;
 import sensor.SensorHumedad;
@@ -125,14 +121,14 @@ public class Json_Helper {
 	            	listaDeSensores.add(sensor);
 	            }
 	            JsonArray periodos = dis.get("periodos").getAsJsonArray();
-	            List<RegistroConsumo> listaDePeriodos= new ArrayList<RegistroConsumo>();
+	            List<Periodo> listaDePeriodos= new ArrayList<Periodo>();
 	            for (JsonElement peri : periodos){
 	            	JsonObject per = peri.getAsJsonObject();
 	            	
 	            	// Obtengo las primitivas del Sensor
 	            	long inicio = per.get("inicio").getAsLong();
 	            	long fin = per.get("fin").getAsLong();
-	            	RegistroConsumo periodo = new RegistroConsumo(inicio,fin);
+	            	Periodo periodo = new Periodo(inicio,fin);
 	            	listaDePeriodos.add(periodo);
 	            }
 	            

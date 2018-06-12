@@ -13,11 +13,7 @@ import Estado.Encendido;
 import actuador.Actuador;
 import actuador.ActuadorHeladera;
 import dispositivo.DispositivoInteligente;
-<<<<<<< HEAD:sge/src/test/java/dispositivos_test/Dispositivo_inteligente2.java
 import dispositivo.Periodo;
-=======
-import dispositivo.RegistroConsumo;
->>>>>>> ad5562c5626f5fd8ccb55447eff972eba8ce5610:TPDDS-Grupo8/sge/src/test/java/dispositivos_test/Dispositivo_inteligente2.java
 import implementador.ImplementadorHeladeraLG;
 import observer.ObserverSensor;
 import regla.Accion;
@@ -38,14 +34,9 @@ import sensor.SensorTemperatura;
 public class Dispositivo_inteligente2 {
 
 	private DispositivoInteligente heladera;
-<<<<<<< HEAD:sge/src/test/java/dispositivos_test/Dispositivo_inteligente2.java
-=======
-	//private DispositivoEstandar de;
-	//private DecoradorAdaptador deco;
->>>>>>> ad5562c5626f5fd8ccb55447eff972eba8ce5610:TPDDS-Grupo8/sge/src/test/java/dispositivos_test/Dispositivo_inteligente2.java
 	private Actuador actuador1;
-	private RegistroConsumo p1,p2,p3,p4,p5,p6,p7,p8;
-	private List<RegistroConsumo> periodos;
+	private Periodo p1,p2,p3,p4,p5,p6,p7,p8;
+	private List<Periodo> periodos;
 	private SensorDeMovimiento sMov;
 	private SensorHumedad sHume;
 	private SensorIntensidadLuminica sIntLum;
@@ -59,18 +50,18 @@ public class Dispositivo_inteligente2 {
 	private List<Condicion> condiciones1,condiciones2,subscritores,subscritores2;
 	@Before
     public void setup(){
-		this.p1 = new RegistroConsumo(1526680200,1526683800);//1 Hora
-		this.p2 = new RegistroConsumo(1526410200,1526510200);//27 Horas Inicio 05/15/2018 @ 6:50pm (UTC) ; Fin 05/16/2018 @ 10:36pm (UTC)
-		this.p3 = new RegistroConsumo(1526520200,1526680200);//44 Horas Inicio 05/17/2018 @ 1:23am (UTC) ; Fin 05/18/2018 @ 9:50pm (UTC)
-		this.p4 = new RegistroConsumo(1526680200,1526683800);//1 Hora
-		this.p5 = new RegistroConsumo(1526680200,1526683800);//1 Hora
-		this.p6 = new RegistroConsumo(1526680200,1526683800);//1 Hora
-		this.p7 = new RegistroConsumo(1526680200,1526683800);//1 Hora
-		this.p8 = new RegistroConsumo(1526680200,1526683800);//1 Hora
+		this.p1 = new Periodo(1526680200,1526683800);//1 Hora
+		this.p2 = new Periodo(1526410200,1526510200);//27 Horas Inicio 05/15/2018 @ 6:50pm (UTC) ; Fin 05/16/2018 @ 10:36pm (UTC)
+		this.p3 = new Periodo(1526520200,1526680200);//44 Horas Inicio 05/17/2018 @ 1:23am (UTC) ; Fin 05/18/2018 @ 9:50pm (UTC)
+		this.p4 = new Periodo(1526680200,1526683800);//1 Hora
+		this.p5 = new Periodo(1526680200,1526683800);//1 Hora
+		this.p6 = new Periodo(1526680200,1526683800);//1 Hora
+		this.p7 = new Periodo(1526680200,1526683800);//1 Hora
+		this.p8 = new Periodo(1526680200,1526683800);//1 Hora
 		this.accionApagar = new Apagar();
 		this.accionEncender = new Encender();
 		this.accionModoaAhorro = new PasarAModoAhorro();
-		this.periodos = new ArrayList<RegistroConsumo>();
+		this.periodos = new ArrayList<Periodo>();
 		this.periodos.add(p1);
 		this.periodos.add(p2);
 		this.periodos.add(p3);

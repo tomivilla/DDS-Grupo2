@@ -14,13 +14,9 @@ import Estado.Apagado;
 import Estado.Encendido;
 import actuador.Actuador;
 import actuador.ActuadorEstufa;
-<<<<<<< HEAD:sge/src/test/java/dispositivos_test/Dispositivo_inteligente.java
 import dispositivo.AdaptadorDispositivo;
 import dispositivo.DispositivoEstandar;
 import dispositivo.DispositivoInteligente;
-=======
-import dispositivo.*;
->>>>>>> ad5562c5626f5fd8ccb55447eff972eba8ce5610:TPDDS-Grupo8/sge/src/test/java/dispositivos_test/Dispositivo_inteligente.java
 import implementador.ImplementadorEstufaLG;
 import json_helper.Json_Helper;
 import sge_ui.Administrador;
@@ -43,12 +39,8 @@ public class Dispositivo_inteligente {
 	private List<Cliente> clientes;
 	private DispositivoInteligente di;
 	private DispositivoEstandar de;
-<<<<<<< HEAD:sge/src/test/java/dispositivos_test/Dispositivo_inteligente.java
 	private AdaptadorDispositivo adaptador;
-=======
->>>>>>> ad5562c5626f5fd8ccb55447eff972eba8ce5610:TPDDS-Grupo8/sge/src/test/java/dispositivos_test/Dispositivo_inteligente.java
 	private Actuador actuador1;
-	private Adaptador adaptador;
 	long inicio,fin;
 	
 	
@@ -83,7 +75,6 @@ public class Dispositivo_inteligente {
     	clientes = new ArrayList<Cliente>();
     	clientes = Json_Helper.JsonToCliente("datos.json");
     	this.sge.setearClientes(clientes);
-<<<<<<< HEAD:sge/src/test/java/dispositivos_test/Dispositivo_inteligente.java
     	//Tomo uno de el 8vo dispositivo inteligente que se cargó desde el JSON, para el cliente 2
     	di = (DispositivoInteligente) clientes.get(2).getDispositivo(8);
     	de = (DispositivoEstandar) clientes.get(2).getDispositivo(3);
@@ -92,15 +83,6 @@ public class Dispositivo_inteligente {
     	fin=di.getPeriodos().get(1).getHoraFin();
     	inicio=di.getPeriodos().get(1).getHoraInicio();
     	clientes.get(2).agregarAdaptador(de, adaptador); //Suma 10 Puntos por agregar un adaptador
-=======
-    	di = (DispositivoInteligente) clientes.get(2).getDispositivo(8);
-    	de = (DispositivoEstandar) clientes.get(2).getDispositivo(3);
-    	adaptador = new Adaptador();
-    	this.actuador1 = new ActuadorEstufa("AD:12:34:12:42:12",di,new ImplementadorEstufaLG());
-    	fin=di.getPeriodos().get(1).getHoraFin();
-    	inicio=di.getPeriodos().get(1).getHoraInicio();
-    	//clientes.get(2).agregarAdaptador(de, adaptador); //Suma 10 Puntos por agregar un adaptador
->>>>>>> ad5562c5626f5fd8ccb55447eff972eba8ce5610:TPDDS-Grupo8/sge/src/test/java/dispositivos_test/Dispositivo_inteligente.java
     	clientes.get(2).agregarDispositivo(di); //Suma 15 Puntos por agregar un Dispositivo Inteligente
     
     }

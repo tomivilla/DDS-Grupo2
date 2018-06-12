@@ -1,14 +1,10 @@
 package sge_ui;
 import java.util.List;
 
-<<<<<<< HEAD:sge/src/main/java/sge_ui/Cliente.java
 import dispositivo.AdaptadorDispositivo;
 import dispositivo.Dispositivo;
 import dispositivo.DispositivoEstandar;
 import dispositivo.DispositivoInteligente;
-=======
-import dispositivo.*;
->>>>>>> ad5562c5626f5fd8ccb55447eff972eba8ce5610:TPDDS-Grupo8/sge/src/main/java/sge_ui/Cliente.java
 
 
 public class Cliente extends Usuario implements ICliente {
@@ -74,14 +70,10 @@ public class Cliente extends Usuario implements ICliente {
 		this.sumarPuntos(15);
 	}
 	
-<<<<<<< HEAD:sge/src/main/java/sge_ui/Cliente.java
 	public void agregarDispositivo(AdaptadorDispositivo unDispositivo){
-=======
-	/*public void agregarAdaptador(DispositivoEstandar unDispositivo){
->>>>>>> ad5562c5626f5fd8ccb55447eff972eba8ce5610:TPDDS-Grupo8/sge/src/main/java/sge_ui/Cliente.java
 		this.dispositivos.add(unDispositivo);
 		this.sumarPuntos(10);
-	}*/
+	}
 	public void agregarDispositivo(Dispositivo unDispositivo){
 		this.dispositivos.add(unDispositivo);
 	}
@@ -92,16 +84,9 @@ public class Cliente extends Usuario implements ICliente {
 	        return false;
 	}
 	
-<<<<<<< HEAD:sge/src/main/java/sge_ui/Cliente.java
 	public void agregarAdaptador(DispositivoEstandar unDispositivo, AdaptadorDispositivo unAdaptador){
 		unAdaptador.setDispositivo(unDispositivo);
 		this.agregarDispositivo(unAdaptador);
-=======
-	public void  ConvertirADispositivoInteligente(DispositivoEstandar unDispositivo, Adaptador unAdaptador){
-		this.agregarDispositivo(unDispositivo);
-		unDispositivo.setAdaptador(unAdaptador);
-		this.sumarPuntos(10);
->>>>>>> ad5562c5626f5fd8ccb55447eff972eba8ce5610:TPDDS-Grupo8/sge/src/main/java/sge_ui/Cliente.java
 	}
 
 	public String getTipo_documento() {

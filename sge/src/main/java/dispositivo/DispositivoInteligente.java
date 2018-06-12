@@ -6,16 +6,12 @@ import java.util.List;
 import Estado.Estado;
 import sensor.Sensor;
 
-<<<<<<< HEAD:sge/src/main/java/dispositivo/DispositivoInteligente.java
 public class DispositivoInteligente extends Dispositivo {
-=======
-public  class DispositivoInteligente extends Dispositivo {
->>>>>>> ad5562c5626f5fd8ccb55447eff972eba8ce5610:TPDDS-Grupo8/sge/src/main/java/dispositivo/DispositivoInteligente.java
 	private Estado estado;
 	private List<Sensor> sensores;
-	private List<RegistroConsumo> periodos;
+	private List<Periodo> periodos;
 	
-	public DispositivoInteligente(String unNombre, double unConsumo, Estado unEstado, List<Sensor> sensores, List<RegistroConsumo> periodos) {
+	public DispositivoInteligente(String unNombre, double unConsumo, Estado unEstado, List<Sensor> sensores, List<Periodo> periodos) {
 		this.nombre_generico = unNombre;
 		this.consumoKWHora = unConsumo;
 		this.setEstado(unEstado);
@@ -23,18 +19,14 @@ public  class DispositivoInteligente extends Dispositivo {
 		this.setPeriodos(periodos);
 	}
 	
-	public DispositivoInteligente() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public double cuanConsumisteEnHoras(int horas){
 		Instant instant = Instant.now();
 		long timeStampSeconds = instant.getEpochSecond();
-		RegistroConsumo periodo = new RegistroConsumo(timeStampSeconds-(horas*60*60),timeStampSeconds);
+		Periodo periodo = new Periodo(timeStampSeconds-(horas*60*60),timeStampSeconds);
 		return cuantoConsumisteEnPeriodo(periodo);
 	}
 	
-	public double cuantoConsumisteEnPeriodo(RegistroConsumo unPeriodo){
+	public double cuantoConsumisteEnPeriodo(Periodo unPeriodo){
 		return this.tiempoEncendidoEn(unPeriodo)*this.getConsumoKWHora();
 	}
 	
@@ -44,14 +36,14 @@ public  class DispositivoInteligente extends Dispositivo {
 	
 	public double tiempoEncendido() {
 		double tiempo=0;
-		for(RegistroConsumo periodo : this.getPeriodos()){
+		for(Periodo periodo : this.getPeriodos()){
 			tiempo+=periodo.horasTranscurridas();
 		}
 		return tiempo;
 	}
-	public double tiempoEncendidoEn(RegistroConsumo unPeriodo){
+	public double tiempoEncendidoEn(Periodo unPeriodo){
 		double tiempo=0;
-		for(RegistroConsumo periodo : this.getPeriodos()){
+		for(Periodo periodo : this.getPeriodos()){
 			if(periodo.estasEnPeriodo(unPeriodo)){
 			tiempo+=periodo.horasTranscurridas();
 			}
@@ -75,11 +67,11 @@ public  class DispositivoInteligente extends Dispositivo {
 		this.sensores = sensores;
 	}
 
-	public List<RegistroConsumo> getPeriodos() {
+	public List<Periodo> getPeriodos() {
 		return periodos;
 	}
 
-	public void setPeriodos(List<RegistroConsumo> periodos) {
+	public void setPeriodos(List<Periodo> periodos) {
 		this.periodos = periodos;
 	}
 	
