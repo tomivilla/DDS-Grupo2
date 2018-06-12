@@ -1,10 +1,8 @@
 package sge_ui;
 import java.util.List;
 
-import dispositivo.DecoradorAdaptador;
-import dispositivo.Dispositivo;
-import dispositivo.DispositivoInteligente;
-import dispositivo.DispositivoInteligenteConcreto;
+import dispositivo.*;
+
 
 public class Cliente extends Usuario implements ICliente {
 	private String tipo_documento;
@@ -64,15 +62,15 @@ public class Cliente extends Usuario implements ICliente {
 		this.categoria = unaCategoria;
 	}
 	
-	public void agregarDispositivo(DispositivoInteligenteConcreto unDispositivo){
+	public void agregarDispositivo(DispositivoInteligente unDispositivo){
 		this.dispositivos.add(unDispositivo);
 		this.sumarPuntos(15);
 	}
 	
-	public void agregarDispositivo(DecoradorAdaptador unDispositivo){
+	/*public void agregarAdaptador(DispositivoEstandar unDispositivo){
 		this.dispositivos.add(unDispositivo);
 		this.sumarPuntos(10);
-	}
+	}*/
 	public void agregarDispositivo(Dispositivo unDispositivo){
 		this.dispositivos.add(unDispositivo);
 	}
@@ -83,9 +81,10 @@ public class Cliente extends Usuario implements ICliente {
 	        return false;
 	}
 	
-	public void agregarAdaptador(Dispositivo unDispositivo, DecoradorAdaptador unAdaptador){
-		unAdaptador.setDispositivo(unDispositivo);
-		this.agregarDispositivo(unAdaptador);
+	public void  ConvertirADispositivoInteligente(DispositivoEstandar unDispositivo, Adaptador unAdaptador){
+		this.agregarDispositivo(unDispositivo);
+		unDispositivo.setAdaptador(unAdaptador);
+		this.sumarPuntos(10);
 	}
 
 	public String getTipo_documento() {

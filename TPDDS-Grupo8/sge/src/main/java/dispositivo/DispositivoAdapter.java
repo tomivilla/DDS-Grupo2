@@ -2,16 +2,22 @@ package dispositivo;
 
 import java.util.List;
 
-import Estado.Estado;
-import sensor.Sensor;
+import Estado.*;
 
-public class DecoradorAdaptador extends Decorador{
+public class DispositivoAdapter extends DispositivoInteligente{
 
-	public DecoradorAdaptador(String unNombre, double unConsumo, Estado unEstado,
-			List<Sensor> sensores, List<Periodo> periodos, Dispositivo dispositivo) {
-		super(unNombre, unConsumo, unEstado, sensores, periodos, dispositivo);
-	}
-
-	
+	private DispositivoEstandar dispositivoEstandar;
+	public DispositivoAdapter(Adaptador adaptador) {
+	 super();	
+	 dispositivoEstandar = new DispositivoEstandar();		
+	 Estado estado = Encendido.getInstance();
+	 this.setEstado(estado);
+	 //al momento de hacer la adaptacion no voy a administrar ningun sensor ni voy a tener periodos activos aun.
+	 this.setSensores(null);
+	 this.setPeriodos(null);
+	 this.setNombre_generico(dispositivoEstandar.getNombre_generico());
+	 this.setConsumoKWHora(dispositivoEstandar.getConsumoKWHora());
+	 this.setAdaptador(adaptador);
+	}	
 	
 }

@@ -14,9 +14,7 @@ import Estado.Apagado;
 import Estado.Encendido;
 import actuador.Actuador;
 import actuador.ActuadorEstufa;
-import dispositivo.DecoradorAdaptador;
-import dispositivo.DispositivoEstandar;
-import dispositivo.DispositivoInteligenteConcreto;
+import dispositivo.*;
 import implementador.ImplementadorEstufaLG;
 import json_helper.Json_Helper;
 import sge_ui.Administrador;
@@ -37,10 +35,10 @@ public class Dispositivo_inteligente {
 	private Administrador administrador;
 	private SGE sge;
 	private List<Cliente> clientes;
-	private DispositivoInteligenteConcreto di;
+	private DispositivoInteligente di;
 	private DispositivoEstandar de;
-	private DecoradorAdaptador deco;
 	private Actuador actuador1;
+	private Adaptador adaptador;
 	long inicio,fin;
 	
 	
@@ -75,13 +73,13 @@ public class Dispositivo_inteligente {
     	clientes = new ArrayList<Cliente>();
     	clientes = Json_Helper.JsonToCliente("datos.json");
     	this.sge.setearClientes(clientes);
-    	di = (DispositivoInteligenteConcreto) clientes.get(2).getDispositivo(8);
+    	di = (DispositivoInteligente) clientes.get(2).getDispositivo(8);
     	de = (DispositivoEstandar) clientes.get(2).getDispositivo(3);
-    	deco = new DecoradorAdaptador(null, 0, Encendido.getInstance(), null, null, de);
-    	this.actuador1 = new ActuadorEstufa("AD:12:34:12:42:12",deco,new ImplementadorEstufaLG());
+    	adaptador = new Adaptador();
+    	this.actuador1 = new ActuadorEstufa("AD:12:34:12:42:12",di,new ImplementadorEstufaLG());
     	fin=di.getPeriodos().get(1).getHoraFin();
     	inicio=di.getPeriodos().get(1).getHoraInicio();
-    	clientes.get(2).agregarAdaptador(de, deco); //Suma 10 Puntos por agregar un adaptador
+    	//clientes.get(2).agregarAdaptador(de, adaptador); //Suma 10 Puntos por agregar un adaptador
     	clientes.get(2).agregarDispositivo(di); //Suma 15 Puntos por agregar un Dispositivo Inteligente
     
     }

@@ -16,9 +16,7 @@ import Estado.Apagado;
 import Estado.Encendido;
 import Estado.Estado;
 import dispositivo.Dispositivo;
-import dispositivo.DispositivoEstandar;
-import dispositivo.DispositivoInteligenteConcreto;
-import dispositivo.Periodo;
+import dispositivo.*;
 import sensor.Sensor;
 import sensor.SensorDeMovimiento;
 import sensor.SensorHumedad;
@@ -121,19 +119,19 @@ public class Json_Helper {
 	            	listaDeSensores.add(sensor);
 	            }
 	            JsonArray periodos = dis.get("periodos").getAsJsonArray();
-	            List<Periodo> listaDePeriodos= new ArrayList<Periodo>();
+	            List<RegistroConsumo> listaDePeriodos= new ArrayList<RegistroConsumo>();
 	            for (JsonElement peri : periodos){
 	            	JsonObject per = peri.getAsJsonObject();
 	            	
 	            	// Obtengo las primitivas del Sensor
 	            	long inicio = per.get("inicio").getAsLong();
 	            	long fin = per.get("fin").getAsLong();
-	            	Periodo periodo = new Periodo(inicio,fin);
+	            	RegistroConsumo periodo = new RegistroConsumo(inicio,fin);
 	            	listaDePeriodos.add(periodo);
 	            }
 	            
 	            //Actuador objActuador = seleccionarActuador(actuador);
-	            DispositivoInteligenteConcreto dispositivo = new DispositivoInteligenteConcreto(nombre_generico,consumoKWHora,objEstado,listaDeSensores,listaDePeriodos); 
+	            DispositivoInteligente dispositivo = new DispositivoInteligente(nombre_generico,consumoKWHora,objEstado,listaDeSensores,listaDePeriodos); 
 	        	listDispositivo.add(dispositivo);
 	        }
 	        
