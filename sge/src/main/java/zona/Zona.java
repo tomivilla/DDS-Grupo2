@@ -1,5 +1,4 @@
 package zona;
-
 import transformador.Transformador;
 
 public class Zona {
