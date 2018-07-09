@@ -13,5 +13,13 @@ public class DispositivoEstandar extends Dispositivo {
 	public double tuConsumo(){
 		return this.consumoKWHora * this.horasEncendido;
 	}
+
+	public int getHorasEncendido() {
+		return horasEncendido;
+	}
+
+	public void setHorasEncendido(int horasEncendido) {
+		this.horasEncendido = horasEncendido;
+	}
 	
 }

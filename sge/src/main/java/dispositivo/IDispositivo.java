@@ -7,5 +7,4 @@ public interface IDispositivo {
 	public double getConsumoKWHora();
 	public void setConsumoKWHora(double consumoKWHora);
 	public double tuConsumo();
-
 }
