@@ -32,7 +32,14 @@ public class Regla {
 			}
 		}
 	}
-	
+	public boolean evaluar(){
+		 boolean valid = this.secumplenCondiciones();
+				 if(valid){
+					 this.ejecutarAcciones();
+				 }
+		 return valid;
+	}
+	 
 	public void recibirEstado(int estadoObserver) {
 		//cambio el estado de Un sensor		
 	}

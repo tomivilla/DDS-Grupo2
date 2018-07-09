@@ -1,6 +1,8 @@
 package dispositivo;
 
-public abstract class Dispositivo implements IDispositivo {
+import java.util.Observable;
+
+public abstract class Dispositivo extends Observable implements IDispositivo {
 	public String nombre_generico;
 	public double consumoKWHora;
 	

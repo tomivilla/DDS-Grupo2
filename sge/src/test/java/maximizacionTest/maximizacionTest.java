@@ -43,7 +43,7 @@ public class maximizacionTest {
 		aireAcondicionado2200.setPeriodos(factoryPeriodo.periodos10Horas());
 		microondas.setHorasEncendido(14);
 		plancha.setHorasEncendido(10);
-		
+		ventiladorDeTecho.setPeriodos(factoryPeriodo.periodos10Horas());
 	}
 	@Test
 	public void testEjemploEntrega8Dispositivos() {
