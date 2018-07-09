@@ -1,0 +1,346 @@
+@startuml
+class SGE <<Singleton>> {
+Usuario: usuarios
+Categoria: categorias
+List<Actuador>: actuadores
++categorizar(unUsuario)
++getInstance():SGE
++agregarCliente(Cliente)
++agregarAdministrador(Administrador)
++agregarCategoria(Categoria)
++categorizar(Cliente)
++recategorizarClientes()
+}
+abstract Usuario <<abstract>>{
+nombre_de_usuario
+contraseña
+}
+class Cliente extends Usuario{
+nombre
+tipo_documento
+numero_documento
+telefono
+domicilio
+fecha_de_alta_de_servicio
+categoria
+puntos
+reglas: List<Regla>
+Dispositivo: dispositivos 
++tenesAlgunDispositivoEncendido()
++totalDispositivosEncendidos()
++totalDispositivosApagados()
++totalDeDispositivos()
++consumoMensual()
++setearCategoria(unCategoria)
++agregarDispositivo(unDispositivo)
+}
+class Administrador extends Usuario{
+nombre
+apellido
+domicilio
+fechaDeAltaEnSistema
++cantidadDeMesesComoAdmin()
+}
+class Regla{
+condicionnes: List<Condicion>
+acciones:List<Accion>
+dispositivo: Dispositivo
+elDispositivoCumpleLasCondiciones()
+ejecutarAcciones()
+}
+class Accion{
+ejecutarAccion(unDispositivo: Dispositivo)
+}
+class Condicion{
+cumple(unDispositivo: Dispositivo): Boolean
+}
+
+Cliente -- "Many" Regla
+Regla -- "Many" Accion
+Regla -- "Many" Condicion
+class Categoria{
+consumoMinimo
+consumoMaximo
+cargoFijo
+cargoVariable
++boolean perteneceAcategoria(unConsumo)
+}
+
+abstract Dispositivo <<abstract>>{
+nombre_generico
+consumoKWHora
++tuConsumo():double
+}
+class DispositivoEstandar implements Dispositivo{
+horasEncendido
++tuConsumo():double
+}
+
+class DispositivoInteligente implements Dispositivo{
+estado
+actuador:Actuador
+sensores:List<Sensor>
+periodosEncendido: Periodo
++tuConsumo():double
++estasEncedido():boolean
++cuantoConsumiste(N:Int)
++cuantoConsumisteEn(unPeriodo:Periodo)
++prender()
++apagar()
++modoAhorro()
+}
+
+class AdaptadorDispositivo implements DispositivoInteligente{
+dispositivo: DispositivoEstandar
+id:long
++estasEncedido():boolean
++tuConsumo():double
++cuantoConsumiste(N:Int)
++cuantoConsumisteEn(unPeriodo:Periodo)
++prender()
++apagar()
++modoAhorro()
+}
+
+abstract Sensor<<abstract>>{
+medirMagnitud()
+observer: Observer
+adscribir(observer: Observer)
+quitar(observer: Observer)
+notificar()
+}
+class SensorTemperatura implements Sensor{
+medirMagnitud()
+}
+class SensorHumedad implements Sensor{
+medirMagnitud()
+}
+class SensorIntensidadLuminica implements Sensor{
+medirMagnitud()
+}
+class SensorDeMovimiento implements Sensor{
+medirMagnitud()
+}
+interface Observer <<Interface>>{
+actualizar()
+}
+class ObserverSensor implements Observer{
+estadoObserver
+actualizar()
+}
+abstract Actuador <<abstract>>{
+implementador:Implementador
++prender()
++apagar()
+}
+class ActuadorAireAcondicionado implements Actuador{
+aumentarTemperaturaImp()
+disminuirTemperaturaImp()
+modoAhorroImp()
+}
+class ActuadorEstufa implements Actuador{
+aumentarTemperaturaImp()
+disminuirTemperaturaImp()
+}
+class ActuadorHeladera implements Actuador{
+aumentarTemperatura()
+disminuirTemperatura()
+modoAhorroImp()
+}
+class ActuadorTV implements Actuador{
+modoAhorroImp()
+}
+class ActuadorLuces implements Actuador{
+modoAhorroImp()
+}
+class ActuadorVentilador implements Actuador{
+aumentarVelosidadImp()
+disminuirVelosidadImp()
+}
+
+interface Implementador <<interface>>{
+prenderImp()
+apagarImp()
+}
+class ImplementadorAireAcondicionadoLG implements Implementador{
+prenderImp()
+apagarImp()
+modoAhorroImp()
+aumentarTemperaturaImp()
+disminuirTemperaturaImp()
+}
+class ImplementadorAireAcondicionadoSamsung implements Implementador{
+prenderImp()
+apagarImp()
+modoAhorroImp()
+aumentarTemperaturaImp()
+disminuirTemperaturaImp()
+}
+class ImplementadorHeladeraLG implements Implementador{
+prenderImp()
+apagarImp()
+modoAhorroImp()
+aumentarTemperaturaImp()
+disminuirTemperaturaImp()
+}
+class ImplementadorEstufaLG implements Implementador{
+prenderImp()
+apagarImp()
+modoAhorroImp()
+aumentarTemperaturaImp()
+disminuirTemperaturaImp()
+}
+
+class Periodo{
+fechaInicial
+fechaFinal
+horasTranscurridas():Int
+estasEnPeriodo(Periodo unPeriodo):Boolean
+}
+
+interface Estado<<Interface>>{
+prender(dispositivo:Dispositivo)
+apagar(dispositivo:Dispositivo)
+modoAhorro(dispositivo:Dispositivo)
+estasEncendido(dispositivo:Dispositivo)
+}
+class Apagado extends Estado{
+prender(dispositivo:Dispositivo)
+apagar(dispositivo:Dispositivo)
+modoAhorro(dispositivo:Dispositivo)
+estasEncendido(dispositivo:Dispositivo)
+}
+class Encendido extends Estado{
+prender(dispositivo:Dispositivo)
+apagar(dispositivo:Dispositivo)
+modoAhorro(dispositivo:Dispositivo)
+estasEncendido(dispositivo:Dispositivo)
+}
+class AhorroDeEnergia extends Estado{
+prender(dispositivo:Dispositivo)
+apagar(dispositivo:Dispositivo)
+modoAhorro(dispositivo:Dispositivo)
+estasEncendido(dispositivo:Dispositivo)
+}
+
+note as N1
+Patrón Bridge - Actuador e Implementador
+apagar(){
+inplementador.apagarImp();
+}
+prender(){
+inplementador.apagarImp()
+}
+end note
+note as N2
+estasEncedido(dispositivo:Dispositivo){
+return true;
+}
+
+prender(dispositivo:Dispositivo){}
+
+apagar(dispositivo:Dispositivo){
+dispositivo.setEstado(Apagado.getInstance());
+}
+
+modoAhorro(dispositivo:Dispositivo){
+dispositivo.setEstado(AhorroDeEnergia.getInstance());
+}
+end note 
+
+note as N3
+estasEncedido(dispositivo:Dispositivo){
+return false;
+}
+
+prender(dispositivo:Dispositivo){
+dispositivo.setEstado(Encendido.getInstance());
+}
+
+apagar(dispositivo:Dispositivo){}
+
+modoAhorro(dispositivo:Dispositivo){
+dispositivo.setEstado(AhorroDeEnergia.getInstance());
+}
+end note 
+
+note as N4
+estasEncedido(dispositivo:Dispositivo){
+return true;
+}
+
+prender(dispositivo:Dispositivo){
+dispositivo.setEstado(Encendido.getInstance());
+}
+
+apagar(dispositivo:Dispositivo){
+dispositivo.setEstado(Apagado.getInstance());
+}
+
+modoAhorro(dispositivo:Dispositivo){}
+end note 
+
+note as N5
+adscribir(observer: Observer){
+setObserver(observer);
+}
+notificar(){
+this.getObserver().actualizar(this);
+}
+medirMagnitud(){
+//realizar medicion...
+notificar();
+}
+end note
+
+note as N6
+actualizar(sensor: Sensor){
+estadoObserver = sensor.obtenerMagnitud();
+informarASubcriptores();
+}
+informarASubcrptores(){
+fot (Monitor monitor : this.getSubcriptores())
+monitor.enviarEstado(estadoObserver);
+}
+end note
+
+note as N7
+Cada subclase de Estado
+es un Singleton, 
+que se obtiene del
+metodo getInstance()
+end note
+
+note as N8
+El ObserverSensor tendrá
+UNA referencia a alguna
+instancia de las SubClases de
+Sensor
+end note
+
+Actuador .. N1
+Encendido .. N2
+Apagado .. N3
+AhorroDeEnergia .. N4
+Sensor .. N5
+ObserverSensor .. N6
+ObserverSensor .. N8
+Estado .. N7
+Sensor -- Observer
+ObserverSensor "sensor" --> SensorTemperatura
+ObserverSensor "sensor" --> SensorHumedad
+ObserverSensor "sensor" --> SensorDeMovimiento
+ObserverSensor "sensor" --> SensorIntensidadLuminica
+DispositivoInteligente *-- Estado  
+DispositivoInteligente -- Sensor
+DispositivoInteligente -- Actuador
+AdaptadorDispositivo --* DispositivoEstandar
+SGE "1"--"Many"Usuario
+SGE "1"--"Many"Categoria
+SGE -- "Many" Actuador
+Cliente--"1"Categoria
+Cliente--"Many"Dispositivo
+DispositivoInteligente -->"Uses" Periodo
+Actuador *--> Implementador
+@enduml
+
