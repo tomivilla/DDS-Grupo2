@@ -9,21 +9,12 @@ import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.quartz.CronScheduleBuilder;
-import org.quartz.Job;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
-import org.quartz.Trigger;
-import org.quartz.TriggerBuilder;
-import org.quartz.impl.StdSchedulerFactory;
+
 
 import dispositivosFactory.DispositivosFactory;
 import dispositivosFactory.PeriodoFactory;
 import simplexSolver.SimplexFacade;
+import simplexSolver.SimplexHelper;
 import dispositivo.Dispositivo;
 import dispositivo.DispositivoEstandar;
 import dispositivo.DispositivoInteligente;
@@ -33,7 +24,9 @@ public class maximizacionTest {
 	DispositivosFactory factory;
 	List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
 	PeriodoFactory factoryPeriodo;
-	
+	SimplexHelper simplexHelper = new  SimplexHelper();
+	double[] variables;
+	double z;
 	@Before
 	public void setup() {
 		factory = DispositivosFactory.getInstance();
@@ -56,6 +49,9 @@ public class maximizacionTest {
 		microondas.setHorasEncendido(14);
 		plancha.setHorasEncendido(10);
 		ventiladorDeTecho.setPeriodos(factoryPeriodo.periodos10Horas());
+		simplexHelper.obtenerResultados(z, variables);
+		
+		
 	}
 	@Test
 	public void testEjemploEntrega8Dispositivos() {
