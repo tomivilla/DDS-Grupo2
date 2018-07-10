@@ -26,6 +26,8 @@ import sensor.SensorIntensidadLuminica;
 import sensor.SensorTemperatura;
 import sge_ui.Categoria;
 import sge_ui.Cliente;
+import transformador.Transformador;
+import zona.Zona;
 
 //Clase para adaptar elementos JSON a objetos nuestros
 public class Json_Helper {
@@ -172,4 +174,60 @@ public class Json_Helper {
 		}
 		return sensor;
 	} 
+	
+	public static List<Transformador> jsonToTransformadores(String path) throws IOException{
+		
+		String json1 = Json_Helper.readFile(path);
+		JsonParser parser = new JsonParser();
+		List<Transformador> transformadores = new ArrayList<Transformador>();
+		// Obtengo el primer ObjetoJason
+	   	JsonArray gsonObj1 = parser.parse(json1).getAsJsonArray();
+
+	   	for (JsonElement obj : gsonObj1) {
+	   		
+	        // Obtengo el objeto Cliente
+	        JsonObject gsonObj = obj.getAsJsonObject();
+	
+	        // Obtengo las primitivas del cliente
+	        Transformador transformador = new Transformador();
+	        transformador.setId(gsonObj.get("id").getAsInt());
+	        transformador.setLatitud(gsonObj.get("latitud").getAsDouble());
+	        transformador.setLongitud(gsonObj.get("longitud").getAsDouble());
+	        transformador.setZona(gsonObj.get("zona").getAsInt());
+	        
+	        transformadores.add(transformador);
+
+	   	}
+	   	
+	   	return transformadores;
+	}
+	
+	public static List<Zona> jsonToZonas(String path) throws IOException{
+		
+		String json1 = Json_Helper.readFile(path);
+		JsonParser parser = new JsonParser();
+		List<Zona> zonas = new ArrayList<Zona>();
+		// Obtengo el primer ObjetoJason
+	   	JsonArray gsonObj1 = parser.parse(json1).getAsJsonArray();
+
+	   	for (JsonElement obj : gsonObj1) {
+	   		
+	        // Obtengo el objeto Cliente
+	        JsonObject gsonObj = obj.getAsJsonObject();
+	
+	        // Obtengo las primitivas del cliente
+	        Zona zona = new Zona();
+	        zona.setNombre(gsonObj.get("nombre").getAsString());
+	        zona.setId(gsonObj.get("id").getAsInt());
+	        zona.setLatitud(gsonObj.get("latitud").getAsDouble());
+	        zona.setLongitud(gsonObj.get("longitud").getAsDouble());
+	        zona.setRadio(gsonObj.get("radio").getAsDouble());
+	        zona.setTransformadores(new ArrayList<Transformador>());
+	        
+	        zonas.add(zona);
+
+	   	}
+	   	
+	   	return zonas;
+	}
 }

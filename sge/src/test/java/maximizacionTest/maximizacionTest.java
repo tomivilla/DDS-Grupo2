@@ -9,6 +9,18 @@ import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.quartz.CronScheduleBuilder;
+import org.quartz.Job;
+import org.quartz.JobBuilder;
+import org.quartz.JobDetail;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.Trigger;
+import org.quartz.TriggerBuilder;
+import org.quartz.impl.StdSchedulerFactory;
+
 import dispositivosFactory.DispositivosFactory;
 import dispositivosFactory.PeriodoFactory;
 import simplexSolver.SimplexFacade;
@@ -116,6 +128,8 @@ public class maximizacionTest {
 		Assert.assertEquals(360, solucion.getPoint()[4], 0.01); // <--- X3
 		Assert.assertEquals(360, solucion.getPoint()[5], 0.01); // <--- X2
 		Assert.assertEquals(360, solucion.getPoint()[6], 0.01); // <--- X1
-		Assert.assertEquals(360, solucion.getPoint()[7], 0.01); // <--- X0
+		Assert.assertEquals(360, solucion.getPoint()[7], 0.01); // <--- X0		
+		
+		
 	}
 }
