@@ -25,20 +25,28 @@ public class maximizacionTest {
 	List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
 	PeriodoFactory factoryPeriodo;
 	SimplexHelper simplexHelper = new  SimplexHelper();
-	double[] variables;
+	PointValuePair variables;
 	double z;
 	@Before
 	public void setup() {
 		factory = DispositivosFactory.getInstance();
 		factoryPeriodo = PeriodoFactory.getInstance();
 		DispositivoInteligente tvLed40 = factory.tvLED40();
+		dispositivos.add(tvLed40);
 		DispositivoInteligente lamparaAlogena11w = factory.lamparaAlogena11w();
+		dispositivos.add(lamparaAlogena11w);
 		DispositivoEstandar lavarropasSemiAutomatico5kg = factory.lavarropasSemiAutomatico5kg();
+		dispositivos.add(lavarropasSemiAutomatico5kg);
 		DispositivoInteligente pcDeEscritorio = factory.pcDeEscritorio();
+		dispositivos.add(pcDeEscritorio);
 		DispositivoInteligente aireAcondicionado2200 = factory.aireAcondicionado2200();
+		dispositivos.add(aireAcondicionado2200);
 		DispositivoEstandar microondas = factory.microondas();
+		dispositivos.add(microondas);
 		DispositivoEstandar plancha = factory.plancha();
+		dispositivos.add(plancha);
 		DispositivoInteligente ventiladorDeTecho = factory.ventiladorDeTecho();
+		dispositivos.add(ventiladorDeTecho);
 		//no se agregaron el termotanque electrico, la heladera, ni el horno electrico por idicaciones del enunciado
 		
 		tvLed40.setPeriodos(factoryPeriodo.periodos10Horas());
@@ -49,9 +57,14 @@ public class maximizacionTest {
 		microondas.setHorasEncendido(14);
 		plancha.setHorasEncendido(10);
 		ventiladorDeTecho.setPeriodos(factoryPeriodo.periodos10Horas());
-		simplexHelper.obtenerResultados(z, variables);
+		 
 		
-		
+	}
+	@Test
+	public void testSimplexhelper() {
+		List<Dispositivo> dispositivosSobrepasados = null;
+		dispositivosSobrepasados = simplexHelper.obtenerResultados(z, variables, dispositivos);
+		Assert.assertEquals("Cantidad de dispositivos sobre pasados",0, dispositivosSobrepasados.size());
 	}
 	@Test
 	public void testEjemploEntrega8Dispositivos() {

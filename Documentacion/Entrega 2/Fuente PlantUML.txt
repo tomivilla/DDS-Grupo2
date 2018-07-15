@@ -34,6 +34,17 @@ Dispositivo: dispositivos
 +setearCategoria(unCategoria)
 +agregarDispositivo(unDispositivo)
 }
+
+class Transformador{
+id
+ObtenerConsumo()
+}
+class ZonaGeografica{
+nombreZona
+transformadores: List<Transformador>
+}
+
+
 class Administrador extends Usuario{
 nombre
 apellido
@@ -41,6 +52,13 @@ domicilio
 fechaDeAltaEnSistema
 +cantidadDeMesesComoAdmin()
 }
+
+class ReglasManager<<Singleton>>{
+reglas
+getReglasParaDispositivo(Dispositivo dispositivo):List<Regla>
+registrarReglas(Dispositivo dispositivo, List<Regla> reglas)
+}
+
 class Regla{
 condicionnes: List<Condicion>
 acciones:List<Accion>
@@ -55,15 +73,18 @@ class Condicion{
 cumple(unDispositivo: Dispositivo): Boolean
 }
 
-Cliente -- "Many" Regla
-Regla -- "Many" Accion
-Regla -- "Many" Condicion
 class Categoria{
 consumoMinimo
 consumoMaximo
 cargoFijo
 cargoVariable
 +boolean perteneceAcategoria(unConsumo)
+}
+
+class DispositivoManager <<Singleton>>{
+dispositivos: List<Dispositivo>
+registrarDispositivo(Dispositivo dispositivo)
+update(Observable o, Object arg
 }
 
 abstract Dispositivo <<abstract>>{
@@ -342,5 +363,23 @@ Cliente--"1"Categoria
 Cliente--"Many"Dispositivo
 DispositivoInteligente -->"Uses" Periodo
 Actuador *--> Implementador
-@enduml
+Cliente -- "Many" Regla
+Regla -- "Many" Accion
+Regla -- "Many" Condicion
+ReglasManager -- "Many" Regla
+DispositivoManager -- "Many" Dispositivo
+ZonaGeografica -- "Many" Transformador
+Transformador -- Cliente
+SGE -- DispositivoManager
+SGE -- ReglasManager
 
+class SimplexFacade{
+}
+
+class SimplexHelper{
+obtenerResultados(double z, double[] variables)
+}
+
+SimplexFacade -- SimplexHelper
+SimplexHelper -- SGE
+@enduml

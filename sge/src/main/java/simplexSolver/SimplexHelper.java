@@ -1,13 +1,24 @@
 package simplexSolver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.math3.optim.PointValuePair;
 import org.apache.commons.math3.optim.linear.Relationship;
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
+
+import dispositivo.Dispositivo;
 import simplexSolver.SimplexFacade;
 
 public class SimplexHelper {
 	
-	public void obtenerResultados(double z, double[] variables){
+	public List<Dispositivo> obtenerResultados(double z, PointValuePair variables, List<Dispositivo> dispositivos){
+	
+		
+	List<Dispositivo> dispositivosSobrepasados = new ArrayList<Dispositivo>();
+	int inicio = 0;
+	int cantidad = dispositivos.size();
+		
 	SimplexFacade simplexFacade = new SimplexFacade(GoalType.MAXIMIZE, true);
 	simplexFacade.crearFuncionEconomica(1,1,1,1,1,1,1,1);
 	simplexFacade.agregarRestriccion(Relationship.LEQ, 440640, 0.06, 0.75, 0.64, 0.1275, 0.4, 0.08, .011, 1.013);
@@ -30,7 +41,25 @@ public class SimplexHelper {
 	PointValuePair solucion = simplexFacade.resolver();
 	
 	z = solucion.getValue();
-	variables = solucion.getPoint();
-	// Acá comparo lass variables vs el las hs enecendidas del dispositivo.
+	variables = solucion;
+	
+	for (Dispositivo dispositivo : dispositivos){
+		if (inicio < cantidad){
+			if (variables.getPoint()[inicio] <= dispositivo.tuConsumo()){
+				System.out.println(variables.getPoint()[inicio]);
+				System.out.println(dispositivo.tuConsumo());
+				dispositivosSobrepasados.add(dispositivo);
+			}
+			inicio=inicio+1;
+		}
 	}
+	return dispositivosSobrepasados;
+	}
+	
+	/*public List<Dispositivo> comparacionVariables(PointValuePair variables, List<Dispositivo> dispositivos){
+		
+	}*/
+	
+	
 }
+
