@@ -8,6 +8,10 @@ public class Categoria implements ICategoria {
 	private int consumoMinimo;
 	//Constructor
 	
+	public Categoria() {
+		
+	}
+	
 	public Categoria(int unConsumoMin, int unConsumoMax, double unCargoFijo, double unCargoVariable) {
 		this.consumoMinimo = unConsumoMin;
 		this.consumoMaximo = unConsumoMax;

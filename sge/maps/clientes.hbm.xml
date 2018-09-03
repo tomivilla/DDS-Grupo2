@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="sge_ui.Cliente" table= "CLIENTES">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="nombre"/>
+<!-- 		<many-to-one name = "tipo_documento" column = "tipo_doc"  -->
+<!--          class="sge_ui.Documento" not-null="true"/> -->
+		<property name="tipo_documento" column="tipo_doc"/>
+        <property name="numero_documento" column="nro_doc"/>
+        <property name="telefono"/>
+        <property name="domicilio"/>
+		<property name="fecha_de_alta_de_servicio" type="timestamp" column="fecha_alta"/>
+<!-- 		<property name="categoria"/> -->
+		<property name="nombre_de_usuario" column="nombre_usuario"></property>
+		<property name="contrasena" column="pass"/>
+	</class>
+</hibernate-mapping>

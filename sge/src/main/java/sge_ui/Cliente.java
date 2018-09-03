@@ -1,4 +1,5 @@
 package sge_ui;
+import java.util.Date;
 import java.util.List;
 
 import dispositivo.AdaptadorDispositivo;
@@ -8,18 +9,18 @@ import dispositivo.DispositivoInteligente;
 
 
 public class Cliente extends Usuario implements ICliente {
-	private String tipo_documento;
+	private int tipo_documento;
 	private String numero_documento;
 	private int telefono;
 	private String domicilio; // Puede ser una cadena de domicilios?
-	private int fecha_de_alta_de_servicio; // Formato AAAAMMDD
+	private Date fecha_de_alta_de_servicio; // Formato AAAAMMDD
 	private Categoria categoria;
 	private List <Dispositivo> dispositivos;
 	private int puntos;
 
 	//CONSTRUCTOR
-	public Cliente(String unNombre, String unNmbUsuario, String unaContrasena, String unTipoDoc, String unNumDoc, int unTelefono,
-				   String unDomicilio, int unaFecha, Categoria unaCategoria, List<Dispositivo> nDispositivos) {
+	public Cliente(String unNombre, String unNmbUsuario, String unaContrasena, int unTipoDoc, String unNumDoc, int unTelefono,
+				   String unDomicilio, Date unaFecha, Categoria unaCategoria, List<Dispositivo> nDispositivos) {
 		this.setNombre(unNombre);
 		this.setNombre_de_usuario(unNmbUsuario);
 		this.setContrasena(unaContrasena);
@@ -89,12 +90,12 @@ public class Cliente extends Usuario implements ICliente {
 		this.agregarDispositivo(unAdaptador);
 	}
 
-	public String getTipo_documento() {
+	public int getTipo_documento() {
 		return tipo_documento;
 	}
 
 
-	public void setTipo_documento(String tipo_documento) {
+	public void setTipo_documento(int tipo_documento) {
 		this.tipo_documento = tipo_documento;
 	}
 
@@ -129,12 +130,12 @@ public class Cliente extends Usuario implements ICliente {
 	}
 
 
-	public int getFecha_de_alta_de_servicio() {
+	public Date getFecha_de_alta_de_servicio() {
 		return fecha_de_alta_de_servicio;
 	}
 
 
-	public void setFecha_de_alta_de_servicio(int fecha_de_alta_de_servicio) {
+	public void setFecha_de_alta_de_servicio(Date fecha_de_alta_de_servicio) {
 		this.fecha_de_alta_de_servicio = fecha_de_alta_de_servicio;
 	}
 

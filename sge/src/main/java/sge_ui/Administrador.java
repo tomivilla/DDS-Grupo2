@@ -1,23 +1,26 @@
 package sge_ui;
 
 import java.text.ParseException;
+import java.util.Date;
 
 import fecha_helper.Fecha_Helper;
 
 public class Administrador extends Usuario implements IAdministrador {
 	
-	private String domicilioAdministrador; //Cambiar nombre en diagrama
-	private String fechaDeAltaEnSistema; // Formato AAAA-MM-DD
-	private int idSistema; //Agregar al Diagrama
+	private String domicilio; //Cambiar nombre en diagrama
+	private Date fechaDeAltaEnSistema; // Formato AAAA-MM-DD
 
 	
-	public Administrador(String unNombre, String unNmbUsuario, String unaContrasena, String unDomicilio, String unaFecha, int unID) {
+	public Administrador(){
+		
+	}
+	
+	public Administrador(String unNombre, String unNmbUsuario, String unaContrasena, String unDomicilio, Date unaFecha) {
 		this.setNombre(unNombre);
 		this.setNombre_de_usuario(unNmbUsuario);
 		this.setContrasena(unaContrasena);
-		this.domicilioAdministrador = unDomicilio;
+		this.domicilio = unDomicilio;
 		this.fechaDeAltaEnSistema = unaFecha;
-		this.idSistema = unID;
 	}
 	
 	
@@ -29,38 +32,27 @@ public class Administrador extends Usuario implements IAdministrador {
 	}
 	
 	//GETTERS
-	public String getDomicilioAdministrador() {
-		return domicilioAdministrador;
+	public String getDomicilio() {
+		return domicilio;
 	}
 
 
 
-	public void setDomicilioAdministrador(String domicilioAdministrador) {
-		this.domicilioAdministrador = domicilioAdministrador;
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
 	}
 
 
 
-	public String getFechaDeAltaEnSistema() {
+	public Date getFechaDeAltaEnSistema() {
 		return fechaDeAltaEnSistema;
 	}
 
 
 
-	public void setFechaDeAltaEnSistema(String fechaDeAltaEnSistema) {
+	public void setFechaDeAltaEnSistema(Date fechaDeAltaEnSistema) {
 		this.fechaDeAltaEnSistema = fechaDeAltaEnSistema;
 	}
 
 
-
-	public int getIdSistema() {
-		return idSistema;
-	}
-
-
-
-	public void setIdSistema(int idSistema) {
-		this.idSistema = idSistema;
-	}
-	
 }

@@ -3,7 +3,10 @@ package json_helper;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.google.gson.JsonArray;
@@ -19,6 +22,7 @@ import dispositivo.Dispositivo;
 import dispositivo.DispositivoEstandar;
 import dispositivo.DispositivoInteligente;
 import dispositivo.Periodo;
+import fecha_helper.Fecha_Helper;
 import sensor.Sensor;
 import sensor.SensorDeMovimiento;
 import sensor.SensorHumedad;
@@ -71,11 +75,20 @@ public class Json_Helper {
 	        String unNombre = gsonObj.get("nombre").getAsString();
 	        String unNmbUsuario = gsonObj.get("nombre_de_usuario").getAsString();
 	        String unaContrasena = gsonObj.get("contrasena").getAsString();
-	        String unTipoDoc = gsonObj.get("tipoDoc").getAsString(); 
+	        int unTipoDoc = gsonObj.get("tipoDoc").getAsInt(); 
 	        String unNumDoc = gsonObj.get("numDoc").getAsString();
 	        int unTelefono = gsonObj.get("telefono").getAsInt();
 	        String unDomicilio = gsonObj.get("domicilio").getAsString();
-	        int unaFecha = gsonObj.get("fecha").getAsInt();
+	        
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+	   	 
+	    	Date unaFecha = new Date();
+			try {
+				unaFecha = dateFormat.parse(gsonObj.get("fecha").getAsString());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	        Categoria unaCategoria = new Categoria(0,0,0.0,0.0);
 	        
 	        // Obtengo el array de dispositivos

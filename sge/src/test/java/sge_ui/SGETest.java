@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -40,7 +41,7 @@ public class SGETest {
     	this.R7 = new Categoria(600, 700, 443.59, 0.851);
     	this.R8 = new Categoria(700, 1400, 545.96, 0.851);
     	this.R9 = new Categoria(1400, Integer.MAX_VALUE, 887.19, 0.851);
-    	this.administrador = new Administrador("Juan Carlos Perez", "admin", "contraseña123", "Calle Falsa 321", "2016-07-23", 01);
+    	this.administrador = new Administrador("Juan Carlos Perez", "admin", "contraseña123", "Calle Falsa 321", new Date());
     	this.sge.agregarCategoria(R1); 
     	this.sge.agregarCategoria(R2);
     	this.sge.agregarCategoria(R3);
