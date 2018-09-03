@@ -12,6 +12,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import beans.Administrador;
+import beans.Categoria;
+import beans.Cliente;
+import beans.SGE;
 import json_helper.Json_Helper;
 
 public class SGETest {

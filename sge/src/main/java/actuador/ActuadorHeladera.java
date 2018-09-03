@@ -1,7 +1,8 @@
 package actuador;
 
+import beans.Actuador;
+import beans.Implementador;
 import dispositivo.DispositivoInteligente;
-import implementador.Implementador;
 
 public class ActuadorHeladera extends Actuador{
 	

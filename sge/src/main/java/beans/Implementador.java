@@ -1,4 +1,6 @@
-package implementador;
+package beans;
+
+import implementador.iImplementador;
 
 public class Implementador implements iImplementador{
 

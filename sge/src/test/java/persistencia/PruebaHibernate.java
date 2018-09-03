@@ -6,11 +6,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import dispositivo.Dispositivo;
-import sge_ui.Administrador;
-import sge_ui.Categoria;
-import sge_ui.Cliente;
-import sge_ui.Documento;
+import beans.Administrador;
+import beans.Categoria;
+import beans.Cliente;
+import beans.Dispositivo;
+import beans.Documento;
 import utils.HibernateUtils;
 
 public class PruebaHibernate {

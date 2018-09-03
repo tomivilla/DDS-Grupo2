@@ -13,17 +13,17 @@ import org.junit.Test;
 
 import Estado.Apagado;
 import Estado.Encendido;
-import actuador.Actuador;
 import actuador.ActuadorEstufa;
+import beans.Actuador;
+import beans.Administrador;
+import beans.Categoria;
+import beans.Cliente;
+import beans.SGE;
 import dispositivo.AdaptadorDispositivo;
 import dispositivo.DispositivoEstandar;
 import dispositivo.DispositivoInteligente;
 import implementador.ImplementadorEstufaLG;
 import json_helper.Json_Helper;
-import sge_ui.Administrador;
-import sge_ui.Categoria;
-import sge_ui.Cliente;
-import sge_ui.SGE;
 
 public class Dispositivo_inteligente {
 	private Categoria R1;

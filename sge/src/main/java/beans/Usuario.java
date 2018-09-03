@@ -1,4 +1,6 @@
-package sge_ui;
+package beans;
+
+import sge_ui.IUsuario;
 
 public abstract class Usuario implements IUsuario {
 	private String nombre; // Nombre completo --> Agregar al diagrama

@@ -10,11 +10,11 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import beans.Administrador;
+import beans.Categoria;
+import beans.Cliente;
+import beans.SGE;
 import json_helper.Json_Helper;
-import sge_ui.Administrador;
-import sge_ui.Categoria;
-import sge_ui.Cliente;
-import sge_ui.SGE;
 
 public class Dispositivo_estandar {
 

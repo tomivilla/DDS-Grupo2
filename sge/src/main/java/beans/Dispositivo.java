@@ -1,6 +1,8 @@
-package dispositivo;
+package beans;
 
 import java.util.Observable;
+
+import dispositivo.IDispositivo;
 
 public abstract class Dispositivo extends Observable implements IDispositivo {
 	public String nombre_generico;

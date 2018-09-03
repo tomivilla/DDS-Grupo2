@@ -1,5 +1,7 @@
 package dispositivo;
 
+import beans.Dispositivo;
+
 public class DispositivoEstandar extends Dispositivo {
 	
 	private int horasEncendido; 

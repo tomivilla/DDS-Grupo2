@@ -6,7 +6,8 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
 
-import regla.Regla;
+import beans.Dispositivo;
+import beans.Regla;
 import regla.ReglasManager;
 
 

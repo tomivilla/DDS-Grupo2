@@ -1,4 +1,4 @@
-package regla;
+package beans;
 
 import java.util.List;
 

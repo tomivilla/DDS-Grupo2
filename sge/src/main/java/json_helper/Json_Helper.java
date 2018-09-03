@@ -17,21 +17,21 @@ import com.google.gson.JsonParser;
 import Estado.AhorroDeEnergia;
 import Estado.Apagado;
 import Estado.Encendido;
-import Estado.Estado;
-import dispositivo.Dispositivo;
+import beans.Categoria;
+import beans.Cliente;
+import beans.Dispositivo;
+import beans.Estado;
+import beans.Periodo;
+import beans.Sensor;
+import beans.Transformador;
+import beans.Zona;
 import dispositivo.DispositivoEstandar;
 import dispositivo.DispositivoInteligente;
-import dispositivo.Periodo;
 import fecha_helper.Fecha_Helper;
-import sensor.Sensor;
 import sensor.SensorDeMovimiento;
 import sensor.SensorHumedad;
 import sensor.SensorIntensidadLuminica;
 import sensor.SensorTemperatura;
-import sge_ui.Categoria;
-import sge_ui.Cliente;
-import transformador.Transformador;
-import zona.Zona;
 
 //Clase para adaptar elementos JSON a objetos nuestros
 public class Json_Helper {

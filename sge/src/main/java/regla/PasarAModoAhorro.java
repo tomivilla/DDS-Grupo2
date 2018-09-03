@@ -1,5 +1,6 @@
 package regla;
 
+import beans.Accion;
 import dispositivo.DispositivoInteligente;
 
 public class PasarAModoAhorro extends Accion {

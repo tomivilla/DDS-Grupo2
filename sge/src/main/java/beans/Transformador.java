@@ -1,4 +1,4 @@
-package transformador;
+package beans;
 
 public class Transformador {
 

@@ -1,8 +1,6 @@
-package sge_ui;
+package beans;
 import java.util.ArrayList;
 import java.util.List;
-
-import actuador.Actuador;
 
 public class SGE {
 	private static SGE sge;

@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import sge_ui.Cliente;
+
+import beans.Cliente;
 
 public class Json_helper_Test {
 	

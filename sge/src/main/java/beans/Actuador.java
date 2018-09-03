@@ -1,7 +1,6 @@
-package actuador;
+package beans;
 
 import dispositivo.DispositivoInteligente;
-import implementador.Implementador;
 
 public abstract class Actuador {
 

@@ -1,6 +1,7 @@
-package regla;
+package beans;
 
-import dispositivo.Dispositivo;
+import regla.IOperador;
+import regla.iCondicion;
 
 public class Condicion implements iCondicion{
 	int valor;

@@ -7,7 +7,7 @@ import org.apache.commons.math3.optim.PointValuePair;
 import org.apache.commons.math3.optim.linear.Relationship;
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 
-import dispositivo.Dispositivo;
+import beans.Dispositivo;
 import simplexSolver.SimplexFacade;
 
 public class SimplexHelper {

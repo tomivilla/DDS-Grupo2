@@ -1,9 +1,10 @@
-package sge_ui;
+package beans;
 
 import java.text.ParseException;
 import java.util.Date;
 
 import fecha_helper.Fecha_Helper;
+import sge_ui.IAdministrador;
 
 public class Administrador extends Usuario implements IAdministrador {
 	

@@ -1,11 +1,11 @@
 package dispositivosFactory;
 
 import Estado.Encendido;
-import Estado.Estado;
+import beans.Estado;
+import beans.Periodo;
+import beans.Sensor;
 import dispositivo.DispositivoInteligente;
-import dispositivo.Periodo;
 import dispositivo.DispositivoEstandar;
-import sensor.Sensor;
 
 import java.util.List;
 

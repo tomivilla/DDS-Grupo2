@@ -9,9 +9,9 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import beans.Transformador;
+import beans.Zona;
 import json_helper.Json_Helper;
-import transformador.Transformador;
-import zona.Zona;
 
 public class TransformadoresTest {
 	

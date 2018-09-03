@@ -1,4 +1,6 @@
-package sge_ui;
+package beans;
+
+import sge_ui.ICategoria;
 
 public class Categoria implements ICategoria {
 	

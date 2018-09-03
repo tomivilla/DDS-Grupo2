@@ -3,8 +3,10 @@ package dispositivo;
 import java.time.Instant;
 import java.util.List;
 
-import Estado.Estado;
-import sensor.Sensor;
+import beans.Dispositivo;
+import beans.Estado;
+import beans.Periodo;
+import beans.Sensor;
 
 public class DispositivoInteligente extends Dispositivo {
 	private Estado estado;

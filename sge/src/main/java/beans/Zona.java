@@ -1,7 +1,5 @@
-package zona;
+package beans;
 import java.util.List;
-
-import transformador.Transformador;
 
 public class Zona {
 	

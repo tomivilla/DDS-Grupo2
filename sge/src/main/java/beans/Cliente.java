@@ -1,11 +1,11 @@
-package sge_ui;
+package beans;
 import java.util.Date;
 import java.util.List;
 
 import dispositivo.AdaptadorDispositivo;
-import dispositivo.Dispositivo;
 import dispositivo.DispositivoEstandar;
 import dispositivo.DispositivoInteligente;
+import sge_ui.ICliente;
 
 
 public class Cliente extends Usuario implements ICliente {

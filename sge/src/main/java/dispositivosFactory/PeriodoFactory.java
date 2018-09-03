@@ -3,7 +3,7 @@ package dispositivosFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-import dispositivo.Periodo;
+import beans.Periodo;
 
 public class PeriodoFactory {
 	private static PeriodoFactory periodoFactory;

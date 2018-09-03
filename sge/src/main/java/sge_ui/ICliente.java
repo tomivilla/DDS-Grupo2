@@ -3,7 +3,8 @@ package sge_ui;
 import java.util.Date;
 import java.util.List;
 
-import dispositivo.Dispositivo;
+import beans.Categoria;
+import beans.Dispositivo;
 
 public interface ICliente {
 

@@ -1,4 +1,4 @@
-package sge_ui;
+package beans;
 
 public class Documento {
 

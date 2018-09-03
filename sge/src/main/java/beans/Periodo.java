@@ -1,4 +1,4 @@
-package dispositivo;
+package beans;
 
 public class Periodo {
 	private long horaInicio;

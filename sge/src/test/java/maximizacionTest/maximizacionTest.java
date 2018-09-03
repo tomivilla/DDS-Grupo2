@@ -10,12 +10,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-
+import beans.Dispositivo;
 import dispositivosFactory.DispositivosFactory;
 import dispositivosFactory.PeriodoFactory;
 import simplexSolver.SimplexFacade;
 import simplexSolver.SimplexHelper;
-import dispositivo.Dispositivo;
 import dispositivo.DispositivoEstandar;
 import dispositivo.DispositivoInteligente;
 

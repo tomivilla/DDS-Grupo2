@@ -1,5 +1,6 @@
 package Estado;
 
+import beans.Estado;
 import dispositivo.DispositivoInteligente;
 
 public class Encendido extends Estado{

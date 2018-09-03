@@ -1,4 +1,4 @@
-package sensor;
+package beans;
 import observer.ObserverSensor;;
 
 public abstract class Sensor {
