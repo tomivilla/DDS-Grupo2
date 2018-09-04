@@ -15,6 +15,13 @@ abstract Usuario <<abstract>>{
 nombre_de_usuario
 contraseña
 }
+class ZonaGeografica{
+nombreZona
+transformadores:List<Transformador>
+}
+Transformador{
+id
+}
 class Cliente extends Usuario{
 nombre
 tipo_documento
