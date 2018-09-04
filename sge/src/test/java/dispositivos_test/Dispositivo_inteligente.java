@@ -18,10 +18,10 @@ import beans.Actuador;
 import beans.Administrador;
 import beans.Categoria;
 import beans.Cliente;
+import beans.DispositivoEstandar;
+import beans.DispositivoInteligente;
 import beans.SGE;
 import dispositivo.AdaptadorDispositivo;
-import dispositivo.DispositivoEstandar;
-import dispositivo.DispositivoInteligente;
 import implementador.ImplementadorEstufaLG;
 import json_helper.Json_Helper;
 

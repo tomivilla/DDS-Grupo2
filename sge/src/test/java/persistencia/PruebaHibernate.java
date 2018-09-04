@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +12,8 @@ import beans.Categoria;
 import beans.Cliente;
 import beans.Dispositivo;
 import beans.Documento;
+import beans.Transformador;
+import json_helper.Json_Helper;
 import utils.HibernateUtils;
 
 public class PruebaHibernate {
@@ -26,12 +29,58 @@ public class PruebaHibernate {
     	
     	Cliente cliente = new Cliente("Leonardo", "leonardol", "qwerty1234", 1, "3341213", 4321231, "Calle falsa 123", new Date(), new Categoria(), new ArrayList<Dispositivo>());
     	
+    	
+    	
     	storeAdmin(admin);
     	storeCliente(cliente);
-        listAdmins();
+    	
+    	Cliente clienteObtenido = getClienteById(1L);
+    	clienteObtenido.setDomicilio("nueva calle 123");
+    	
+    	modificarCliente(clienteObtenido);
+    	
+    	Cliente clienteModificado = getClienteById(1L);
+    	
+    	if (clienteModificado.getDomicilio().equals("nueva calle 123")) {
+			System.out.println("Lo modifico bien");
+		}
+    	
+    	
+    	List<Transformador> transformadores = new ArrayList<Transformador>();
+    	try {
+			transformadores = Json_Helper.jsonToTransformadores("transformadores.json");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	for (Transformador transformador : transformadores) {
+			storeTransformador(transformador);
+		}
+    	
+    	
+    	
+//        listAdmins();
         HibernateUtils.getSessionFactory().close();
     }
 
+    
+    private Cliente getClienteById (Long id) {
+    	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Cliente cliente = (Cliente) session.get(Cliente.class, id);
+        session.getTransaction().commit();
+        return cliente;
+    }
+    
+    private Long modificarCliente (Cliente cliente) {
+    	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+    	session.beginTransaction();
+        session.update(cliente);
+        session.getTransaction().commit();
+        return cliente.getId();
+    }
+    
 	private Long storeCliente(Cliente cliente) {
 		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -39,6 +88,14 @@ public class PruebaHibernate {
         session.getTransaction().commit();
         System.out.println("Insertado: "+cliente.getNombre());
         return cliente.getId();
+	}
+	
+	private Long storeTransformador(Transformador transformador) {
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        session.save(transformador);
+        session.getTransaction().commit();
+        return transformador.getId();
 	}
 
 	private void crearDocumentos() {

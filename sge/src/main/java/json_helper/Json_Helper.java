@@ -20,13 +20,13 @@ import Estado.Encendido;
 import beans.Categoria;
 import beans.Cliente;
 import beans.Dispositivo;
+import beans.DispositivoEstandar;
+import beans.DispositivoInteligente;
 import beans.Estado;
 import beans.Periodo;
 import beans.Sensor;
 import beans.Transformador;
 import beans.Zona;
-import dispositivo.DispositivoEstandar;
-import dispositivo.DispositivoInteligente;
 import fecha_helper.Fecha_Helper;
 import sensor.SensorDeMovimiento;
 import sensor.SensorHumedad;
@@ -203,7 +203,7 @@ public class Json_Helper {
 	
 	        // Obtengo las primitivas del cliente
 	        Transformador transformador = new Transformador();
-	        transformador.setId(gsonObj.get("id").getAsInt());
+	        transformador.setId(gsonObj.get("id").getAsLong());
 	        transformador.setLatitud(gsonObj.get("latitud").getAsDouble());
 	        transformador.setLongitud(gsonObj.get("longitud").getAsDouble());
 	        transformador.setZona(gsonObj.get("zona").getAsInt());

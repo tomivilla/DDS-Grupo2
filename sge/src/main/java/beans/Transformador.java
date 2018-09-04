@@ -2,16 +2,16 @@ package beans;
 
 public class Transformador {
 
-	private int id;
+	private Long id;
 	private int zona;
 	private Double latitud;
 	private Double longitud;
 	private Double consumo;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public int getZona() {

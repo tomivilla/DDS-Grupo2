@@ -2,6 +2,8 @@ package dispositivo;
 
 import java.util.List;
 
+import beans.DispositivoEstandar;
+import beans.DispositivoInteligente;
 import beans.Estado;
 import beans.Periodo;
 import beans.Sensor;

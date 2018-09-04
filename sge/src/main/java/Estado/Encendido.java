@@ -1,7 +1,7 @@
 package Estado;
 
+import beans.DispositivoInteligente;
 import beans.Estado;
-import dispositivo.DispositivoInteligente;
 
 public class Encendido extends Estado{
 	private static Encendido encendido;

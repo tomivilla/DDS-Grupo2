@@ -11,12 +11,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import beans.Dispositivo;
+import beans.DispositivoEstandar;
+import beans.DispositivoInteligente;
 import dispositivosFactory.DispositivosFactory;
 import dispositivosFactory.PeriodoFactory;
 import simplexSolver.SimplexFacade;
 import simplexSolver.SimplexHelper;
-import dispositivo.DispositivoEstandar;
-import dispositivo.DispositivoInteligente;
 
 public class maximizacionTest {
 

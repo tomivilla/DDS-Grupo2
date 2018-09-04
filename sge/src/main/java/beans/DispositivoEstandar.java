@@ -1,6 +1,4 @@
-package dispositivo;
-
-import beans.Dispositivo;
+package beans;
 
 public class DispositivoEstandar extends Dispositivo {
 	

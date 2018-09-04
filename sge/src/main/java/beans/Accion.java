@@ -1,6 +1,5 @@
 package beans;
 
-import dispositivo.DispositivoInteligente;
 import regla.iAccion;
 
 public abstract class Accion implements iAccion {

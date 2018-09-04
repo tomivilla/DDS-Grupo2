@@ -1,8 +1,8 @@
 package actuador;
 
 import beans.Actuador;
+import beans.DispositivoInteligente;
 import beans.Implementador;
-import dispositivo.DispositivoInteligente;
 
 public class ActuadorVentilador extends Actuador{
 		

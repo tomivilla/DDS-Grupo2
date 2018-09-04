@@ -1,6 +1,6 @@
 package Estado;
 
-import dispositivo.DispositivoInteligente;
+import beans.DispositivoInteligente;
 
 public interface iEstado {
 	public boolean estasEncendido();

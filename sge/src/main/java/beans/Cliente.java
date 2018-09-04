@@ -3,8 +3,6 @@ import java.util.Date;
 import java.util.List;
 
 import dispositivo.AdaptadorDispositivo;
-import dispositivo.DispositivoEstandar;
-import dispositivo.DispositivoInteligente;
 import sge_ui.ICliente;
 
 
@@ -12,13 +10,18 @@ public class Cliente extends Usuario implements ICliente {
 	private int tipo_documento;
 	private String numero_documento;
 	private int telefono;
-	private String domicilio; // Puede ser una cadena de domicilios?
-	private Date fecha_de_alta_de_servicio; // Formato AAAAMMDD
+	private String domicilio; 
+	private Date fecha_de_alta_de_servicio; 
 	private Categoria categoria;
 	private List <Dispositivo> dispositivos;
 	private int puntos;
 
 	//CONSTRUCTOR
+	
+	public Cliente() {
+		
+	}
+	
 	public Cliente(String unNombre, String unNmbUsuario, String unaContrasena, int unTipoDoc, String unNumDoc, int unTelefono,
 				   String unDomicilio, Date unaFecha, Categoria unaCategoria, List<Dispositivo> nDispositivos) {
 		this.setNombre(unNombre);
@@ -29,7 +32,7 @@ public class Cliente extends Usuario implements ICliente {
 		this.telefono = unTelefono;
 		this.domicilio = unDomicilio;
 		this.fecha_de_alta_de_servicio = unaFecha;
-		categoria = unaCategoria;
+		this.categoria = unaCategoria;
 		this.dispositivos = nDispositivos;
 		this.puntos=0;
 	}

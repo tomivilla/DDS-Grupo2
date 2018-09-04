@@ -9,7 +9,7 @@
 		</id>
 		<property name="nombre"/>
 <!-- 		<many-to-one name = "tipo_documento" column = "tipo_doc"  -->
-<!--          class="sge_ui.Documento" not-null="true"/> -->
+<!--          class="beans.Documento" not-null="true"/> -->
 		<property name="tipo_documento" column="tipo_doc"/>
         <property name="numero_documento" column="nro_doc"/>
         <property name="telefono"/>

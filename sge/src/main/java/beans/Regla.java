@@ -1,8 +1,6 @@
 package beans;
 
-import java.util.List;
-
-import dispositivo.DispositivoInteligente;;
+import java.util.List;;
 
 public class Regla {
 	private List <Condicion> condiciones;

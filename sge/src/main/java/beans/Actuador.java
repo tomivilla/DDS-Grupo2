@@ -1,7 +1,5 @@
 package beans;
 
-import dispositivo.DispositivoInteligente;
-
 public abstract class Actuador {
 
 	private String ID;
