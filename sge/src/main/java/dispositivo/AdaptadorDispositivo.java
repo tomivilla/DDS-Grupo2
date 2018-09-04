@@ -2,8 +2,11 @@ package dispositivo;
 
 import java.util.List;
 
-import Estado.Estado;
-import sensor.Sensor;
+import beans.DispositivoEstandar;
+import beans.DispositivoInteligente;
+import beans.Estado;
+import beans.Periodo;
+import beans.Sensor;
 
 public class AdaptadorDispositivo extends DispositivoInteligente {
 	

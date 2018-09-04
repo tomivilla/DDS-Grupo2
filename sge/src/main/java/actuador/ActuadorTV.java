@@ -1,7 +1,8 @@
 package actuador;
 
-import dispositivo.DispositivoInteligente;
-import implementador.Implementador;
+import beans.Actuador;
+import beans.DispositivoInteligente;
+import beans.Implementador;
 
 public class ActuadorTV extends Actuador{
 

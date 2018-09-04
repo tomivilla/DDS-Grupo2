@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -12,17 +13,17 @@ import org.junit.Test;
 
 import Estado.Apagado;
 import Estado.Encendido;
-import actuador.Actuador;
 import actuador.ActuadorEstufa;
+import beans.Actuador;
+import beans.Administrador;
+import beans.Categoria;
+import beans.Cliente;
+import beans.DispositivoEstandar;
+import beans.DispositivoInteligente;
+import beans.SGE;
 import dispositivo.AdaptadorDispositivo;
-import dispositivo.DispositivoEstandar;
-import dispositivo.DispositivoInteligente;
 import implementador.ImplementadorEstufaLG;
 import json_helper.Json_Helper;
-import sge_ui.Administrador;
-import sge_ui.Categoria;
-import sge_ui.Cliente;
-import sge_ui.SGE;
 
 public class Dispositivo_inteligente {
 	private Categoria R1;
@@ -56,7 +57,7 @@ public class Dispositivo_inteligente {
     	this.R7 = new Categoria(600, 700, 443.59, 0.851);
     	this.R8 = new Categoria(700, 1400, 545.96, 0.851);
     	this.R9 = new Categoria(1400, Integer.MAX_VALUE, 887.19, 0.851);
-    	this.administrador = new Administrador("Juan Carlos Perez", "admin", "contraseña123", "Calle Falsa 321", "2016-07-23", 01);
+    	this.administrador = new Administrador("Juan Carlos Perez", "admin", "contraseña123", "Calle Falsa 321", new Date());
     	this.sge.agregarCategoria(R1); 
     	this.sge.agregarCategoria(R2);
     	this.sge.agregarCategoria(R3);

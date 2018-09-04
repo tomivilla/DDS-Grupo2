@@ -1,6 +1,7 @@
 package regla;
 
-import dispositivo.DispositivoInteligente;
+import beans.Accion;
+import beans.DispositivoInteligente;
 
 public class Apagar extends Accion{
 

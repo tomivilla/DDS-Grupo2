@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="beans.Administrador" table= "ADMINISTRADORES">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="nombre"/>
+		<property name="domicilio"/>
+		<property name="fechaDeAltaEnSistema" type="timestamp" column="fecha_alta"/>
+		<property name="nombre_de_usuario" column="nombre_usuario"></property>
+		<property name="contrasena" column="pass"/>
+	</class>
+</hibernate-mapping>

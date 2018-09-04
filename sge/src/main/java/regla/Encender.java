@@ -1,6 +1,7 @@
 package regla;
 
-import dispositivo.DispositivoInteligente;
+import beans.Accion;
+import beans.DispositivoInteligente;
 
 public class Encender extends Accion{
 

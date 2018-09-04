@@ -9,31 +9,43 @@ import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import beans.Dispositivo;
+import beans.DispositivoEstandar;
+import beans.DispositivoInteligente;
 import dispositivosFactory.DispositivosFactory;
 import dispositivosFactory.PeriodoFactory;
 import simplexSolver.SimplexFacade;
-import dispositivo.Dispositivo;
-import dispositivo.DispositivoEstandar;
-import dispositivo.DispositivoInteligente;
+import simplexSolver.SimplexHelper;
 
 public class maximizacionTest {
 
 	DispositivosFactory factory;
 	List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
 	PeriodoFactory factoryPeriodo;
-	
+	SimplexHelper simplexHelper = new  SimplexHelper();
+	PointValuePair variables;
+	double z;
 	@Before
 	public void setup() {
 		factory = DispositivosFactory.getInstance();
 		factoryPeriodo = PeriodoFactory.getInstance();
 		DispositivoInteligente tvLed40 = factory.tvLED40();
+		dispositivos.add(tvLed40);
 		DispositivoInteligente lamparaAlogena11w = factory.lamparaAlogena11w();
+		dispositivos.add(lamparaAlogena11w);
 		DispositivoEstandar lavarropasSemiAutomatico5kg = factory.lavarropasSemiAutomatico5kg();
+		dispositivos.add(lavarropasSemiAutomatico5kg);
 		DispositivoInteligente pcDeEscritorio = factory.pcDeEscritorio();
+		dispositivos.add(pcDeEscritorio);
 		DispositivoInteligente aireAcondicionado2200 = factory.aireAcondicionado2200();
+		dispositivos.add(aireAcondicionado2200);
 		DispositivoEstandar microondas = factory.microondas();
+		dispositivos.add(microondas);
 		DispositivoEstandar plancha = factory.plancha();
+		dispositivos.add(plancha);
 		DispositivoInteligente ventiladorDeTecho = factory.ventiladorDeTecho();
+		dispositivos.add(ventiladorDeTecho);
 		//no se agregaron el termotanque electrico, la heladera, ni el horno electrico por idicaciones del enunciado
 		
 		tvLed40.setPeriodos(factoryPeriodo.periodos10Horas());
@@ -43,7 +55,15 @@ public class maximizacionTest {
 		aireAcondicionado2200.setPeriodos(factoryPeriodo.periodos10Horas());
 		microondas.setHorasEncendido(14);
 		plancha.setHorasEncendido(10);
+		ventiladorDeTecho.setPeriodos(factoryPeriodo.periodos10Horas());
+		 
 		
+	}
+	@Test
+	public void testSimplexhelper() {
+		List<Dispositivo> dispositivosSobrepasados = null;
+		dispositivosSobrepasados = simplexHelper.obtenerResultados(z, variables, dispositivos);
+		Assert.assertEquals("Cantidad de dispositivos sobre pasados",0, dispositivosSobrepasados.size());
 	}
 	@Test
 	public void testEjemploEntrega8Dispositivos() {
@@ -116,6 +136,8 @@ public class maximizacionTest {
 		Assert.assertEquals(360, solucion.getPoint()[4], 0.01); // <--- X3
 		Assert.assertEquals(360, solucion.getPoint()[5], 0.01); // <--- X2
 		Assert.assertEquals(360, solucion.getPoint()[6], 0.01); // <--- X1
-		Assert.assertEquals(360, solucion.getPoint()[7], 0.01); // <--- X0
+		Assert.assertEquals(360, solucion.getPoint()[7], 0.01); // <--- X0		
+		
+		
 	}
 }

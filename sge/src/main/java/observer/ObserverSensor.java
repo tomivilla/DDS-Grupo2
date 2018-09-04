@@ -2,8 +2,8 @@ package observer;
 
 import java.util.List;
 
-import regla.Condicion;
-import sensor.Sensor;
+import beans.Condicion;
+import beans.Sensor;
 
 public class ObserverSensor {
 	private int estadoObserver;

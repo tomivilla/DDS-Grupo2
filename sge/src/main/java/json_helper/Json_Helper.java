@@ -3,7 +3,10 @@ package json_helper;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.google.gson.JsonArray;
@@ -14,18 +17,21 @@ import com.google.gson.JsonParser;
 import Estado.AhorroDeEnergia;
 import Estado.Apagado;
 import Estado.Encendido;
-import Estado.Estado;
-import dispositivo.Dispositivo;
-import dispositivo.DispositivoEstandar;
-import dispositivo.DispositivoInteligente;
-import dispositivo.Periodo;
-import sensor.Sensor;
+import beans.Categoria;
+import beans.Cliente;
+import beans.Dispositivo;
+import beans.DispositivoEstandar;
+import beans.DispositivoInteligente;
+import beans.Estado;
+import beans.Periodo;
+import beans.Sensor;
+import beans.Transformador;
+import beans.Zona;
+import fecha_helper.Fecha_Helper;
 import sensor.SensorDeMovimiento;
 import sensor.SensorHumedad;
 import sensor.SensorIntensidadLuminica;
 import sensor.SensorTemperatura;
-import sge_ui.Categoria;
-import sge_ui.Cliente;
 
 //Clase para adaptar elementos JSON a objetos nuestros
 public class Json_Helper {
@@ -69,11 +75,20 @@ public class Json_Helper {
 	        String unNombre = gsonObj.get("nombre").getAsString();
 	        String unNmbUsuario = gsonObj.get("nombre_de_usuario").getAsString();
 	        String unaContrasena = gsonObj.get("contrasena").getAsString();
-	        String unTipoDoc = gsonObj.get("tipoDoc").getAsString(); 
+	        int unTipoDoc = gsonObj.get("tipoDoc").getAsInt(); 
 	        String unNumDoc = gsonObj.get("numDoc").getAsString();
 	        int unTelefono = gsonObj.get("telefono").getAsInt();
 	        String unDomicilio = gsonObj.get("domicilio").getAsString();
-	        int unaFecha = gsonObj.get("fecha").getAsInt();
+	        
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+	   	 
+	    	Date unaFecha = new Date();
+			try {
+				unaFecha = dateFormat.parse(gsonObj.get("fecha").getAsString());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	        Categoria unaCategoria = new Categoria(0,0,0.0,0.0);
 	        
 	        // Obtengo el array de dispositivos
@@ -172,4 +187,60 @@ public class Json_Helper {
 		}
 		return sensor;
 	} 
+	
+	public static List<Transformador> jsonToTransformadores(String path) throws IOException{
+		
+		String json1 = Json_Helper.readFile(path);
+		JsonParser parser = new JsonParser();
+		List<Transformador> transformadores = new ArrayList<Transformador>();
+		// Obtengo el primer ObjetoJason
+	   	JsonArray gsonObj1 = parser.parse(json1).getAsJsonArray();
+
+	   	for (JsonElement obj : gsonObj1) {
+	   		
+	        // Obtengo el objeto Cliente
+	        JsonObject gsonObj = obj.getAsJsonObject();
+	
+	        // Obtengo las primitivas del cliente
+	        Transformador transformador = new Transformador();
+	        transformador.setId(gsonObj.get("id").getAsLong());
+	        transformador.setLatitud(gsonObj.get("latitud").getAsDouble());
+	        transformador.setLongitud(gsonObj.get("longitud").getAsDouble());
+	        transformador.setZona(gsonObj.get("zona").getAsInt());
+	        
+	        transformadores.add(transformador);
+
+	   	}
+	   	
+	   	return transformadores;
+	}
+	
+	public static List<Zona> jsonToZonas(String path) throws IOException{
+		
+		String json1 = Json_Helper.readFile(path);
+		JsonParser parser = new JsonParser();
+		List<Zona> zonas = new ArrayList<Zona>();
+		// Obtengo el primer ObjetoJason
+	   	JsonArray gsonObj1 = parser.parse(json1).getAsJsonArray();
+
+	   	for (JsonElement obj : gsonObj1) {
+	   		
+	        // Obtengo el objeto Cliente
+	        JsonObject gsonObj = obj.getAsJsonObject();
+	
+	        // Obtengo las primitivas del cliente
+	        Zona zona = new Zona();
+	        zona.setNombre(gsonObj.get("nombre").getAsString());
+	        zona.setId(gsonObj.get("id").getAsInt());
+	        zona.setLatitud(gsonObj.get("latitud").getAsDouble());
+	        zona.setLongitud(gsonObj.get("longitud").getAsDouble());
+	        zona.setRadio(gsonObj.get("radio").getAsDouble());
+	        zona.setTransformadores(new ArrayList<Transformador>());
+	        
+	        zonas.add(zona);
+
+	   	}
+	   	
+	   	return zonas;
+	}
 }

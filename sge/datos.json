@@ -4,11 +4,11 @@
 	    "nombre" : "Juan Perez",
 	    "nombre_de_usuario" : "jperez",
 	    "contrasena" : "contrasena123",
-	    "tipoDoc" : "DNI",
+	    "tipoDoc" : 1,
 	    "numDoc" : "33456234",
 	    "telefono" : 1147568913,
 	    "domicilio" : "Calle Falsa 123",
-	    "fecha":20170702,
+	    "fecha": "2017-07-02",
 	    "categoria" : {"unConsumoMin":0, "unConsumoMax" : 150, "unCargoFijo" : 18.76, "unCargoVariable" : 0.644 },
 	    "dispositivos" : [
 	        {
@@ -48,11 +48,11 @@
 	    "nombre" : "Juan Carlos Grcia",
 	    "nombre_de_usuario" : "jcgarcia",
 	    "contrasena" : "contrasena123",
-	    "tipoDoc" : "DNI",
+	    "tipoDoc" : 1,
 	    "numDoc" : "17890125",
 	    "telefono" : 1147568913,
 	    "domicilio" : "Calle Falsa 789",
-	    "fecha":20170702,
+	    "fecha": "2017-07-02",
 	    "categoria" : {"unConsumoMin":0, "unConsumoMax" : 150, "unCargoFijo" : 18.76, "unCargoVariable" : 0.644 },
 	    "dispositivos" :[
 	        {
@@ -92,11 +92,11 @@
 	    "nombre" : "Jose Lopez",
 	    "nombre_de_usuario" : "jlopez",
 	    "contrasena" : "contrasena123",
-	    "tipoDoc" : "DNI",
+	    "tipoDoc" : 1,
 	    "numDoc" : "25980256",
 	    "telefono" : 1147568913,
 	    "domicilio" : "Calle Falsa 456",
-	    "fecha":20170702,
+	    "fecha": "2017-07-02",
 	    "categoria" : {"unConsumoMin":0, "unConsumoMax" : 150, "unCargoFijo" : 18.76, "unCargoVariable" : 0.644 },
 	    "dispositivos" :[
 	        {

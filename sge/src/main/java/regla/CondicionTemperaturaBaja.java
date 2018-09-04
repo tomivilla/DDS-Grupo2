@@ -1,6 +1,7 @@
 package regla;
 
-import dispositivo.Dispositivo;
+import beans.Condicion;
+import beans.Dispositivo;
 
 public class CondicionTemperaturaBaja extends Condicion {
 

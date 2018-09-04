@@ -1,6 +1,7 @@
 package Estado;
 
-import dispositivo.DispositivoInteligente;
+import beans.DispositivoInteligente;
+import beans.Estado;
 
 public class AhorroDeEnergia extends Estado {
 	private static AhorroDeEnergia modoAhorro;

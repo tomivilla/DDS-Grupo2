@@ -3,6 +3,7 @@ package fecha_helper;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Fecha_Helper {
@@ -16,13 +17,12 @@ public class Fecha_Helper {
 		return sFecha;
 	}
 	
-	public static int diferenciaEnMeses(String unaFecha) throws ParseException{
+	public static int diferenciaEnMeses(Date unaFecha) throws ParseException{
 	SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
 	 
-	java.util.Date fechaInicial =  dateFormat.parse(unaFecha);
 	java.util.Date fechaFinal = dateFormat.parse(Fecha_Helper.obtenerFechaActual());
 
-	int dias=(int) ((fechaFinal.getTime()-fechaInicial.getTime())/86400000);
+	int dias=(int) ((fechaFinal.getTime()-unaFecha.getTime())/86400000);
 	
 	return (dias/31);
 	
