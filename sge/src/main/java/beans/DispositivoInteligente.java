@@ -8,9 +8,8 @@ public class DispositivoInteligente extends Dispositivo {
 	private List<Sensor> sensores;
 	private List<Periodo> periodos;
 	
-	public DispositivoInteligente(String unNombre, double unConsumo, Estado unEstado, List<Sensor> sensores, List<Periodo> periodos) {
-		this.nombre_generico = unNombre;
-		this.consumoKWHora = unConsumo;
+	public DispositivoInteligente(Long id, String unNombre, double unConsumo, Estado unEstado, List<Sensor> sensores, List<Periodo> periodos) {
+		super(id, unNombre, unConsumo);
 		this.setEstado(unEstado);
 		this.setSensores(sensores);
 		this.setPeriodos(periodos);

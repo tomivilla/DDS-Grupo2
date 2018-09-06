@@ -34,15 +34,15 @@ public class Dispositivo_estandar {
     @Before
     public void setup() throws IOException{
     	this.sge = SGE.getInstance();
-    	this.R1 = new Categoria(0, 150, 18.76, 0.644);
-    	this.R2 = new Categoria(150, 325, 35.32, 0.644);
-    	this.R3 = new Categoria(325, 400, 60.71, 0.681);
-    	this.R4 = new Categoria(400, 450, 71.74, 0.738);
-    	this.R5 = new Categoria(450, 500, 110.38, 0.794);
-    	this.R6 = new Categoria(500, 600, 220.75, 0.832);
-    	this.R7 = new Categoria(600, 700, 443.59, 0.851);
-    	this.R8 = new Categoria(700, 1400, 545.96, 0.851);
-    	this.R9 = new Categoria(1400, Integer.MAX_VALUE, 887.19, 0.851);
+    	this.R1 = new Categoria(1, 0, 150, 18.76, 0.644);
+    	this.R2 = new Categoria(2, 150, 325, 35.32, 0.644);
+    	this.R3 = new Categoria(3, 325, 400, 60.71, 0.681);
+    	this.R4 = new Categoria(4, 400, 450, 71.74, 0.738);
+    	this.R5 = new Categoria(5, 450, 500, 110.38, 0.794);
+    	this.R6 = new Categoria(6, 500, 600, 220.75, 0.832);
+    	this.R7 = new Categoria(7, 600, 700, 443.59, 0.851);
+    	this.R8 = new Categoria(8, 700, 1400, 545.96, 0.851);
+    	this.R9 = new Categoria(9, 1400, Integer.MAX_VALUE, 887.19, 0.851);
     	this.administrador = new Administrador("Juan Carlos Perez", "admin", "contraseña123", "Calle Falsa 321", new Date());
     	this.sge.agregarCategoria(R1); 
     	this.sge.agregarCategoria(R2);

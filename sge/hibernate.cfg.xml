@@ -34,6 +34,10 @@
         <mapping resource="documentos.hbm.xml" />
         <mapping resource="clientes.hbm.xml" />
         <mapping resource="transformadores.hbm.xml" />
+        <mapping resource="categorias.hbm.xml" />
+        <mapping resource="dispositivos.hbm.xml" />
+        <mapping resource="sensores.hbm.xml" />
+        <mapping resource="estados.hbm.xml" />
     </session-factory>
 
 </hibernate-configuration>

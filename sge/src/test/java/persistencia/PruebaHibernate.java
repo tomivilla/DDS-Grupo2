@@ -24,10 +24,16 @@ public class PruebaHibernate {
 
     public PruebaHibernate() {
     	crearDocumentos();
+    	crearCategorias();
 
     	Administrador admin = new Administrador("Tomas Villa", "tomiv", "hola1234", "maipu 304 1°E", new Date());
     	
-    	Cliente cliente = new Cliente("Leonardo", "leonardol", "qwerty1234", 1, "3341213", 4321231, "Calle falsa 123", new Date(), new Categoria(), new ArrayList<Dispositivo>());
+    	Documento docuCliente = new Documento();
+    	docuCliente.setId(1);
+    	
+    	Categoria categoria = new Categoria(1, 100, 2000, 20.0, 32.5);
+    	
+    	Cliente cliente = new Cliente("Leonardo", "leonardol", "qwerty1234", docuCliente, "3341213", 4321231, "Calle falsa 123", new Date(), categoria, new ArrayList<Dispositivo>());
     	
     	
     	
@@ -65,7 +71,12 @@ public class PruebaHibernate {
     }
 
     
-    private Cliente getClienteById (Long id) {
+    private void crearCategorias() {
+    	Categoria categoria = new Categoria(1, 100, 2000, 20.0, 32.5);
+    	storeCategoria(categoria);		
+	}
+
+	private Cliente getClienteById (Long id) {
     	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         Cliente cliente = (Cliente) session.get(Cliente.class, id);
@@ -123,6 +134,14 @@ public class PruebaHibernate {
         session.getTransaction().commit();
         System.out.println("Insertado: "+doc.getDescripcion());
         return doc.getId();		
+	}
+    
+    private int storeCategoria(Categoria categoria) {
+    	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        session.save(categoria);
+        session.getTransaction().commit();
+        return categoria.getId();		
 	}
 
 	private Long storeAdmin(Administrador admin) {

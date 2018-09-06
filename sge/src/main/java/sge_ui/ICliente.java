@@ -5,6 +5,7 @@ import java.util.List;
 
 import beans.Categoria;
 import beans.Dispositivo;
+import beans.Documento;
 
 public interface ICliente {
 
@@ -16,8 +17,8 @@ public interface ICliente {
 	public void setCategoria(Categoria unaCategoria);
 	public void agregarDispositivo(Dispositivo unDispositivo);
 	public boolean perteneceAcategoria(double unConsumo);
-	public int getTipo_documento();
-	public void setTipo_documento(int tipo_documento);
+	public Documento getDocumento();
+	public void setDocumento(Documento documento);
 	public String getNumero_documento();
 	public void setNumero_documento(String numero_documento);
 	public int getTelefono();

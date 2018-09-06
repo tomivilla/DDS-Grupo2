@@ -2,6 +2,16 @@ package beans;
 
 import Estado.iEstado;
 
-public abstract class Estado  implements iEstado{
+public abstract class Estado implements iEstado {
+
+	private int id;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 }

@@ -5,9 +5,26 @@ import java.util.Observable;
 import dispositivo.IDispositivo;
 
 public abstract class Dispositivo extends Observable implements IDispositivo {
-	public String nombre_generico;
-	public double consumoKWHora;
-	
+
+	private Long id;
+	private String nombre_generico;
+	private double consumoKWHora;
+
+	public Dispositivo(Long id, String nombre_generico, double consumoKWHora) {
+		super();
+		this.id = id;
+		this.nombre_generico = nombre_generico;
+		this.consumoKWHora = consumoKWHora;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getNombre_generico() {
 		return nombre_generico;
 	}

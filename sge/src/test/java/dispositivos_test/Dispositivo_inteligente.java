@@ -48,15 +48,15 @@ public class Dispositivo_inteligente {
     @Before
     public void setup() throws IOException{
     	this.sge = SGE.getInstance();
-    	this.R1 = new Categoria(0, 150, 18.76, 0.644);
-    	this.R2 = new Categoria(150, 325, 35.32, 0.644);
-    	this.R3 = new Categoria(325, 400, 60.71, 0.681);
-    	this.R4 = new Categoria(400, 450, 71.74, 0.738);
-    	this.R5 = new Categoria(450, 500, 110.38, 0.794);
-    	this.R6 = new Categoria(500, 600, 220.75, 0.832);
-    	this.R7 = new Categoria(600, 700, 443.59, 0.851);
-    	this.R8 = new Categoria(700, 1400, 545.96, 0.851);
-    	this.R9 = new Categoria(1400, Integer.MAX_VALUE, 887.19, 0.851);
+    	this.R1 = new Categoria(1, 0, 150, 18.76, 0.644);
+    	this.R2 = new Categoria(2, 150, 325, 35.32, 0.644);
+    	this.R3 = new Categoria(3, 325, 400, 60.71, 0.681);
+    	this.R4 = new Categoria(4, 400, 450, 71.74, 0.738);
+    	this.R5 = new Categoria(5, 450, 500, 110.38, 0.794);
+    	this.R6 = new Categoria(6, 500, 600, 220.75, 0.832);
+    	this.R7 = new Categoria(7, 600, 700, 443.59, 0.851);
+    	this.R8 = new Categoria(8, 700, 1400, 545.96, 0.851);
+    	this.R9 = new Categoria(9, 1400, Integer.MAX_VALUE, 887.19, 0.851);
     	this.administrador = new Administrador("Juan Carlos Perez", "admin", "contraseña123", "Calle Falsa 321", new Date());
     	this.sge.agregarCategoria(R1); 
     	this.sge.agregarCategoria(R2);
@@ -79,7 +79,7 @@ public class Dispositivo_inteligente {
     	//Tomo uno de el 8vo dispositivo inteligente que se cargó desde el JSON, para el cliente 2
     	di = (DispositivoInteligente) clientes.get(2).getDispositivo(8);
     	de = (DispositivoEstandar) clientes.get(2).getDispositivo(3);
-    	adaptador = new AdaptadorDispositivo(null, 0, Encendido.getInstance(), null, null, de);
+    	adaptador = new AdaptadorDispositivo(0L, null, 0, Encendido.getInstance(), null, null, de);
     	this.actuador1 = new ActuadorEstufa("AD:12:34:12:42:12",adaptador,new ImplementadorEstufaLG());
     	fin=di.getPeriodos().get(1).getHoraFin();
     	inicio=di.getPeriodos().get(1).getHoraInicio();

@@ -8,14 +8,13 @@
 			<generator class="native"></generator>
 		</id>
 		<property name="nombre"/>
-<!-- 		<many-to-one name = "tipo_documento" column = "tipo_doc"  -->
-<!--          class="beans.Documento" not-null="true"/> -->
-		<property name="tipo_documento" column="tipo_doc"/>
+		<many-to-one name = "documento" column = "tipo_doc" 
+         class="beans.Documento" not-null="true"/>
         <property name="numero_documento" column="nro_doc"/>
         <property name="telefono"/>
         <property name="domicilio"/>
 		<property name="fecha_de_alta_de_servicio" type="timestamp" column="fecha_alta"/>
-<!-- 		<property name="categoria"/> -->
+		<many-to-one name = "categoria" class="beans.Categoria" not-null="true"/>
 		<property name="nombre_de_usuario" column="nombre_usuario"></property>
 		<property name="contrasena" column="pass"/>
 	</class>

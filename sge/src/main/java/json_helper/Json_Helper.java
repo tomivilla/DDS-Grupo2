@@ -22,6 +22,7 @@ import beans.Cliente;
 import beans.Dispositivo;
 import beans.DispositivoEstandar;
 import beans.DispositivoInteligente;
+import beans.Documento;
 import beans.Estado;
 import beans.Periodo;
 import beans.Sensor;
@@ -75,7 +76,11 @@ public class Json_Helper {
 	        String unNombre = gsonObj.get("nombre").getAsString();
 	        String unNmbUsuario = gsonObj.get("nombre_de_usuario").getAsString();
 	        String unaContrasena = gsonObj.get("contrasena").getAsString();
-	        int unTipoDoc = gsonObj.get("tipoDoc").getAsInt(); 
+//	        int unTipoDoc = gsonObj.get("tipoDoc").getAsInt(); 
+	        
+	        Documento documento = new Documento();
+	        documento.setId(1);
+	        
 	        String unNumDoc = gsonObj.get("numDoc").getAsString();
 	        int unTelefono = gsonObj.get("telefono").getAsInt();
 	        String unDomicilio = gsonObj.get("domicilio").getAsString();
@@ -89,7 +94,7 @@ public class Json_Helper {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	        Categoria unaCategoria = new Categoria(0,0,0.0,0.0);
+	        Categoria unaCategoria = new Categoria(0,0,0,0.0,0.0);
 	        
 	        // Obtengo el array de dispositivos
 	        JsonArray dispositivo_s = gsonObj.get("dispositivos").getAsJsonArray();
@@ -102,10 +107,11 @@ public class Json_Helper {
 	        	JsonObject di = disp.getAsJsonObject();
 	        	
 	        	// Obtengo las primitivas del Dispositivo
+	        	Long id = di.get("id").getAsLong();
 	        	String nombre_generico = di.get("nombre_generico").getAsString();
 	            double consumoKWHora = di.get("consumoKWHora").getAsDouble();
 	            int horasEncendido = di.get("horasEncendido").getAsInt();
-	            DispositivoEstandar dispositivo = new DispositivoEstandar(nombre_generico,consumoKWHora,horasEncendido); 
+	            DispositivoEstandar dispositivo = new DispositivoEstandar(id, nombre_generico,consumoKWHora,horasEncendido); 
 	        	listDispositivo.add(dispositivo);
 	        }
 	        
@@ -118,6 +124,7 @@ public class Json_Helper {
 	        	JsonObject dis = disp.getAsJsonObject();
 	        	
 	        	// Obtengo las primitivas del Dispositivo
+	        	Long id = dis.get("id").getAsLong();
 	        	String nombre_generico = dis.get("nombre_generico").getAsString();
 	            double consumoKWHora = dis.get("consumoKWHora").getAsDouble();
 	            String estado = dis.get("estado").getAsString();
@@ -148,12 +155,12 @@ public class Json_Helper {
 	            }
 	            
 	            //Actuador objActuador = seleccionarActuador(actuador);
-	            DispositivoInteligente dispositivo = new DispositivoInteligente(nombre_generico,consumoKWHora,objEstado,listaDeSensores,listaDePeriodos); 
+	            DispositivoInteligente dispositivo = new DispositivoInteligente(id, nombre_generico,consumoKWHora,objEstado,listaDeSensores,listaDePeriodos); 
 	        	listDispositivo.add(dispositivo);
 	        }
 	        
 	        //Instancio el cliente
-	        clientes.add(new Cliente(unNombre,unNmbUsuario,unaContrasena,unTipoDoc,unNumDoc,unTelefono,unDomicilio,unaFecha,unaCategoria,listDispositivo));
+	        clientes.add(new Cliente(unNombre,unNmbUsuario,unaContrasena,documento,unNumDoc,unTelefono,unDomicilio,unaFecha,unaCategoria,listDispositivo));
 	    }
 	    
 	    //Retorno el listado de clientes que obtuve del Jason

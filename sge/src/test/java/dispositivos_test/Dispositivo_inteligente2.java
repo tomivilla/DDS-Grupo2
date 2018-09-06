@@ -105,7 +105,7 @@ public class Dispositivo_inteligente2 {
 		this.sTemp.medirMagnitud();
 		this.sMov.medirMagnitud();
 		
-		this.heladera = new DispositivoInteligente("Heladera LG", 0.230,Encendido.getInstance(),sensores,periodos);
+		this.heladera = new DispositivoInteligente(25L, "Heladera LG", 0.230,Encendido.getInstance(),sensores,periodos);
 		this.actuador1 = new ActuadorHeladera("AD:12:34:12:42:12",heladera,new ImplementadorHeladeraLG());
 		//temperatura menor a 15° y sin movimiento --> ejecuta accion apagar sobre dispositivo 'di'
 		this.r1= new Regla(condiciones1,acciones1,heladera);
