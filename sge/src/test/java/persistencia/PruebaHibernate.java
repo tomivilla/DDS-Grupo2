@@ -25,6 +25,7 @@ public class PruebaHibernate {
     public PruebaHibernate() {
     	crearDocumentos();
     	crearCategorias();
+    	cargarUsuarioFromJson("datos.json");
 
     	Administrador admin = new Administrador("Tomas Villa", "tomiv", "hola1234", "maipu 304 1°E", new Date());
     	
@@ -32,14 +33,14 @@ public class PruebaHibernate {
     	docuCliente.setId(1);
     	
     	Categoria categoria = new Categoria(1, 100, 2000, 20.0, 32.5);
-    	
-    	Cliente cliente = new Cliente("Leonardo", "leonardol", "qwerty1234", docuCliente, "3341213", 4321231, "Calle falsa 123", new Date(), categoria, new ArrayList<Dispositivo>());
-    	
+//    	
+//    	Cliente cliente = new Cliente("Leonardo", "leonardol", "qwerty1234", docuCliente, "3341213", 4321231, "Calle falsa 123", new Date(), categoria, new ArrayList<Dispositivo>());
+//    	
     	
     	
     	storeAdmin(admin);
-    	storeCliente(cliente);
-    	
+//    	storeCliente(cliente);
+//    	
     	Cliente clienteObtenido = getClienteById(1L);
     	clienteObtenido.setDomicilio("nueva calle 123");
     	
@@ -71,7 +72,23 @@ public class PruebaHibernate {
     }
 
     
-    private void crearCategorias() {
+    private void cargarUsuarioFromJson(String path) {
+    	List<Cliente> clientes = new ArrayList<Cliente>();
+    	Categoria categoria = new Categoria(1, 100, 2000, 20.0, 32.5);
+    	try {
+			clientes = Json_Helper.JsonToCliente(path);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	for (Cliente cliente : clientes) {
+    		cliente.setCategoria(categoria);
+			storeCliente(cliente);
+		}
+		
+	}
+
+	private void crearCategorias() {
     	Categoria categoria = new Categoria(1, 100, 2000, 20.0, 32.5);
     	storeCategoria(categoria);		
 	}

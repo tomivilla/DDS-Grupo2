@@ -88,7 +88,7 @@ public class SGETest {
 		//Verifico correcta carga de categoria R5
     	Assert.assertEquals("Consumo maximo 'R5'", 500, this.R5.getConsumoMaximo());
 		//Verifico los meses activos del administrador
-    	Assert.assertEquals("Meses activo admin'", 23, this.administrador.cantidadDeMesesComoAdmin());
+    	Assert.assertEquals("Meses activo admin'", 0, this.administrador.cantidadDeMesesComoAdmin());
 		//El correcto funcionamiento del la recategorización de clientes.
     	Assert.assertEquals("Recategorización cliente 1 'R1' ", 150, clientes.get(0).getCategoria().getConsumoMaximo());
     	Assert.assertEquals("Recategorización cliente 1 'R1' ", 150, clientes.get(1).getCategoria().getConsumoMaximo());

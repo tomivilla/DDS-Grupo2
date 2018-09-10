@@ -3,16 +3,19 @@ package json_helper;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 import Estado.AhorroDeEnergia;
 import Estado.Apagado;
@@ -54,6 +57,22 @@ public class Json_Helper {
 	        reader.close();
 	    }
 	}
+	
+//	public static List<Cliente> JsonToCliente (String path) throws IOException{
+//		List<Cliente> clientes = new ArrayList<Cliente>();
+//		
+//		Gson gson = new Gson();
+//		
+//		String json1 = Json_Helper.readFile(path);
+//		JsonParser parser = new JsonParser();
+//		JsonObject gsonObj1 = parser.parse(json1).getAsJsonObject();
+//		JsonArray gsonArr = gsonObj1.get("clientes").getAsJsonArray();
+//		
+//		Type listType = new TypeToken<ArrayList<Cliente>>(){}.getType();
+//		clientes = gson.fromJson(gsonArr.toString(), listType);
+//		
+//		return clientes;
+//	}
 	
 	public static List<Cliente> JsonToCliente(String path) throws IOException{
 		

@@ -18,11 +18,9 @@ public class Fecha_Helper {
 	}
 	
 	public static int diferenciaEnMeses(Date unaFecha) throws ParseException{
-	SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
-	 
-	java.util.Date fechaFinal = dateFormat.parse(Fecha_Helper.obtenerFechaActual());
+	Date hoy = new Date();
 
-	int dias=(int) ((fechaFinal.getTime()-unaFecha.getTime())/86400000);
+	int dias=(int) ((hoy.getTime()-unaFecha.getTime())/86400000);
 	
 	return (dias/31);
 	

@@ -9,6 +9,10 @@ public abstract class Dispositivo extends Observable implements IDispositivo {
 	private Long id;
 	private String nombre_generico;
 	private double consumoKWHora;
+	
+	public Dispositivo() {
+		
+	}
 
 	public Dispositivo(Long id, String nombre_generico, double consumoKWHora) {
 		super();
