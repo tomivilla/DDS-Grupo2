@@ -2,7 +2,6 @@ package persistencia;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -10,69 +9,14 @@ import org.hibernate.Session;
 import beans.Administrador;
 import beans.Categoria;
 import beans.Cliente;
-import beans.Dispositivo;
 import beans.Documento;
 import beans.Transformador;
 import json_helper.Json_Helper;
 import utils.HibernateUtils;
 
-public class PruebaHibernate {
+public class DBHelper {
 
-    public static void main(String[] args) {
-        new PruebaHibernate();
-    }
-
-    public PruebaHibernate() {
-    	crearDocumentos();
-    	crearCategorias();
-    	cargarUsuarioFromJson("datos.json");
-
-    	Administrador admin = new Administrador("Tomas Villa", "tomiv", "hola1234", "maipu 304 1°E", new Date());
-    	
-    	Documento docuCliente = new Documento();
-    	docuCliente.setId(1);
-    	
-    	Categoria categoria = new Categoria(1, 100, 2000, 20.0, 32.5);
-//    	
-//    	Cliente cliente = new Cliente("Leonardo", "leonardol", "qwerty1234", docuCliente, "3341213", 4321231, "Calle falsa 123", new Date(), categoria, new ArrayList<Dispositivo>());
-//    	
-    	
-    	
-    	storeAdmin(admin);
-//    	storeCliente(cliente);
-//    	
-    	Cliente clienteObtenido = getClienteById(1L);
-    	clienteObtenido.setDomicilio("nueva calle 123");
-    	
-    	modificarCliente(clienteObtenido);
-    	
-    	Cliente clienteModificado = getClienteById(1L);
-    	
-    	if (clienteModificado.getDomicilio().equals("nueva calle 123")) {
-			System.out.println("Lo modifico bien");
-		}
-    	
-    	
-    	List<Transformador> transformadores = new ArrayList<Transformador>();
-    	try {
-			transformadores = Json_Helper.jsonToTransformadores("transformadores.json");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
-    	for (Transformador transformador : transformadores) {
-			storeTransformador(transformador);
-		}
-    	
-    	
-    	
-//        listAdmins();
-        HibernateUtils.getSessionFactory().close();
-    }
-
-    
-    private void cargarUsuarioFromJson(String path) {
+	public void cargarUsuarioFromJson(String path) {
     	List<Cliente> clientes = new ArrayList<Cliente>();
     	Categoria categoria = new Categoria(1, 100, 2000, 20.0, 32.5);
     	try {
@@ -87,13 +31,27 @@ public class PruebaHibernate {
 		}
 		
 	}
+	
+	public void cargarTransformadores (String path) {
+		List<Transformador> transformadores = new ArrayList<Transformador>();
+    	try {
+			transformadores = Json_Helper.jsonToTransformadores(path);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	for (Transformador transformador : transformadores) {
+			storeTransformador(transformador);
+		}
+	}
 
-	private void crearCategorias() {
+	public void crearCategorias() {
     	Categoria categoria = new Categoria(1, 100, 2000, 20.0, 32.5);
     	storeCategoria(categoria);		
 	}
 
-	private Cliente getClienteById (Long id) {
+	public Cliente getClienteById (Long id) {
     	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         Cliente cliente = (Cliente) session.get(Cliente.class, id);
@@ -101,7 +59,7 @@ public class PruebaHibernate {
         return cliente;
     }
     
-    private Long modificarCliente (Cliente cliente) {
+	public Long modificarCliente (Cliente cliente) {
     	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
     	session.beginTransaction();
         session.update(cliente);
@@ -109,7 +67,7 @@ public class PruebaHibernate {
         return cliente.getId();
     }
     
-	private Long storeCliente(Cliente cliente) {
+	public Long storeCliente(Cliente cliente) {
 		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         session.save(cliente);
@@ -118,7 +76,7 @@ public class PruebaHibernate {
         return cliente.getId();
 	}
 	
-	private Long storeTransformador(Transformador transformador) {
+	public Long storeTransformador(Transformador transformador) {
 		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         session.save(transformador);
@@ -126,7 +84,7 @@ public class PruebaHibernate {
         return transformador.getId();
 	}
 
-	private void crearDocumentos() {
+	public void crearDocumentos() {
 		Documento doc = new Documento();
     	doc.setDescripcion("DNI");
     	storeDocu(doc);
@@ -144,7 +102,7 @@ public class PruebaHibernate {
     	storeDocu(doc4);
 	}
 
-    private int storeDocu(Documento doc) {
+	public int storeDocu(Documento doc) {
     	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         session.save(doc);
@@ -153,7 +111,7 @@ public class PruebaHibernate {
         return doc.getId();		
 	}
     
-    private int storeCategoria(Categoria categoria) {
+	public int storeCategoria(Categoria categoria) {
     	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         session.save(categoria);
@@ -161,7 +119,7 @@ public class PruebaHibernate {
         return categoria.getId();		
 	}
 
-	private Long storeAdmin(Administrador admin) {
+	public Long storeAdmin(Administrador admin) {
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         session.save(admin);
@@ -170,14 +128,21 @@ public class PruebaHibernate {
         return admin.getId();
     }
 
-    private List<Administrador> listAdmins() {
+	public List<Administrador> listAdmins() {
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         List<Administrador> result = (List<Administrador>)session.createQuery("from Administrador").list();
         session.getTransaction().commit();
-        for (Administrador admin : result) {
-            System.out.println("Leido: "+admin.getNombre());
-        }
         return result;
     }
+	
+	public List<Transformador> listTransformadores(){
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        List<Transformador> result = (List<Transformador>)session.createQuery("from Transformador").list();
+        session.getTransaction().commit();
+        return result;
+	}
+	
+	
 }
