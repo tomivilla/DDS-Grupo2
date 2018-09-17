@@ -77,8 +77,8 @@ public class Dispositivo_inteligente {
     	clientes = Json_Helper.JsonToCliente("datos.json");
     	this.sge.setearClientes(clientes);
     	//Tomo uno de el 8vo dispositivo inteligente que se cargó desde el JSON, para el cliente 2
-    	di = (DispositivoInteligente) clientes.get(2).getDispositivo(8);
-    	de = (DispositivoEstandar) clientes.get(2).getDispositivo(3);
+    	di = (DispositivoInteligente) clientes.get(2).getDispositivoInteligente(8);
+    	de = (DispositivoEstandar) clientes.get(2).getDispositivoEstandar(3);
     	adaptador = new AdaptadorDispositivo(0L, null, 0, Encendido.getInstance(), null, null, de);
     	this.actuador1 = new ActuadorEstufa("AD:12:34:12:42:12",adaptador,new ImplementadorEstufaLG());
     	fin=di.getPeriodos().get(1).getHoraFin();

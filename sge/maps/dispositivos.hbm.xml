@@ -24,4 +24,14 @@
 			<one-to-many class="beans.Sensor"/>
 		</set>
 	</class>
+	
+	<class name="beans.Dispositivo" table= "DISPOSITIVOS_POSIBLES">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="nombre_generico" column="nombre"/>
+		<property name="consumoKWHora" column="consumo_x_hora"/>
+		<property name="inteligente" column="es_inteligente"/>
+		<property name="bajoConsumo" column="es_bajo_consumo"/>
+	</class>
 </hibernate-mapping>

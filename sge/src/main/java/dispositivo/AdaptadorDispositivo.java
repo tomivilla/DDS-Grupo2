@@ -12,7 +12,7 @@ public class AdaptadorDispositivo extends DispositivoInteligente {
 	
 	public AdaptadorDispositivo(Long id, String unNombre, double unConsumo, Estado unEstado, List<Sensor> sensores,
 			List<Periodo> periodos, DispositivoEstandar dispositivo) {
-		super(id, unNombre, unConsumo, unEstado, sensores, periodos);
+		super(id, unNombre, unConsumo, unEstado, dispositivo.isBajoConsumo(), sensores, periodos);
 		this.setDispositivo(dispositivo);
 	}
 

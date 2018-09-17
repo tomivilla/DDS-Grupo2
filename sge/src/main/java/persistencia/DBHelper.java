@@ -9,6 +9,8 @@ import org.hibernate.Session;
 import beans.Administrador;
 import beans.Categoria;
 import beans.Cliente;
+import beans.Dispositivo;
+import beans.DispositivoEstandar;
 import beans.Documento;
 import beans.Transformador;
 import json_helper.Json_Helper;
@@ -101,7 +103,73 @@ public class DBHelper {
     	doc4.setDescripcion("LC");
     	storeDocu(doc4);
 	}
+	
+	public void crearDispositivosPosibles() {
+		List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
+		Dispositivo disp1 = new Dispositivo(1L, "Aire acondicionado 3500 frigorias", 1.613, true, false);
+		Dispositivo disp2 = new Dispositivo(2L, "Aire acondicionado 2200 frigorias", 1.013, true, true);
+		Dispositivo disp3 = new Dispositivo(3L, "Televisor color de tubo fluorescente de 21\"", 0.075, false, false);
+		Dispositivo disp4 = new Dispositivo(4L, "Televisor color de tubo fluorescente de 29\" a 34\"", 0.175, false, false);
+		Dispositivo disp5 = new Dispositivo(5L, "Televisor LCD de 40\"", 0.18, false, false);
+		Dispositivo disp6 = new Dispositivo(6L, "Televisor LED de 24\"", 0.04, true, true);
+		Dispositivo disp7 = new Dispositivo(7L, "Televisor LED de 32\"", 0.055, true, true);
+		Dispositivo disp8 = new Dispositivo(8L, "Televisor LED de 40\"", 0.08, true, true);
+		Dispositivo disp9 = new Dispositivo(9L, "Heladera con freezer", 0.09, true, true);
+		Dispositivo disp10 = new Dispositivo(10L, "Heladera sin freezer", 0.075, true, true);
+		Dispositivo disp11 = new Dispositivo(11L, "Lavarropas automatico de 5kg con calentamiento de agua", 0.875, false, false);
+		Dispositivo disp12 = new Dispositivo(12L, "Lavarropas automatico de 5kg", 0.175, true, true);
+		Dispositivo disp13 = new Dispositivo(13L, "Lavarropas semi-automatico de 5kg", 0.1275, false, true);
+		Dispositivo disp14 = new Dispositivo(14L, "Ventilador de pie", 0.09, false, true);
+		Dispositivo disp15 = new Dispositivo(15L, "Ventilador de techo", 0.06, true, true);
+		Dispositivo disp16 = new Dispositivo(16L, "Lampara halogena de 40 W", 0.04, true, false);
+		Dispositivo disp17 = new Dispositivo(17L, "Lampara halogena de 60 W", 0.06, true, false);
+		Dispositivo disp18 = new Dispositivo(18L, "Lampara halogena de 100 W", 0.15, true, false);
+		Dispositivo disp19 = new Dispositivo(19L, "Lampara de 11 W", 0.011, true, true);
+		Dispositivo disp20 = new Dispositivo(20L, "Lampara de 15 W", 0.015, true, true);
+		Dispositivo disp21 = new Dispositivo(21L, "Lampara de 20 W", 0.02, true, true);
+		Dispositivo disp22 = new Dispositivo(22L, "PC de escritorio", 0.4, true, true);
+		Dispositivo disp23 = new Dispositivo(23L, "Microondas convencional", 0.64, false, true);
+		Dispositivo disp24 = new Dispositivo(24L, "Plancha a vapor", 0.75, false, true);
+		
+		dispositivos.add(disp1);
+		dispositivos.add(disp2);
+		dispositivos.add(disp3);
+		dispositivos.add(disp4);
+		dispositivos.add(disp5);
+		dispositivos.add(disp6);
+		dispositivos.add(disp7);
+		dispositivos.add(disp8);
+		dispositivos.add(disp9);
+		dispositivos.add(disp10);
+		dispositivos.add(disp11);
+		dispositivos.add(disp12);
+		dispositivos.add(disp13);
+		dispositivos.add(disp14);
+		dispositivos.add(disp15);
+		dispositivos.add(disp16);
+		dispositivos.add(disp17);
+		dispositivos.add(disp18);
+		dispositivos.add(disp19);
+		dispositivos.add(disp20);
+		dispositivos.add(disp21);
+		dispositivos.add(disp22);
+		dispositivos.add(disp23);
+		dispositivos.add(disp24);
+		
+		for (Dispositivo dispositivo : dispositivos) {
+			storeDispositivoPosible(dispositivo);
+		}
+		
+	}
 
+	public Long storeDispositivoPosible(Dispositivo dispositivo) {
+    	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        session.save(dispositivo);
+        session.getTransaction().commit();
+        return dispositivo.getId();		
+	}
+	
 	public int storeDocu(Documento doc) {
     	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -142,6 +210,14 @@ public class DBHelper {
         List<Transformador> result = (List<Transformador>)session.createQuery("from Transformador").list();
         session.getTransaction().commit();
         return result;
+	}
+
+	public Long storeDipositivoEstandar(DispositivoEstandar dispositivo) {
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        session.save(dispositivo);
+        session.getTransaction().commit();
+        return dispositivo.getId();		
 	}
 	
 	

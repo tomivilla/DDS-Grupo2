@@ -27,10 +27,10 @@ public class DispositivosFactory {
 	}
 	
 	public DispositivoInteligente crearDIBajoConsumo(Long id, String nombre,Double consumo,Estado estado,List<Sensor> sensores,List<Periodo> periodos){
-		return new DispositivoInteligente(id, nombre,consumo,estado,sensores,periodos);
+		return new DispositivoInteligente(id, nombre,consumo,estado, true, sensores,periodos);
 	}
 	public DispositivoEstandar crearDIEstandar(Long id, String nombre,Double consumo,int horasEncendido){
-		return new DispositivoEstandar(id, nombre,consumo,horasEncendido);
+		return new DispositivoEstandar(id, nombre,consumo,horasEncendido, false);
 	}
 	public DispositivoInteligente aireAcondicionado3500(){
 		return crearDIBajoConsumo(1L, "Aire acondicionado 3500",1.613,Encendido.getInstance(),null,null);

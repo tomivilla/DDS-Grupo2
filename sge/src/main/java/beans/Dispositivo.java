@@ -2,23 +2,26 @@ package beans;
 
 import java.util.Observable;
 
-import dispositivo.IDispositivo;
-
-public abstract class Dispositivo extends Observable implements IDispositivo {
+public class Dispositivo extends Observable {
 
 	private Long id;
 	private String nombre_generico;
 	private double consumoKWHora;
-	
+	private boolean Inteligente;
+	private boolean BajoConsumo;
+
 	public Dispositivo() {
-		
+
 	}
 
-	public Dispositivo(Long id, String nombre_generico, double consumoKWHora) {
+	public Dispositivo(Long id, String nombre_generico, double consumoKWHora, boolean esInteligente,
+			boolean esBajoConsumo) {
 		super();
 		this.id = id;
 		this.nombre_generico = nombre_generico;
 		this.consumoKWHora = consumoKWHora;
+		this.Inteligente = esInteligente;
+		this.BajoConsumo = esBajoConsumo;
 	}
 
 	public Long getId() {
@@ -43,5 +46,27 @@ public abstract class Dispositivo extends Observable implements IDispositivo {
 
 	public void setConsumoKWHora(double consumoKWHora) {
 		this.consumoKWHora = consumoKWHora;
+	}
+
+
+	public boolean isInteligente() {
+		return Inteligente;
+	}
+
+	public void setInteligente(boolean inteligente) {
+		Inteligente = inteligente;
+	}
+
+	public boolean isBajoConsumo() {
+		return BajoConsumo;
+	}
+
+	public void setBajoConsumo(boolean bajoConsumo) {
+		BajoConsumo = bajoConsumo;
+	}
+
+	public double tuConsumo() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

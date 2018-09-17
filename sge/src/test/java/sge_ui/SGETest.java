@@ -77,7 +77,7 @@ public class SGETest {
         //Verifico correcta carga de cliente 2
     	assertEquals("Domicilio Cliente 2 'Calle Falsa 789'","Calle Falsa 789", clientes.get(1).getDomicilio());
         //Verifico Corrcta cantidad de dispositivos cliente 3, debe ser 6.
-    	assertEquals("Cantidad de dispositivos cargados en el cliente 3 '12'",12, clientes.get(2).getDispositivos().size());
+    	assertEquals("Cantidad de dispositivos cargados en el cliente 3 '12'",12, clientes.get(2).getDispositivosInteligentes().size()+clientes.get(2).getDispositivosEstandar().size());
      
     }
     

@@ -1,12 +1,21 @@
 package beans;
 
-import sge_ui.IUsuario;
-
-public abstract class Usuario implements IUsuario {
+public abstract class Usuario {
 	private String nombre; // Nombre completo --> Agregar al diagrama
 	private String nombre_de_usuario;
 	private String contrasena;
 	private Long id;
+
+	public Usuario() {
+		super();
+	}
+
+	public Usuario(String nombre, String nombre_de_usuario, String contrasena) {
+		super();
+		this.nombre = nombre;
+		this.nombre_de_usuario = nombre_de_usuario;
+		this.contrasena = contrasena;
+	}
 
 	public Long getId() {
 		return id;

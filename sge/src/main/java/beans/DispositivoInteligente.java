@@ -7,46 +7,56 @@ public class DispositivoInteligente extends Dispositivo {
 	private Estado estado;
 	private List<Sensor> sensores;
 	private List<Periodo> periodos;
-	
-	public DispositivoInteligente(Long id, String unNombre, double unConsumo, Estado unEstado, List<Sensor> sensores, List<Periodo> periodos) {
-		super(id, unNombre, unConsumo);
-		this.setEstado(unEstado);
+
+	public DispositivoInteligente() {
+		super();
+	}
+
+	public DispositivoInteligente(Long id, String unNombre, double unConsumo, Estado unEstado, boolean esBajoConsumo,
+			List<Sensor> sensores, List<Periodo> periodos) {
+		super(id, unNombre, unConsumo, true, esBajoConsumo);
+		if (unEstado == null) {
+			this.setEstado(Estado.seleccionarEstado("Encendido"));
+		}else {
+			this.setEstado(unEstado);			
+		}
 		this.setSensores(sensores);
 		this.setPeriodos(periodos);
 	}
-	
-	public double cuanConsumisteEnHoras(int horas){
+
+	public double cuanConsumisteEnHoras(int horas) {
 		Instant instant = Instant.now();
 		long timeStampSeconds = instant.getEpochSecond();
-		Periodo periodo = new Periodo(timeStampSeconds-(horas*60*60),timeStampSeconds);
+		Periodo periodo = new Periodo(timeStampSeconds - (horas * 60 * 60), timeStampSeconds);
 		return cuantoConsumisteEnPeriodo(periodo);
 	}
-	
-	public double cuantoConsumisteEnPeriodo(Periodo unPeriodo){
-		return this.tiempoEncendidoEn(unPeriodo)*this.getConsumoKWHora();
+
+	public double cuantoConsumisteEnPeriodo(Periodo unPeriodo) {
+		return this.tiempoEncendidoEn(unPeriodo) * this.getConsumoKWHora();
 	}
-	
-	public double tuConsumo(){
-		return this.tiempoEncendido()*this.getConsumoKWHora();	
+
+	public double tuConsumo() {
+		return this.tiempoEncendido() * this.getConsumoKWHora();
 	}
-	
+
 	public double tiempoEncendido() {
-		double tiempo=0;
-		for(Periodo periodo : this.getPeriodos()){
-			tiempo+=periodo.horasTranscurridas();
+		double tiempo = 0;
+		for (Periodo periodo : this.getPeriodos()) {
+			tiempo += periodo.horasTranscurridas();
 		}
 		return tiempo;
 	}
-	public double tiempoEncendidoEn(Periodo unPeriodo){
-		double tiempo=0;
-		for(Periodo periodo : this.getPeriodos()){
-			if(periodo.estasEnPeriodo(unPeriodo)){
-			tiempo+=periodo.horasTranscurridas();
+
+	public double tiempoEncendidoEn(Periodo unPeriodo) {
+		double tiempo = 0;
+		for (Periodo periodo : this.getPeriodos()) {
+			if (periodo.estasEnPeriodo(unPeriodo)) {
+				tiempo += periodo.horasTranscurridas();
 			}
 		}
 		return tiempo;
 	}
-	
+
 	public Estado getEstado() {
 		return estado;
 	}
@@ -70,24 +80,24 @@ public class DispositivoInteligente extends Dispositivo {
 	public void setPeriodos(List<Periodo> periodos) {
 		this.periodos = periodos;
 	}
-	
-	public boolean estasEncendido(){
+
+	public boolean estasEncendido() {
 		return this.getEstado().estasEncendido();
 	}
-	
-	public boolean estasApagado(){
+
+	public boolean estasApagado() {
 		return this.getEstado().estasApagado();
 	}
-	
-	public void apagar(){
+
+	public void apagar() {
 		this.getEstado().apagar(this);
 	}
-	
-	public void encender(){
+
+	public void encender() {
 		this.getEstado().encender(this);
 	}
-	
-	public void modoAhorro(){
+
+	public void modoAhorro() {
 		this.getEstado().modoAhorro(this);
 	}
 }

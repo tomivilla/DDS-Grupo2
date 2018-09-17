@@ -4,9 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import dispositivo.AdaptadorDispositivo;
-import sge_ui.ICliente;
 
-public class Cliente extends Usuario implements ICliente {
+public class Cliente extends Usuario {
 
 	private Documento documento;
 	private String numero_documento;
@@ -14,7 +13,8 @@ public class Cliente extends Usuario implements ICliente {
 	private String domicilio;
 	private Date fecha_de_alta_de_servicio;
 	private Categoria categoria;
-	private List<Dispositivo> dispositivos;
+	private List<DispositivoEstandar> dispositivosEstandar;
+	private List<DispositivoInteligente> dispositivosInteligentes;
 	private int puntos;
 
 	// CONSTRUCTOR
@@ -23,34 +23,34 @@ public class Cliente extends Usuario implements ICliente {
 
 	}
 
-	public Cliente(String unNombre, String unNmbUsuario, String unaContrasena, Documento documento, String unNumDoc,
-			int unTelefono, String unDomicilio, Date unaFecha, Categoria unaCategoria,
-			List<Dispositivo> nDispositivos) {
-		this.setNombre(unNombre);
-		this.setNombre_de_usuario(unNmbUsuario);
-		this.setContrasena(unaContrasena);
+	public Cliente(String nombre, String nombre_de_usuario, String contrasena, Documento documento,
+			String numero_documento, int telefono, String domicilio, Date fecha_de_alta_de_servicio,
+			Categoria categoria, List<DispositivoEstandar> dispositivosEstandar,
+			List<DispositivoInteligente> dispositivosInteligentes) {
+		super(nombre, nombre_de_usuario, contrasena);
 		this.documento = documento;
-		this.numero_documento = unNumDoc;
-		this.telefono = unTelefono;
-		this.domicilio = unDomicilio;
-		this.fecha_de_alta_de_servicio = unaFecha;
-		this.categoria = unaCategoria;
-		this.dispositivos = nDispositivos;
+		this.numero_documento = numero_documento;
+		this.telefono = telefono;
+		this.domicilio = domicilio;
+		this.fecha_de_alta_de_servicio = fecha_de_alta_de_servicio;
+		this.categoria = categoria;
+		this.dispositivosEstandar = dispositivosEstandar;
+		this.dispositivosInteligentes = dispositivosInteligentes;
 		this.puntos = 0;
 	}
 
 	public boolean tenesAlgunDispositivoEncendido() {
-		return dispositivos.stream()
+		return dispositivosInteligentes.stream()
 				.anyMatch(unDispositivo -> ((DispositivoInteligente) unDispositivo).estasEncendido());
 	}
 
 	public int totalDispositivosEncendidos() {
-		return (int) dispositivos.stream()
+		return (int) dispositivosInteligentes.stream()
 				.filter(unDispositivo -> ((DispositivoInteligente) unDispositivo).estasEncendido()).count();
 	}
 
 	public int totalDispositivosApagados() {
-		return (int) dispositivos.stream()
+		return (int) dispositivosInteligentes.stream()
 				.filter(unDispositivo -> !((DispositivoInteligente) unDispositivo).estasEncendido()).count();
 	}
 
@@ -62,7 +62,11 @@ public class Cliente extends Usuario implements ICliente {
 		double totalConsumo = 0;
 
 		// Sumo el consumo de cada uno de los dispositivos de este cliente
-		for (Dispositivo dispositivo : this.dispositivos) {
+		for (DispositivoEstandar dispositivo : this.dispositivosEstandar) {
+			totalConsumo += dispositivo.getConsumoKWHora();
+		}
+
+		for (DispositivoInteligente dispositivo : this.dispositivosInteligentes) {
 			totalConsumo += dispositivo.getConsumoKWHora();
 		}
 		return totalConsumo * 30;
@@ -77,17 +81,17 @@ public class Cliente extends Usuario implements ICliente {
 	}
 
 	public void agregarDispositivo(DispositivoInteligente unDispositivo) {
-		this.dispositivos.add(unDispositivo);
+		this.dispositivosInteligentes.add(unDispositivo);
 		this.sumarPuntos(15);
 	}
 
 	public void agregarDispositivo(AdaptadorDispositivo unDispositivo) {
-		this.dispositivos.add(unDispositivo);
+		this.dispositivosInteligentes.add(unDispositivo);
 		this.sumarPuntos(10);
 	}
 
-	public void agregarDispositivo(Dispositivo unDispositivo) {
-		this.dispositivos.add(unDispositivo);
+	public void agregarDispositivo(DispositivoEstandar unDispositivo) {
+		this.dispositivosEstandar.add(unDispositivo);
 	}
 
 	public boolean perteneceAcategoria(double unConsumo) {
@@ -142,12 +146,20 @@ public class Cliente extends Usuario implements ICliente {
 		this.fecha_de_alta_de_servicio = fecha_de_alta_de_servicio;
 	}
 
-	public List<Dispositivo> getDispositivos() {
-		return dispositivos;
+	public List<DispositivoEstandar> getDispositivosEstandar() {
+		return dispositivosEstandar;
 	}
 
-	public void setDispositivos(List<Dispositivo> dispositivos) {
-		this.dispositivos = dispositivos;
+	public void setDispositivosEstandar(List<DispositivoEstandar> dispositivosEstandar) {
+		this.dispositivosEstandar = dispositivosEstandar;
+	}
+
+	public List<DispositivoInteligente> getDispositivosInteligentes() {
+		return dispositivosInteligentes;
+	}
+
+	public void setDispositivosInteligentes(List<DispositivoInteligente> dispositivosInteligentes) {
+		this.dispositivosInteligentes = dispositivosInteligentes;
 	}
 
 	public Categoria getCategoria() {
@@ -162,7 +174,11 @@ public class Cliente extends Usuario implements ICliente {
 		this.puntos = puntos;
 	}
 
-	public Dispositivo getDispositivo(int n) {
-		return this.getDispositivos().get(n);
+	public DispositivoEstandar getDispositivoEstandar(int n) {
+		return this.dispositivosEstandar.get(n);
+	}
+
+	public Dispositivo getDispositivoInteligente(int n) {
+		return this.dispositivosInteligentes.get(n);
 	}
 }

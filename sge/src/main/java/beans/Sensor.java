@@ -2,12 +2,26 @@ package beans;
 
 import observer.ObserverSensor;;
 
-public abstract class Sensor {
+public class Sensor {
 
 	private Long id;
 	private ObserverSensor observer;
 	private int valor;
 	private String magnitud;
+
+	
+	
+	public Sensor() {
+		super();
+	}
+
+	public Sensor(Long id, ObserverSensor observer, int valor, String magnitud) {
+		super();
+		this.id = id;
+		this.observer = observer;
+		this.valor = valor;
+		this.magnitud = magnitud;
+	}
 
 	public Long getId() {
 		return id;

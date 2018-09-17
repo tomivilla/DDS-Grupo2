@@ -67,7 +67,7 @@ public class Dispositivo_estandar {
     public void debeDevolverelconsumoPromedio() {    
         //Verifico elduncionamiento del metodo tuConsumo() para un dispositivo estandar
     	//para el cliente 3, debe ser 1.274.
-    	assertEquals(1.274,clientes.get(2).getDispositivo(2).tuConsumo(),0.0);
+    	assertEquals(1.274,clientes.get(2).getDispositivoEstandar(2).tuConsumo(),0.0);
     }
 
 }

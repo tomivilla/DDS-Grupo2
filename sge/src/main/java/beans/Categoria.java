@@ -1,8 +1,6 @@
 package beans;
 
-import sge_ui.ICategoria;
-
-public class Categoria implements ICategoria {
+public class Categoria{
 
 	private int id;
 	private int consumoMaximo;

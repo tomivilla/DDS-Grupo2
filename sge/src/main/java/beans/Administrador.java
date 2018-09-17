@@ -4,9 +4,8 @@ import java.text.ParseException;
 import java.util.Date;
 
 import fecha_helper.Fecha_Helper;
-import sge_ui.IAdministrador;
 
-public class Administrador extends Usuario implements IAdministrador {
+public class Administrador extends Usuario{
 	
 	private String domicilio; //Cambiar nombre en diagrama
 	private Date fechaDeAltaEnSistema; // Formato AAAA-MM-DD
@@ -31,29 +30,24 @@ public class Administrador extends Usuario implements IAdministrador {
 		return Fecha_Helper.diferenciaEnMeses(this.fechaDeAltaEnSistema);
 		
 	}
-	
-	//GETTERS
+
 	public String getDomicilio() {
 		return domicilio;
 	}
-
-
 
 	public void setDomicilio(String domicilio) {
 		this.domicilio = domicilio;
 	}
 
-
-
 	public Date getFechaDeAltaEnSistema() {
 		return fechaDeAltaEnSistema;
 	}
 
-
-
 	public void setFechaDeAltaEnSistema(Date fechaDeAltaEnSistema) {
 		this.fechaDeAltaEnSistema = fechaDeAltaEnSistema;
 	}
+	
+	//GETTERS
 
 
 }
