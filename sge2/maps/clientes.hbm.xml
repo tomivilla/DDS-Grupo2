@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="beans.Cliente" table= "CLIENTES">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="nombre"/>
+		<many-to-one name = "documento" column = "tipo_doc" 
+         class="beans.Documento" not-null="true"/>
+        <property name="numero_documento" column="nro_doc"/>
+        <property name="telefono"/>
+        <property name="domicilio"/>
+		<property name="fecha_de_alta_de_servicio" type="timestamp" column="fecha_alta"/>
+		<many-to-one name = "categoria" class="beans.Categoria" not-null="true"/>
+		<property name="nombre_de_usuario" column="nombre_usuario"></property>
+		<property name="contrasena" column="pass"/>
+		<list name="dispositivosEstandar" cascade="all">
+			<key column="id_cliente"/>
+			<list-index column = "idx"/>
+			<one-to-many class="beans.DispositivoEstandar"/>
+		</list>
+<!-- 		<list name="dispositivosInteligentes" cascade="all"> -->
+<!-- 			<key column="id"/> -->
+<!-- 			<list-index column = "idx"/> -->
+<!-- 			<many-to-many class="beans.DispositivoInteligente"/> -->
+<!-- 		</list> -->
+	</class>
+</hibernate-mapping>

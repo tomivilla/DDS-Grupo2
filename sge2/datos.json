@@ -1,0 +1,210 @@
+{"clientes":
+	[
+		{
+	    "nombre" : "Juan Perez",
+	    "nombre_de_usuario" : "jperez",
+	    "contrasena" : "contrasena123",
+	    "documento" : {"id":1},
+	    "numDoc" : "33456234",
+	    "telefono" : 1147568913,
+	    "domicilio" : "Calle Falsa 123",
+	    "fecha": "2017-07-02",
+	    "categoria" : {"id": 1, "unConsumoMin":0, "unConsumoMax" : 150, "unCargoFijo" : 18.76, "unCargoVariable" : 0.644 },
+	    "dispositivosEstandar" : [
+	        {
+	        "id": 1,
+	        "nombre_generico" : "Aire Acondicionado",
+	        "consumoKWHora": 1.013,
+	        "horasEncendido": 3
+	        },
+	        {
+	        "id": 2,
+	        "nombre_generico" : "Estufa de cuarzo",
+	        "consumoKWHora": 1.200,
+	        "horasEncendido": 6
+	        },
+	        {
+	        "id": 3,
+	        "nombre_generico" : "Lavarropas automatico",
+	        "consumoKWHora": 0.182,
+	        "horasEncendido": 7
+	        },
+	        {
+	        "id": 4,
+	        "nombre_generico" : "Heladera con freezer",
+	        "consumoKWHora": 0.098,
+	        "horasEncendido": 5
+	        },
+	        {
+	        "id": 5,
+	        "nombre_generico" : "Termotanque",
+	        "consumoKWHora": 0.900,
+	        "horasEncendido": 8
+	        },
+	        {
+	        "id": 6,
+	        "nombre_generico" : "Lámpara Fluorescente compacta de 11 W",
+	        "consumoKWHora": 0.011,
+	        "horasEncendido": 6
+	        }
+	    ],
+	    "dispositivosInteligentes" :[]
+	  },
+	  {
+	    "nombre" : "Juan Carlos Grcia",
+	    "nombre_de_usuario" : "jcgarcia",
+	    "contrasena" : "contrasena123",
+	    "documento" : {"id":1},
+	    "numDoc" : "17890125",
+	    "telefono" : 1147568913,
+	    "domicilio" : "Calle Falsa 789",
+	    "fecha": "2017-07-02",
+	    "categoria" : {"id": 1, "unConsumoMin":0, "unConsumoMax" : 150, "unCargoFijo" : 18.76, "unCargoVariable" : 0.644 },
+	    "dispositivosEstandar" :[
+	        {
+	        "id": 1,
+	        "nombre_generico" : "Aire Acondicionado",
+	        "consumoKWHora": 1.013,
+	        "horasEncendido": 3
+	        },
+	        {
+	        "id": 2,
+	        "nombre_generico" : "Estufa de cuarzo",
+	        "consumoKWHora": 1.200,
+	        "horasEncendido": 10
+	        },
+	        {
+	        "id": 3,
+	        "nombre_generico" : "Lavarropas automatico",
+	        "consumoKWHora": 0.182,
+	        "horasEncendido": 6
+	        },
+	        {
+	        "id": 4,
+	        "nombre_generico" : "Heladera con freezer",
+	        "consumoKWHora": 0.098,
+	        "horasEncendido": 4
+	        },
+	        {
+	        "id": 5,
+	        "nombre_generico" : "Termotanque",
+	        "consumoKWHora": 0.900,
+	        "horasEncendido": 7
+	        },
+	        {
+	        "id": 6,
+	        "nombre_generico" : "Lámpara Fluorescente compacta de 11 W",
+	        "consumoKWHora": 0.011,
+	        "horasEncendido": 9
+	        }
+	    ],
+	    "dispositivosInteligentes" :[]
+	  },
+	  {
+	    "nombre" : "Jose Lopez",
+	    "nombre_de_usuario" : "jlopez",
+	    "contrasena" : "contrasena123",
+	    "documento" : {"id":1},
+	    "numDoc" : "25980256",
+	    "telefono" : 1147568913,
+	    "domicilio" : "Calle Falsa 456",
+	    "fecha": "2017-07-02",
+	    "categoria" : {"id": 1, "unConsumoMin":0, "unConsumoMax" : 150, "unCargoFijo" : 18.76, "unCargoVariable" : 0.644 },
+	    "dispositivosEstandar" :[
+	        {
+	        "id": 1,
+	        "nombre_generico" : "Aire Acondicionado",
+	        "consumoKWHora": 1.013,
+	        "horasEncendido": 5
+	        },
+	        {
+	        "id": 2,
+	        "nombre_generico" : "Estufa de cuarzo",
+	        "consumoKWHora": 1.200,
+	        "horasEncendido": 8
+	        },
+	        {
+	        "id": 3,
+	        "nombre_generico" : "Lavarropas automatico",
+	        "consumoKWHora": 0.182,
+	        "horasEncendido": 7
+	        },
+	        {
+	        "id": 4,
+	        "nombre_generico" : "Heladera con freezer",
+	        "consumoKWHora": 0.098,
+	        "horasEncendido": 13
+	        },
+	        {
+	        "id": 5,
+	        "nombre_generico" : "Termotanque",
+	        "consumoKWHora": 0.900,
+	        "horasEncendido": 12
+	        },
+	        {
+	        "id": 6,
+	        "nombre_generico" : "Lámpara Fluorescente compacta de 11 W",
+	        "consumoKWHora": 0.011,
+	        "horasEncendido": 7
+	        }
+	        
+	    ],
+	    "dispositivosInteligentes" :[
+	        {
+	        "id": 1,
+	        "nombre_generico" : "Aire Acondicionado",
+	        "consumoKWHora": 1.013,
+/* 	        "estado": "Encendido", */
+	        "actuador":"AD:12:34:12:42:12",
+	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
+	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]
+	        },
+	        {
+	        "id": 2,
+	        "nombre_generico" : "Estufa de cuarzo",
+	        "consumoKWHora": 1.200,
+/* 	        "estado": "Encendido", */
+	        "actuador":"AD:12:34:12:42:12",
+	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
+	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]
+	        },
+	        {
+	        "id": 3,
+	        "nombre_generico" : "Lavarropas automatico",
+	        "consumoKWHora": 0.182,
+/* 	        "estado": "Encendido", */
+	        "actuador":"AD:12:34:12:42:12",
+	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
+	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]
+	        },
+	        {
+	        "id": 4,
+	        "nombre_generico" : "Heladera con freezer",
+	        "consumoKWHora": 0.098,
+/* 	        "estado": "Encendido", */
+	        "actuador":"AD:12:34:12:42:12",
+	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
+	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]
+	        },
+	        {
+	        "id": 5,
+	        "nombre_generico" : "Termotanque",
+	        "consumoKWHora": 0.900,
+/* 	        "estado": "Encendido", */
+	        "actuador":"AD:12:34:12:42:12",
+	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
+	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]
+	        },
+	        {
+	        "id": 6,
+	        "nombre_generico" : "Lámpara Fluorescente compacta de 11 W",
+	        "consumoKWHora": 0.011,
+/* 	        "estado": "Encendido", */
+	        "actuador":"AD:12:34:12:42:12",
+	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
+	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]
+	        }
+	    ]
+	  }
+ 	]
+}
