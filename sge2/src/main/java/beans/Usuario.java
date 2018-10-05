@@ -1,6 +1,6 @@
 package beans;
 
-public abstract class Usuario {
+public class Usuario {
 	private String nombre; // Nombre completo --> Agregar al diagrama
 	private String nombre_de_usuario;
 	private String contrasena;

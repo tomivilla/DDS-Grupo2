@@ -15,7 +15,9 @@
         <servlet-name>RestAPI</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
-
+    <welcome-file-list>  
+        <welcome-file>home.html</welcome-file>
+	</welcome-file-list> 
     <!-- Init default settings form config files at startup-->
 <!--     <listener> -->
 <!--         <listener-class>utn.tp.poi.servlet.InitHandler</listener-class> -->

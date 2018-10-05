@@ -14,8 +14,8 @@
 </head>
 <body>
         <div class="container">
-                <div class="page-header">
-                    <h1>Bienvenido al control de su hogar<span class="pull-right label label-default">:)</span></h1>
+                <div class="page-header" id = "header">
+                    
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -52,15 +52,20 @@
     <div class="tab-pane active" id="tabPrimary">ABM de reglas y dispositivos {{usuario.apellido}}</div>
 </script>
 
+<script id="header-template" type="text/x-handlebars-template">
+    <h1>Bienvenido al control de su hogar<span class="pull-right label label-default">{{usuario.nombre}}</span></h1>
+</script>
+
 <script>
+var dataSession = sessionStorage.getItem("data");
+var datosUsuario = JSON.parse(dataSession);
 
 function cargarTab(idTab) {
     $('#tabs').html('');
 
     var context={
-        "usuario": {
-            "nombre": "Tomi",
-            "apellido": "Villa"
+        "usuario":{
+            "nombre": datosUsuario.nombre
         }
     };
 
@@ -82,8 +87,34 @@ function cargarTab(idTab) {
         
 }
 
+function cargarHeader() {
+    $('#header').html('');
+    var context={
+        "usuario":{
+            "nombre": datosUsuario.nombre
+        }
+    };
+
+    if ($("#header-template").length != 0) {
+        $(function () {
+                // Grab the template script
+                var theTemplateScript = $("#header-template").html();
+              
+                // Compile the template
+                var theTemplate = Handlebars.compile(theTemplateScript);
+    
+                // Pass our data to the template
+                var theCompiledHtml = theTemplate(context);
+                  
+                // Add the compiled html to the page
+                $('#header').html(theCompiledHtml);
+        });        
+    }
+
+}
 
 $(document).ready(function() {
+    cargarHeader();
     cargarTab(1);
 });
 </script>

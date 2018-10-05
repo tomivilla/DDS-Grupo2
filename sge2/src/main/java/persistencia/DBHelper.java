@@ -14,6 +14,7 @@ import beans.Dispositivo;
 import beans.DispositivoEstandar;
 import beans.Documento;
 import beans.Transformador;
+import beans.Usuario;
 import json_helper.Json_Helper;
 import utils.HibernateUtils;
 
@@ -235,6 +236,22 @@ public class DBHelper {
 		}
 		
 		return adm;
+	}
+
+	public Cliente loginCliente(String usr, String psw) {
+		Cliente cliente = new Cliente();
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String hql = "from Cliente Clt where Clt.nombre_de_usuario = '"+usr+"'";
+		Query query = session.createQuery(hql);
+		List<Cliente> result = (List<Cliente>) query.list();
+		session.getTransaction().commit();
+		
+		if (!result.isEmpty() && result.get(0).getContrasena().equals(psw)) {
+			cliente = result.get(0);			
+		}
+		
+		return cliente;
 	}
 	
 }

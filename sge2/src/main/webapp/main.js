@@ -45,12 +45,9 @@ jQuery(function($) {
 		
 		if(options['useAJAX'] == true)
 		{
-			// Dummy AJAX request (Replace this with your AJAX code)
-		  // If you don't want to use AJAX, remove this
-  	  dummy_submit_form($(this));
+			
+  	  login_submit($(this),false);
 		
-		  // Cancel the normal submission.
-		  // If you don't want to use AJAX, remove this
   	  return false;
 		}
   });
@@ -88,12 +85,9 @@ jQuery(function($) {
           
           if(options['useAJAX'] == true)
           {
-              // Dummy AJAX request (Replace this with your AJAX code)
-            // If you don't want to use AJAX, remove this
-          dummy_submit_form_adm($(this));
+            
+            login_submit($(this),true);
           
-            // Cancel the normal submission.
-            // If you don't want to use AJAX, remove this
           return false;
           }
     });
@@ -126,23 +120,63 @@ jQuery(function($) {
   	$form.find('.login-form-main-message').addClass('show error').html(options['msg-error']);
   }
 
-	// Dummy Submit Form (Remove this)
-	//----------------------------------------------
-	// This is just a dummy form submission. You should use your AJAX function or remove this function if you are not using AJAX.
-  function dummy_submit_form($form)
+ function login_submit($form,adm)
   {
   	if($form.valid())
   	{
   		form_loading($form);
   		
-  		setTimeout(function() {
-            if (lg_username.value != "ERROR") {
-                form_success($form);
-            }else{
-                form_failed($form);
-            }
-  		}, 2000);
+          
+          var login = call_login(adm);
+
+          if (login) {
+              form_success($form);
+          }else{
+              form_failed($form);
+          }
+  		
   	}
+  }
+
+  function call_login(adm) {
+  
+  var estado = false;
+  
+  if (adm) {
+    var usuario = {
+      username: lg_username_adm.value,
+      password: lg_password_adm.value,
+      admin : adm
+    }
+  } else {
+    var usuario = {
+      username: lg_username.value,
+      password: lg_password.value,
+      admin : adm
+    }
+    
+  }
+
+  var ruta = window.location.origin+"/sge2/api/login";
+  
+  $.ajax({ type:"POST",
+    async: false,
+    url: ruta,
+    data: JSON.stringify(usuario),
+    dataType:"json",
+    contentType: "application/json",
+    accept:"json",
+    cache: false,
+    error: function(jqXHR, textStatus, errorThrown){
+      estado = false;
+    },
+    success: function(data){
+      sessionStorage.setItem("data", JSON.stringify(data));
+      estado = true;
+    }
+  });
+  
+  return estado;
   }
 
   function dummy_submit_form_adm($form)
