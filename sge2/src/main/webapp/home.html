@@ -16,7 +16,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
 <body>
-        <div class="text-center" style="padding:50px 0">
+    
+    <div class="row">
+        <div class="text-center" >
                 <div class="logo">Login Clientes</div>
                 <!-- Main Form -->
                 <div class="login-form-1">
@@ -41,9 +43,11 @@
                         </div>
                     </form>
                 </div>
-                <!-- end:Main Form -->
-                <br>
-                <br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text-center" >
                 <div class="logo">Login Admins</div>
                 <div class="login-form-1">
                         <form id="login-form-1" class="text-left">
@@ -67,6 +71,23 @@
                             </div>
                         </form>
                 </div>
-        </div>
+        </div>        
+    </div>
+
+    
+    <div class="row" style="padding:50px 0">
+        
+        <button type="button" onclick="irAMapa()" class="btn btn-block btn-default">VER MAPA DE TRANSFORMADORES</button>
+        
+    </div>
+    
+    
 </body>
+
+<script>
+function irAMapa() {
+    window.location.href = "mapa.html";
+}
+
+</script>
 </html>

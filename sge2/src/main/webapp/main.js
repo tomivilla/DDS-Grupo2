@@ -105,12 +105,16 @@ jQuery(function($) {
     $form.find('[type=submit]').addClass('clicked').html(options['btn-loading']);
   }
   
-  function form_success($form)
+  function form_success($form,adm)
   {
 	  $form.find('[type=submit]').addClass('success').html(options['btn-success']);
       $form.find('.login-form-main-message').addClass('show success').html(options['msg-success']);
       setTimeout(function() {
-        window.location.href = "clientes.html";
+        if (adm) {
+          window.location.href = "admins.html";
+        }else{
+          window.location.href = "clientes.html";
+        }
       }, 2000);
   }
 
@@ -130,7 +134,7 @@ jQuery(function($) {
           var login = call_login(adm);
 
           if (login) {
-              form_success($form);
+              form_success($form,adm);
           }else{
               form_failed($form);
           }

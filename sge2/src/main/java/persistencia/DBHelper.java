@@ -62,6 +62,14 @@ public class DBHelper {
         session.getTransaction().commit();
         return cliente;
     }
+	
+	public Dispositivo getDispositivoPosibleById (Long id) {
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Dispositivo disp = (Dispositivo) session.get(Dispositivo.class, id);
+        session.getTransaction().commit();
+        return disp;
+	}
     
 	public Long modificarCliente (Cliente cliente) {
     	Session session = HibernateUtils.getSessionFactory().getCurrentSession();

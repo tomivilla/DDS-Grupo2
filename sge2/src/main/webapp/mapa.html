@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Mapa de transformadores</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css">
+        
+    </head>
+    <body>
+        
+        <div class="row">
+            <div id="mapa" style="height: 500px"></div>
+        </div>
+
+        
+        <div class="row">
+            
+            <button type="button" onclick="volverAlInicio()" class="btn btn-large btn-block btn-default">VOLVER AL INICIO</button>
+            
+        </div>
+        
+        
+        
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+    </body>
+
+<script>
+$( document ).ready(function() {
+
+    var ruta = window.location.origin+"/sge2/api/transformadores";
+    var trafos;
+
+    $.ajax({ type:"GET",
+    async: false,
+    url: ruta,
+    contentType: "application/json",
+    accept:"json",
+    cache: false,
+    error: function(jqXHR, textStatus, errorThrown){
+      estado = false;
+    },
+    success: function(data){
+        trafos = JSON.parse(data);
+        estado = true;
+    }
+    });
+
+    
+    
+    mapa = L.map('mapa', {
+        center: [-34.598313, -58.463745],
+        zoom: 12,  
+        minZoom: 4,
+        maxZoom:17,
+        zoomControl:true 
+    });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: ''}).addTo(mapa);
+
+
+    trafos.forEach(trafo => {
+        L.marker([trafo.latitud, trafo.longitud]).addTo(mapa).bindPopup(`Zona: ${trafo.zona}`);
+    });        
+    
+    });
+    
+    
+    
+function volverAlInicio(){
+    window.location.href = "home.html";
+}
+    </script>
+</html>

@@ -7,8 +7,44 @@
 },
 {
 "id": 2,
-"latitud": -12.618680,
-"longitud": -44.415423,
+"latitud": -34.597182,
+"longitud": -58.377125,
 "zona": 2
+},
+{
+"id": 3,
+"latitud": -34.592519,
+"longitud": -58.379571,
+"zona": 2
+},
+{
+"id": 4,
+"latitud": -34.607332,
+"longitud": -58.436466,
+"zona": 3
+},
+{
+"id": 5,
+"latitud": -34.627852,
+"longitud": -58.464104,
+"zona": 3
+},
+{
+"id": 6,
+"latitud": -34.567799,
+"longitud": -58.487051,
+"zona": 4
+},
+{
+"id": 7,
+"latitud": -34.565423,
+"longitud": -58.458760,
+"zona": 4
+},
+{
+"id": 8,
+"latitud": -34.578140,
+"longitud": -58.4446488,
+"zona": 4
 }
 ]
