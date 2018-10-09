@@ -14,7 +14,6 @@ import beans.Dispositivo;
 import beans.DispositivoEstandar;
 import beans.Documento;
 import beans.Transformador;
-import beans.Usuario;
 import json_helper.Json_Helper;
 import utils.HibernateUtils;
 
@@ -23,8 +22,9 @@ public class DBHelper {
 	public void cargarUsuarioFromJson(String path) {
     	List<Cliente> clientes = new ArrayList<Cliente>();
     	Categoria categoria = new Categoria(1, 100, 2000, 20.0, 32.5);
+    	Json_Helper jsonHelper = new Json_Helper();
     	try {
-			clientes = Json_Helper.JsonToCliente(path);
+			clientes = jsonHelper.JsonToCliente(path);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,8 +38,9 @@ public class DBHelper {
 	
 	public void cargarTransformadores (String path) {
 		List<Transformador> transformadores = new ArrayList<Transformador>();
+		Json_Helper jsonHelper = new Json_Helper();
     	try {
-			transformadores = Json_Helper.jsonToTransformadores(path);
+			transformadores = jsonHelper.jsonToTransformadores(path);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -209,7 +210,8 @@ public class DBHelper {
 	public List<Administrador> listAdmins() {
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        List<Administrador> result = (List<Administrador>)session.createQuery("from Administrador").list();
+        @SuppressWarnings("unchecked")
+		List<Administrador> result = (List<Administrador>)session.createQuery("from Administrador").list();
         session.getTransaction().commit();
         return result;
     }
@@ -235,7 +237,9 @@ public class DBHelper {
 		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		String hql = "from Administrador Adm where Adm.nombre_de_usuario = '"+usr+"'";
+		@SuppressWarnings("rawtypes")
 		Query query = session.createQuery(hql);
+		@SuppressWarnings("unchecked")
 		List<Administrador> result = (List<Administrador>) query.list();
 		session.getTransaction().commit();
 		
@@ -251,7 +255,9 @@ public class DBHelper {
 		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		String hql = "from Cliente Clt where Clt.nombre_de_usuario = '"+usr+"'";
+		@SuppressWarnings("rawtypes")
 		Query query = session.createQuery(hql);
+		@SuppressWarnings("unchecked")
 		List<Cliente> result = (List<Cliente>) query.list();
 		session.getTransaction().commit();
 		
@@ -262,4 +268,19 @@ public class DBHelper {
 		return cliente;
 	}
 	
+	public List<Dispositivo> getDispositivosPorCliente (Long id){
+		List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Cliente cliente = (Cliente) session.get(Cliente.class, id);
+        session.getTransaction().commit();
+        if (cliente.getDispositivosEstandar() != null) {
+        	dispositivos.addAll(cliente.getDispositivosEstandar());			
+		}
+        if (cliente.getDispositivosInteligentes() != null) {
+        	dispositivos.addAll(cliente.getDispositivosInteligentes());			
+		}
+        return dispositivos;
+        
+	}
 }

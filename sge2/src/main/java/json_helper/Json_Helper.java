@@ -1,8 +1,11 @@
 package json_helper;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,8 +43,11 @@ import sensor.SensorTemperatura;
 //Clase para adaptar elementos JSON a objetos nuestros
 public class Json_Helper {
 	
-	public static String readFile(String file) throws IOException {
-	    BufferedReader reader = new BufferedReader(new FileReader (file));
+	public String readFile(String file) throws IOException {
+		
+		InputStream is = getClass().getResourceAsStream(file);
+		
+	    BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 	    String         line = null;
 	    StringBuilder  stringBuilder = new StringBuilder();
 	    String         ls = System.getProperty("line.separator");
@@ -58,12 +64,12 @@ public class Json_Helper {
 	    }
 	}
 	
-	public static List<Cliente> JsonToCliente (String path) throws IOException{
+	public List<Cliente> JsonToCliente (String path) throws IOException{
 		List<Cliente> clientes = new ArrayList<Cliente>();
-		
+		Json_Helper jsonHelper = new Json_Helper();
 		Gson gson = new Gson();
 		
-		String json1 = Json_Helper.readFile(path);
+		String json1 = jsonHelper.readFile(path);
 		JsonParser parser = new JsonParser();
 		JsonObject gsonObj1 = parser.parse(json1).getAsJsonObject();
 		JsonArray gsonArr = gsonObj1.get("clientes").getAsJsonArray();
@@ -214,9 +220,9 @@ public class Json_Helper {
 		return sensor;
 	} 
 	
-	public static List<Transformador> jsonToTransformadores(String path) throws IOException{
-		
-		String json1 = Json_Helper.readFile(path);
+	public List<Transformador> jsonToTransformadores(String path) throws IOException{
+		Json_Helper jsonHelper = new Json_Helper();
+		String json1 = jsonHelper.readFile(path);
 		JsonParser parser = new JsonParser();
 		List<Transformador> transformadores = new ArrayList<Transformador>();
 		// Obtengo el primer ObjetoJason
@@ -241,9 +247,9 @@ public class Json_Helper {
 	   	return transformadores;
 	}
 	
-	public static List<Zona> jsonToZonas(String path) throws IOException{
-		
-		String json1 = Json_Helper.readFile(path);
+	public List<Zona> jsonToZonas(String path) throws IOException{
+		Json_Helper jsonHelper = new Json_Helper();
+		String json1 = jsonHelper.readFile(path);
 		JsonParser parser = new JsonParser();
 		List<Zona> zonas = new ArrayList<Zona>();
 		// Obtengo el primer ObjetoJason

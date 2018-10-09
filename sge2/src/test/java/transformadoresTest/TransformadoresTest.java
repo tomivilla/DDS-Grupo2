@@ -20,11 +20,12 @@ public class TransformadoresTest {
 
 	@Before
     public void setup() throws IOException{
+		Json_Helper jsonHelper = new Json_Helper();
 		transformadores = new ArrayList<Transformador>();
-		transformadores = Json_Helper.jsonToTransformadores("transformadores.json");
+		transformadores = jsonHelper.jsonToTransformadores("transformadores.json");
 		
 		zonas = new ArrayList<Zona>();
-		zonas = Json_Helper.jsonToZonas("zonas.json");
+		zonas = jsonHelper.jsonToZonas("zonas.json");
 	}
 	
 	@Test
