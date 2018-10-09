@@ -4,10 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -20,18 +17,11 @@ import com.google.gson.reflect.TypeToken;
 import Estado.AhorroDeEnergia;
 import Estado.Apagado;
 import Estado.Encendido;
-import beans.Categoria;
 import beans.Cliente;
-import beans.Dispositivo;
-import beans.DispositivoEstandar;
-import beans.DispositivoInteligente;
-import beans.Documento;
 import beans.Estado;
-import beans.Periodo;
 import beans.Sensor;
 import beans.Transformador;
 import beans.Zona;
-import fecha_helper.Fecha_Helper;
 import sensor.SensorDeMovimiento;
 import sensor.SensorHumedad;
 import sensor.SensorIntensidadLuminica;
@@ -186,6 +176,7 @@ public class Json_Helper {
 //		return clientes;
 //	}
 
+	@SuppressWarnings("unused")
 	private static Estado seleccionarEstado(String estado) {
 		if(estado.equals("Encendido")){
 			return Encendido.getInstance();
@@ -199,6 +190,7 @@ public class Json_Helper {
 			}
 		}
 	}
+	@SuppressWarnings("unused")
 	private static Sensor generarSensor(int valor, String magnitud){
 		Sensor sensor=null;
 		switch (magnitud){

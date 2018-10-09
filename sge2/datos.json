@@ -154,7 +154,7 @@
 	        "id": 1,
 	        "nombre_generico" : "Aire Acondicionado",
 	        "consumoKWHora": 1.013,
-/* 	        "estado": "Encendido", */
+ 	        "estado": "Encendido", 
 	        "actuador":"AD:12:34:12:42:12",
 	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
 	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]
@@ -163,7 +163,7 @@
 	        "id": 2,
 	        "nombre_generico" : "Estufa de cuarzo",
 	        "consumoKWHora": 1.200,
-/* 	        "estado": "Encendido", */
+ 	        "estado": "Encendido", 
 	        "actuador":"AD:12:34:12:42:12",
 	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
 	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]
@@ -172,7 +172,7 @@
 	        "id": 3,
 	        "nombre_generico" : "Lavarropas automatico",
 	        "consumoKWHora": 0.182,
-/* 	        "estado": "Encendido", */
+			"estado": "Encendido",
 	        "actuador":"AD:12:34:12:42:12",
 	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
 	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]
@@ -181,7 +181,7 @@
 	        "id": 4,
 	        "nombre_generico" : "Heladera con freezer",
 	        "consumoKWHora": 0.098,
-/* 	        "estado": "Encendido", */
+ 	        "estado": "Encendido", 
 	        "actuador":"AD:12:34:12:42:12",
 	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
 	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]
@@ -190,7 +190,7 @@
 	        "id": 5,
 	        "nombre_generico" : "Termotanque",
 	        "consumoKWHora": 0.900,
-/* 	        "estado": "Encendido", */
+ 	        "estado": "Encendido", 
 	        "actuador":"AD:12:34:12:42:12",
 	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
 	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]
@@ -199,7 +199,7 @@
 	        "id": 6,
 	        "nombre_generico" : "Lámpara Fluorescente compacta de 11 W",
 	        "consumoKWHora": 0.011,
-/* 	        "estado": "Encendido", */
+ 	        "estado": "Encendido", 
 	        "actuador":"AD:12:34:12:42:12",
 	        "sensores":[{"valor":25,"magnitud":"°C"},{"valor":12,"magnitud":"%"},{"valor":12,"magnitud":"lumenes"},{"valor":1,"magnitud":"Movimieto"}],
 	        "periodos":[{"inicio":1526680200,"fin":1526683800},{"inicio":1526979600,"fin":1526983200}]

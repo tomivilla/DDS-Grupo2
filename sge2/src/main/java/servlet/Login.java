@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import beans.Administrador;
 import beans.Usuario;
 import json_helper.HibernateProxyTypeAdapter;
 import persistencia.DBHelper;

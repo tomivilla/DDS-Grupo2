@@ -14,7 +14,6 @@ import beans.Dispositivo;
 import beans.DispositivoEstandar;
 import beans.Documento;
 import beans.Transformador;
-import beans.Usuario;
 import json_helper.Json_Helper;
 import utils.HibernateUtils;
 
@@ -209,7 +208,8 @@ public class DBHelper {
 	public List<Administrador> listAdmins() {
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        List<Administrador> result = (List<Administrador>)session.createQuery("from Administrador").list();
+        @SuppressWarnings("unchecked")
+		List<Administrador> result = (List<Administrador>)session.createQuery("from Administrador").list();
         session.getTransaction().commit();
         return result;
     }
@@ -217,7 +217,8 @@ public class DBHelper {
 	public List<Transformador> listTransformadores(){
 		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        List<Transformador> result = (List<Transformador>)session.createQuery("from Transformador").list();
+        @SuppressWarnings("unchecked")
+		List<Transformador> result = (List<Transformador>)session.createQuery("from Transformador").list();
         session.getTransaction().commit();
         return result;
 	}
@@ -235,7 +236,9 @@ public class DBHelper {
 		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		String hql = "from Administrador Adm where Adm.nombre_de_usuario = '"+usr+"'";
+		@SuppressWarnings("rawtypes")
 		Query query = session.createQuery(hql);
+		@SuppressWarnings("unchecked")
 		List<Administrador> result = (List<Administrador>) query.list();
 		session.getTransaction().commit();
 		
@@ -251,7 +254,9 @@ public class DBHelper {
 		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		String hql = "from Cliente Clt where Clt.nombre_de_usuario = '"+usr+"'";
+		@SuppressWarnings("rawtypes")
 		Query query = session.createQuery(hql);
+		@SuppressWarnings("unchecked")
 		List<Cliente> result = (List<Cliente>) query.list();
 		session.getTransaction().commit();
 		

@@ -15,6 +15,7 @@ public class Usuario {
 		this.nombre = nombre;
 		this.nombre_de_usuario = nombre_de_usuario;
 		this.contrasena = contrasena;
+		
 	}
 
 	public Long getId() {

@@ -17,7 +17,7 @@ import beans.DispositivoEstandar;
 import beans.DispositivoInteligente;
 import beans.Documento;
 import beans.Transformador;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class PersistenciaTest {
 	static DBHelper dbhelper = new DBHelper();
@@ -91,7 +91,7 @@ public class PersistenciaTest {
 	public void testRecuperarTransformadores() {
 		List<Transformador> transformadores = dbhelper.listTransformadores();
 
-		Assert.assertEquals(2, transformadores.size());
+		Assert.assertEquals(8, transformadores.size());
 	}
 
 	@Test

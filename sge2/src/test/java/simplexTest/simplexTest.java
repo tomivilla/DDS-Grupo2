@@ -89,7 +89,7 @@ public class simplexTest {
 		simplexFacade.agregarRestriccion(Relationship.GEQ, 120, 	1, 		0, 		0);
 		simplexFacade.agregarRestriccion(Relationship.LEQ, 360, 	1, 		0, 		0);
 		try{
-			PointValuePair solucion = simplexFacade.resolver();
+					simplexFacade.resolver();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -118,7 +118,7 @@ public class simplexTest {
 		simplexFacade.agregarRestriccion(Relationship.GEQ, 4,	1, 	1);
 		simplexFacade.agregarRestriccion(Relationship.GEQ, 2, 	0, 	1);
 		try{
-			PointValuePair solucion = simplexFacade.resolver();
+			simplexFacade.resolver();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());

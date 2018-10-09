@@ -48,6 +48,3 @@ target/
 .recommenders/caches/identified-project-coordinates.json
 .recommenders/caches/manual-mappings.json
 .recommenders/index/http___download_eclipse_org_recommenders_models_neon_/segments_5
-sge2/.classpath
-sge2/.classpath
-*.prefs

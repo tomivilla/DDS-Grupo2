@@ -1,8 +1,5 @@
 package utils;
 
-import java.io.File;
-import java.net.URL;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
