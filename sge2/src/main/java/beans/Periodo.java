@@ -1,6 +1,8 @@
 package beans;
 
 public class Periodo {
+	private int id;
+	
 	private long horaInicio;
 	private long horaFin;
 	
@@ -25,5 +27,11 @@ public class Periodo {
 	}
 	public boolean estasEnPeriodo(Periodo unPeriodo){
 		return this.horaInicio>=unPeriodo.horaInicio && this.horaFin<=unPeriodo.horaFin;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }

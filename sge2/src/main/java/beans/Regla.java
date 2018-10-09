@@ -3,6 +3,7 @@ package beans;
 import java.util.List;;
 
 public class Regla {
+	private int id;
 	private List <Condicion> condiciones;
 	private List <Accion> acciones;
 	private DispositivoInteligente dispositivo;
@@ -61,5 +62,13 @@ public class Regla {
 
 	public void setDispositivo(DispositivoInteligente dispositivo) {
 		this.dispositivo = dispositivo;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

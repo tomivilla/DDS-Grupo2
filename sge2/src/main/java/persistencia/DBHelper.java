@@ -12,6 +12,7 @@ import beans.Categoria;
 import beans.Cliente;
 import beans.Dispositivo;
 import beans.DispositivoEstandar;
+import beans.DispositivoInteligente;
 import beans.Documento;
 import beans.Transformador;
 import json_helper.Json_Helper;
@@ -171,6 +172,14 @@ public class DBHelper {
 		
 	}
 
+	public void crearDispositivosInteligentes(List<DispositivoInteligente> dispositivos) {
+				
+		for (DispositivoInteligente dispositivo : dispositivos) {
+			storeDispositivoInteligente(dispositivo);
+		}
+	}
+	
+	
 	public Long storeDispositivoPosible(Dispositivo dispositivo) {
     	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -178,6 +187,16 @@ public class DBHelper {
         session.getTransaction().commit();
         return dispositivo.getId();		
 	}
+
+	public Long storeDispositivoInteligente(Dispositivo dispositivo) {
+    	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        session.save(dispositivo);
+        session.getTransaction().commit();
+        return dispositivo.getId();		
+	}
+	
+	
 	
 	public int storeDocu(Documento doc) {
     	Session session = HibernateUtils.getSessionFactory().getCurrentSession();

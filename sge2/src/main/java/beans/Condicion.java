@@ -4,9 +4,11 @@ import regla.IOperador;
 import regla.iCondicion;
 
 public class Condicion implements iCondicion{
-	int valor;
+	private int id;
+	private int valor;
 	private IOperador operador;
-    private Double valorReferencia;
+    
+	private Double valorReferencia;
 
     public Condicion(IOperador operador, Double valorReferencia) {
         this.operador = operador;
@@ -39,4 +41,30 @@ public class Condicion implements iCondicion{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public IOperador getOperador() {
+		return operador;
+	}
+
+	public void setOperador(IOperador operador) {
+		this.operador = operador;
+	}
+
+	public Double getValorReferencia() {
+		return valorReferencia;
+	}
+
+	public void setValorReferencia(Double valorReferencia) {
+		this.valorReferencia = valorReferencia;
+	}
+
+	
 }

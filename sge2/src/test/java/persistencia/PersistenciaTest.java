@@ -17,7 +17,6 @@ import beans.DispositivoEstandar;
 import beans.DispositivoInteligente;
 import beans.Documento;
 import beans.Transformador;
-import beans.Periodo;
 import org.junit.Assert;
 
 public class PersistenciaTest {

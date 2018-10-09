@@ -40,6 +40,11 @@
         <mapping resource="dispositivos.hbm.xml" />
         <mapping resource="sensores.hbm.xml" />
         <mapping resource="estados.hbm.xml" />
+        <mapping resource="periodos.hbm.xml" />
+        <mapping resource="acciones.hbm.xml" />
+        <mapping resource="condiciones.hbm.xml" />
+        <mapping resource="reglas.hbm.xml" />
+        
     </session-factory>
 
 </hibernate-configuration>
