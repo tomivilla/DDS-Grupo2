@@ -74,10 +74,10 @@ public class Dispositivo_inteligente {
     	
     	//Se cargan los clientes jusnto con sus dispositivos_estandar desde el Jason "datos.json"
     	clientes = new ArrayList<Cliente>();
-    	clientes = Json_Helper.JsonToCliente("datos.json");
+    	clientes = Json_Helper.JsonToClientes("datos.json");
     	this.sge.setearClientes(clientes);
     	//Tomo uno de el 8vo dispositivo inteligente que se cargó desde el JSON, para el cliente 2
-    	di = (DispositivoInteligente) clientes.get(2).getDispositivoInteligente(8);
+    	di = (DispositivoInteligente) clientes.get(2).getDispositivoInteligente(5);
     	de = (DispositivoEstandar) clientes.get(2).getDispositivoEstandar(3);
     	adaptador = new AdaptadorDispositivo(0L, null, 0, Encendido.getInstance(), null, null, de);
     	this.actuador1 = new ActuadorEstufa("AD:12:34:12:42:12",adaptador,new ImplementadorEstufaLG());
@@ -100,7 +100,8 @@ public class Dispositivo_inteligente {
     	Assert.assertEquals("Consulta de estado'di'", false, di.getEstado().estasApagado());
     	Assert.assertEquals("Cantidad de puntos 'Cliente 3' deberia ser 25", 25, clientes.get(2).getPuntos());
     	//0.182*2=0.364
-    	assertEquals(0.364,di.tuConsumo(),0.0);
+    	//0.011*2=0.022
+    	assertEquals(0.022,di.tuConsumo(),0.0);
     	//Verifico que se hayan cargado 2 periodos
     	assertEquals(2.0,di.getPeriodos().size(),0.0);
     }

@@ -15,7 +15,7 @@ public class Json_helper_Test {
     @Test
     public void debeDevolverJSONEnUnObjeto() throws IOException {
     	List<Cliente> clientes = new ArrayList<Cliente>();
-    	clientes = Json_Helper.JsonToCliente("datos.json");
+    	clientes = Json_Helper.JsonToClientes("datos.json");
         assertEquals("Lista de clientes",3, clientes.size());
     }
     

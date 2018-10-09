@@ -59,7 +59,7 @@ public class SGETest {
     	
     	//Se cargan los clientes jusnto con sus dispositivos desde el Jason "datos.json"
     	clientes = new ArrayList<Cliente>();
-    	clientes = Json_Helper.JsonToCliente("datos.json");
+    	clientes = Json_Helper.JsonToClientes("datos.json");
     	this.sge.setearClientes(clientes);
     	//Se recategorizan los clientes
     	this.sge.recategorizarClientes();
