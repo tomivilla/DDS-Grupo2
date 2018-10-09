@@ -73,8 +73,11 @@ public class Dispositivo_inteligente {
     	
     	
     	//Se cargan los clientes jusnto con sus dispositivos_estandar desde el Jason "datos.json"
+    	//Json_Helper jsonHelper = new Json_Helper();
     	clientes = new ArrayList<Cliente>();
+
     	clientes = Json_Helper.JsonToClientes("datos.json");
+
     	this.sge.setearClientes(clientes);
     	//Tomo uno de el 8vo dispositivo inteligente que se cargó desde el JSON, para el cliente 2
     	di = (DispositivoInteligente) clientes.get(2).getDispositivoInteligente(5);

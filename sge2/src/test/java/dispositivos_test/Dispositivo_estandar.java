@@ -56,8 +56,11 @@ public class Dispositivo_estandar {
     	this.sge.agregarAdministrador(administrador);
     	
     	//Se cargan los clientes jusnto con sus dispositivos_estandar desde el Jason "datos.json"
+    	//Json_Helper jsonHelper = new Json_Helper();
     	clientes = new ArrayList<Cliente>();
+
     	clientes = Json_Helper.JsonToClientes("datos.json");
+
     	this.sge.setearClientes(clientes);
 
     }

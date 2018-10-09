@@ -23,8 +23,9 @@ public class DBHelper {
 	public void cargarUsuarioFromJson(String path) {
     	List<Cliente> clientes = new ArrayList<Cliente>();
     	Categoria categoria = new Categoria(1, 100, 2000, 20.0, 32.5);
+    	Json_Helper jsonHelper = new Json_Helper();
     	try {
-			clientes = Json_Helper.JsonToCliente(path);
+			clientes = jsonHelper.JsonToCliente(path);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,8 +39,9 @@ public class DBHelper {
 	
 	public void cargarTransformadores (String path) {
 		List<Transformador> transformadores = new ArrayList<Transformador>();
+		Json_Helper jsonHelper = new Json_Helper();
     	try {
-			transformadores = Json_Helper.jsonToTransformadores(path);
+			transformadores = jsonHelper.jsonToTransformadores(path);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -286,4 +288,19 @@ public class DBHelper {
 		return cliente;
 	}
 	
+	public List<Dispositivo> getDispositivosPorCliente (Long id){
+		List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Cliente cliente = (Cliente) session.get(Cliente.class, id);
+        session.getTransaction().commit();
+        if (cliente.getDispositivosEstandar() != null) {
+        	dispositivos.addAll(cliente.getDispositivosEstandar());			
+		}
+        if (cliente.getDispositivosInteligentes() != null) {
+        	dispositivos.addAll(cliente.getDispositivosInteligentes());			
+		}
+        return dispositivos;
+        
+	}
 }
