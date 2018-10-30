@@ -125,20 +125,36 @@
                    <th>Id</th>
                     <th>Nombre</th>
                      <th>Consumo x Hora</th>
+                     <th>Horas encendido</th>
                      <th>Es Inteligente</th>
                      <th>Es de Bajo Consumo</th>
                       <th>Editar</th>
                       
                        <th>Eliminar</th>
                    </thead>
-    <tbody></tbody>
+                    <tbody></tbody>
         
-</table>
+            </table>
 
 <div class="clearfix"></div>
 
                 
-            </div>
+        </div>
+        <div>
+            <h3>
+                Nuevo dispositivo
+            </h3>
+            <form>
+                <div class="form-group">
+                <label for="sel1">Seleccionar dispositivo a agregar</label>
+                <select class="form-control" id="sel1">
+                </select>
+                </div>
+                <div>
+                    <button type="button" onclick="agregarDispositivo()" class="pull-right btn btn-md btn-success" >Agregar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </script>
 
@@ -177,6 +193,7 @@ function cargarTab(idTab) {
 
                 if (idTab === 2) {
                     llenarTablaDispositivos();
+                    cargarDispositivosPosibles();
                 }
         });        
     }
@@ -250,6 +267,7 @@ function llenarTablaDispositivos() {
     <td>${disp.id}</td>
     <td>${disp.nombre_generico}</td>
     <td>${disp.consumoKWHora}</td>
+    <td>${disp.horasEncendido}</td>
     <td>${disp.Inteligente}</td>
     <td>${disp.BajoConsumo}</td>
     <td><p data-placement="top" data-toggle="tooltip" title="Editar"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
@@ -259,8 +277,38 @@ function llenarTablaDispositivos() {
     });
 }
 
-function handleFileSelect()
-  {               
+function cargarDispositivosPosibles() {
+    var ruta = window.location.origin+`/sge2/api/dispositivos/obtener/dispPosibles`;
+    var dispositivosPosibles;
+
+    $.ajax({ type:"GET",
+    async: false,
+    url: ruta,
+    contentType: "application/json",
+    accept:"json",
+    cache: false,
+    error: function(jqXHR, textStatus, errorThrown){
+      estado = false;
+    },
+    success: function(data){
+        dispositivosPosibles = JSON.parse(data);
+        estado = true;
+    }
+    });
+
+    var list = $("#sel1")
+    dispositivosPosibles.forEach(dispPos => {
+        list.append(`
+        <option value="${dispPos.id}">${dispPos.nombre_generico}</option>`);
+    });
+}
+
+function agregarDispositivo() {
+    console.log($("#sel1").val());
+    location.reload();
+}
+
+function handleFileSelect(){
     if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
       alert('The File APIs are not fully supported in this browser.');
       return;
@@ -279,14 +327,47 @@ function handleFileSelect()
     else {
       file = input.files[0];
       fr = new FileReader();
-      fr.onload = receivedText;
+      fr.onload = grabarArchivoDispositivos;
       fr.readAsText(file);
     }
   }
 
   function receivedText() {
     console.log(fr.result);
-  }    
+  }   
+
+
+
+function grabarArchivoDispositivos() {
+
+var ruta = window.location.origin+"/sge2/api/dispositivos/cargarArchivo";
+
+var request = {
+  archivo: fr.result,
+  idUsuario: datosUsuario.id
+}
+
+$.ajax({ type:"POST",
+async: false,
+url: ruta,
+data: JSON.stringify(request),
+dataType:"json",
+contentType: "application/json",
+accept:"json",
+cache: false,
+error: function(jqXHR, textStatus, errorThrown){
+    alert("Hubo un error al grabar los dispositivos")
+  estado = false;
+},
+success: function(data){
+    
+    var dispNuevo = JSON.parse(JSON.stringify(data));
+
+    alert(`Se han dado grabado los dispositivos con exito`)
+  estado = true;
+}
+});
+} 
 
 
 $(document).ready(function() {

@@ -43,6 +43,7 @@ public class Dispositivo_inteligente {
 	private AdaptadorDispositivo adaptador;
 	private Actuador actuador1;
 	long inicio,fin;
+	private Json_Helper jsonHelper;
 	
 	
     @Before
@@ -76,7 +77,7 @@ public class Dispositivo_inteligente {
     	//Json_Helper jsonHelper = new Json_Helper();
     	clientes = new ArrayList<Cliente>();
 
-    	clientes = Json_Helper.JsonToClientes("datos.json");
+    	clientes = jsonHelper.JsonToCliente("datos.json");
 
     	this.sge.setearClientes(clientes);
     	//Tomo uno de el 8vo dispositivo inteligente que se cargó desde el JSON, para el cliente 2

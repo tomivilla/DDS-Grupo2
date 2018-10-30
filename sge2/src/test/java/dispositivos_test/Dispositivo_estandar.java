@@ -30,6 +30,7 @@ public class Dispositivo_estandar {
 	private Administrador administrador;
 	private SGE sge;
 	private List<Cliente> clientes;
+	private Json_Helper jsonHelper;
 	
     @Before
     public void setup() throws IOException{
@@ -59,7 +60,7 @@ public class Dispositivo_estandar {
     	//Json_Helper jsonHelper = new Json_Helper();
     	clientes = new ArrayList<Cliente>();
 
-    	clientes = Json_Helper.JsonToClientes("datos.json");
+    	clientes = jsonHelper.JsonToCliente("datos.json");
 
     	this.sge.setearClientes(clientes);
 

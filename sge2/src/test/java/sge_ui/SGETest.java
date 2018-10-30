@@ -32,6 +32,8 @@ public class SGETest {
 	private Administrador administrador;
 	private SGE sge;
 	private List<Cliente> clientes;
+
+	private Json_Helper jsonHelper = new Json_Helper();
 	
     @Before
     public void setup() throws IOException{
@@ -61,7 +63,7 @@ public class SGETest {
     	//Json_Helper jsonHelper = new Json_Helper();
     	clientes = new ArrayList<Cliente>();
 
-    	clientes = Json_Helper.JsonToClientes("datos.json");
+    	clientes = jsonHelper.JsonToCliente("datos.json");
     	this.sge.setearClientes(clientes);
     	//Se recategorizan los clientes
     	this.sge.recategorizarClientes();

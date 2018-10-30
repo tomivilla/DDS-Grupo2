@@ -51,6 +51,42 @@ public class DBHelper {
 			storeTransformador(transformador);
 		}
 	}
+	
+	public void cargarDispositivosEstandar(List<DispositivoEstandar> dispositivos, Long idUsuario) {
+    	
+    	for (DispositivoEstandar dispositivo : dispositivos) {
+			addDispositivoACliente(dispositivo, idUsuario);
+		}
+	}
+	
+	public void cargarDispositivosInteligentes(List<DispositivoInteligente> dispositivos, Long idUsuario) {
+    	
+    	for (DispositivoInteligente dispositivo : dispositivos) {
+			addDispositivoACliente(dispositivo, idUsuario);
+		}
+	}
+	
+	public void addDispositivoACliente(Dispositivo dispositivo, Long idUsuario) {
+		Cliente cliente = getClienteById(idUsuario);
+		
+		if (dispositivo instanceof DispositivoEstandar) {
+			DispositivoEstandar dispEst = (DispositivoEstandar) dispositivo;
+			List<DispositivoEstandar> dispositivosAnteriores = cliente.getDispositivosEstandar();
+			List<DispositivoEstandar> dispositivosNuevos = new ArrayList<DispositivoEstandar>();
+			dispositivosNuevos.addAll(dispositivosAnteriores);
+			dispositivosNuevos.add(dispEst);
+			cliente.setDispositivosEstandar(dispositivosNuevos);
+		}
+		
+		if (dispositivo instanceof DispositivoInteligente) {
+			DispositivoInteligente dispInt = (DispositivoInteligente) dispositivo;
+			List<DispositivoInteligente> dispositivosAnteriores = cliente.getDispositivosInteligentes();
+			dispositivosAnteriores.add(dispInt);
+			cliente.setDispositivosInteligentes(dispositivosAnteriores);
+		}
+		
+	    modificarCliente(cliente);
+	}
 
 	public void crearCategorias() {
     	Categoria categoria = new Categoria(1, 100, 2000, 20.0, 32.5);
@@ -76,7 +112,7 @@ public class DBHelper {
 	public Long modificarCliente (Cliente cliente) {
     	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
     	session.beginTransaction();
-        session.update(cliente);
+        session.saveOrUpdate(cliente);
         session.getTransaction().commit();
         return cliente.getId();
     }
@@ -240,6 +276,15 @@ public class DBHelper {
         session.beginTransaction();
         @SuppressWarnings("unchecked")
 		List<Transformador> result = (List<Transformador>)session.createQuery("from Transformador").list();
+        session.getTransaction().commit();
+        return result;
+	}
+	
+	public List<Dispositivo> listDispositivosPosibles(){
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        @SuppressWarnings("unchecked")
+		List<Dispositivo> result = (List<Dispositivo>)session.createQuery("from Dispositivo").list();
         session.getTransaction().commit();
         return result;
 	}

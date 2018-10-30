@@ -25,11 +25,13 @@ import Estado.Apagado;
 import Estado.Encendido;
 import beans.Categoria;
 import beans.Cliente;
+import beans.Dispositivo;
 import beans.DispositivoEstandar;
 import beans.DispositivoInteligente;
 import beans.Documento;
 import beans.Estado;
 import beans.Periodo;
+import beans.ResponseDispositivos;
 import beans.Sensor;
 import beans.Transformador;
 import beans.Zona;
@@ -78,125 +80,134 @@ public class Json_Helper {
 		return clientes;
 	}
 	
-	public static List<Cliente> JsonToClientes(String path) throws IOException{
+	public ResponseDispositivos jsonToDispositivos (String archivo) throws IOException{
+
+		Gson gson = new Gson();
 		
-		String json1 = Json_Helper.readFile(path);
-		JsonParser parser = new JsonParser();
-		List<Cliente> clientes = new ArrayList<Cliente>();
-		//Obtengo el primer ObjetoJason
-	   	JsonObject gsonObj1 = parser.parse(json1).getAsJsonObject();
-	   	//Obtengo el array clientes
-	   	JsonArray gsonArr = gsonObj1.get("clientes").getAsJsonArray();
+		ResponseDispositivos response = gson.fromJson(archivo, ResponseDispositivos.class);
 		
-	
-	    //Itero el array de clientes
-	    for (JsonElement obj : gsonArr) {
-	
-	        //Obtengo el objeto Cliente
-	        JsonObject gsonObj = obj.getAsJsonObject();
-	
-	        //btengo las primitivas del cliente
-	        String unNombre = gsonObj.get("nombre").getAsString();
-	        String unNmbUsuario = gsonObj.get("nombre_de_usuario").getAsString();
-	        String unaContrasena = gsonObj.get("contrasena").getAsString();
-	       
-	        int id_documento = 0;
-	        
-	        JsonObject id_i = gsonObj.get("documento").getAsJsonObject();
-	        //for (JsonElement id : id_i) {
-	        	
-	        	//Obtengo el objeto Dispositivo
-	        	//JsonObject di_doc = id.getAsJsonObject();
-	        	
-	        	//Obtengo las primitivas del Dispositivo
-	        	id_documento = id_i.get("id").getAsInt();
-	        //}
-	        Documento id_posta = new Documento();
-	        id_posta.setId(id_documento);
-	        String unNumDoc = gsonObj.get("numDoc").getAsString();
-	        int unTelefono = gsonObj.get("telefono").getAsInt();
-	        String unDomicilio = gsonObj.get("domicilio").getAsString();
-	        
-	        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
-	   	 
-	    	Date unaFecha = new Date();
-			try {
-				unaFecha = dateFormat.parse(gsonObj.get("fecha").getAsString());
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-	        Categoria unaCategoria = new Categoria(0,0,0,0.0,0.0);
-	        
-	        //Obtengo el array de dispositivos
-	        JsonArray dispositivo_s = gsonObj.get("dispositivosEstandar").getAsJsonArray();
-	        List<DispositivoInteligente> listDispositivoInteligente = new ArrayList<DispositivoInteligente>();
-	        List<DispositivoEstandar> listDispositivoEstandar = new ArrayList<DispositivoEstandar>();
-	        //Itero el array de dispositivos
-	        for (JsonElement disp : dispositivo_s) {
-	        	
-	        	//Obtengo el objeto Dispositivo
-	        	JsonObject di = disp.getAsJsonObject();
-	        	
-	        	//Obtengo las primitivas del Dispositivo
-	        	Long id = di.get("id").getAsLong();
-	        	String nombre_generico = di.get("nombre_generico").getAsString();
-	            double consumoKWHora = di.get("consumoKWHora").getAsDouble();
-	            int horasEncendido = di.get("horasEncendido").getAsInt();
-	            DispositivoEstandar dispositivo = new DispositivoEstandar(id, nombre_generico,consumoKWHora,horasEncendido, false); 
-	            listDispositivoEstandar.add(dispositivo);
-	        }
-	        
-	        JsonArray dispositivos_i = gsonObj.get("dispositivosInteligentes").getAsJsonArray();
-	        	        
-	        //Itero el array de dispositivos
-	        for (JsonElement disp : dispositivos_i) {
-	        	
-	        	//Obtengo el objeto Dispositivo
-	        	JsonObject dis = disp.getAsJsonObject();
-	        	
-	        	//Obtengo las primitivas del Dispositivo
-	        	Long id = dis.get("id").getAsLong();
-	        	String nombre_generico = dis.get("nombre_generico").getAsString();
-	            double consumoKWHora = dis.get("consumoKWHora").getAsDouble();
-	            String estado = dis.get("estado").getAsString();
-	            Estado objEstado = seleccionarEstado(estado);
-	            //String actuador = dis.get("actuador").getAsString();
-	            
-	            JsonArray sensores = dis.get("sensores").getAsJsonArray();
-	            List<Sensor> listaDeSensores= new ArrayList<Sensor>();
-	            for (JsonElement sens : sensores){
-	            	JsonObject sen = sens.getAsJsonObject();
-	            	
-	            	//Obtengo las primitivas del Sensor
-	            	int valor = sen.get("valor").getAsInt();
-	            	String magnitud = sen.get("magnitud").getAsString();
-	            	Sensor sensor = generarSensor(valor,magnitud);
-	            	listaDeSensores.add(sensor);
-	            }
-	            JsonArray periodos = dis.get("periodos").getAsJsonArray();
-	            List<Periodo> listaDePeriodos= new ArrayList<Periodo>();
-	            for (JsonElement peri : periodos){
-	            	JsonObject per = peri.getAsJsonObject();
-	            	
-	            	//Obtengo las primitivas del Sensor
-	            	long inicio = per.get("inicio").getAsLong();
-	            	long fin = per.get("fin").getAsLong();
-	            	Periodo periodo = new Periodo(inicio,fin);
-	            	listaDePeriodos.add(periodo);
-	            }
-	            
-	            //Actuador objActuador = SGE.getInstance().seleccionarActuador(actuador);
-	            DispositivoInteligente dispositivo = new DispositivoInteligente(id, nombre_generico,consumoKWHora,objEstado, true,listaDeSensores,listaDePeriodos); 
-	            listDispositivoInteligente.add(dispositivo);
-	        }
-	        
-	        //Instancio el cliente
-	        clientes.add(new Cliente(unNombre,unNmbUsuario,unaContrasena,id_posta,unNumDoc,unTelefono,unDomicilio,unaFecha,unaCategoria,listDispositivoEstandar,listDispositivoInteligente));
-	    }
-	    
-	    //Retorno el listado de clientes que obtuve del Jason
-		return clientes;
+		return response;
 	}
+	
+//	public static List<Cliente> JsonToClientes(String path) throws IOException{
+//		
+//		String json1 = Json_Helper.readFile(path);
+//		JsonParser parser = new JsonParser();
+//		List<Cliente> clientes = new ArrayList<Cliente>();
+//		//Obtengo el primer ObjetoJason
+//	   	JsonObject gsonObj1 = parser.parse(json1).getAsJsonObject();
+//	   	//Obtengo el array clientes
+//	   	JsonArray gsonArr = gsonObj1.get("clientes").getAsJsonArray();
+//		
+//	
+//	    //Itero el array de clientes
+//	    for (JsonElement obj : gsonArr) {
+//	
+//	        //Obtengo el objeto Cliente
+//	        JsonObject gsonObj = obj.getAsJsonObject();
+//	
+//	        //btengo las primitivas del cliente
+//	        String unNombre = gsonObj.get("nombre").getAsString();
+//	        String unNmbUsuario = gsonObj.get("nombre_de_usuario").getAsString();
+//	        String unaContrasena = gsonObj.get("contrasena").getAsString();
+//	       
+//	        int id_documento = 0;
+//	        
+//	        JsonObject id_i = gsonObj.get("documento").getAsJsonObject();
+//	        //for (JsonElement id : id_i) {
+//	        	
+//	        	//Obtengo el objeto Dispositivo
+//	        	//JsonObject di_doc = id.getAsJsonObject();
+//	        	
+//	        	//Obtengo las primitivas del Dispositivo
+//	        	id_documento = id_i.get("id").getAsInt();
+//	        //}
+//	        Documento id_posta = new Documento();
+//	        id_posta.setId(id_documento);
+//	        String unNumDoc = gsonObj.get("numDoc").getAsString();
+//	        int unTelefono = gsonObj.get("telefono").getAsInt();
+//	        String unDomicilio = gsonObj.get("domicilio").getAsString();
+//	        
+//	        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+//	   	 
+//	    	Date unaFecha = new Date();
+//			try {
+//				unaFecha = dateFormat.parse(gsonObj.get("fecha").getAsString());
+//			} catch (ParseException e) {
+//				e.printStackTrace();
+//			}
+//	        Categoria unaCategoria = new Categoria(0,0,0,0.0,0.0);
+//	        
+//	        //Obtengo el array de dispositivos
+//	        JsonArray dispositivo_s = gsonObj.get("dispositivosEstandar").getAsJsonArray();
+//	        List<DispositivoInteligente> listDispositivoInteligente = new ArrayList<DispositivoInteligente>();
+//	        List<DispositivoEstandar> listDispositivoEstandar = new ArrayList<DispositivoEstandar>();
+//	        //Itero el array de dispositivos
+//	        for (JsonElement disp : dispositivo_s) {
+//	        	
+//	        	//Obtengo el objeto Dispositivo
+//	        	JsonObject di = disp.getAsJsonObject();
+//	        	
+//	        	//Obtengo las primitivas del Dispositivo
+//	        	Long id = di.get("id").getAsLong();
+//	        	String nombre_generico = di.get("nombre_generico").getAsString();
+//	            double consumoKWHora = di.get("consumoKWHora").getAsDouble();
+//	            int horasEncendido = di.get("horasEncendido").getAsInt();
+//	            DispositivoEstandar dispositivo = new DispositivoEstandar(id, nombre_generico,consumoKWHora,horasEncendido, false); 
+//	            listDispositivoEstandar.add(dispositivo);
+//	        }
+//	        
+//	        JsonArray dispositivos_i = gsonObj.get("dispositivosInteligentes").getAsJsonArray();
+//	        	        
+//	        //Itero el array de dispositivos
+//	        for (JsonElement disp : dispositivos_i) {
+//	        	
+//	        	//Obtengo el objeto Dispositivo
+//	        	JsonObject dis = disp.getAsJsonObject();
+//	        	
+//	        	//Obtengo las primitivas del Dispositivo
+//	        	Long id = dis.get("id").getAsLong();
+//	        	String nombre_generico = dis.get("nombre_generico").getAsString();
+//	            double consumoKWHora = dis.get("consumoKWHora").getAsDouble();
+//	            String estado = dis.get("estado").getAsString();
+//	            Estado objEstado = seleccionarEstado(estado);
+//	            //String actuador = dis.get("actuador").getAsString();
+//	            
+//	            JsonArray sensores = dis.get("sensores").getAsJsonArray();
+//	            List<Sensor> listaDeSensores= new ArrayList<Sensor>();
+//	            for (JsonElement sens : sensores){
+//	            	JsonObject sen = sens.getAsJsonObject();
+//	            	
+//	            	//Obtengo las primitivas del Sensor
+//	            	int valor = sen.get("valor").getAsInt();
+//	            	String magnitud = sen.get("magnitud").getAsString();
+//	            	Sensor sensor = generarSensor(valor,magnitud);
+//	            	listaDeSensores.add(sensor);
+//	            }
+//	            JsonArray periodos = dis.get("periodos").getAsJsonArray();
+//	            List<Periodo> listaDePeriodos= new ArrayList<Periodo>();
+//	            for (JsonElement peri : periodos){
+//	            	JsonObject per = peri.getAsJsonObject();
+//	            	
+//	            	//Obtengo las primitivas del Sensor
+//	            	long inicio = per.get("inicio").getAsLong();
+//	            	long fin = per.get("fin").getAsLong();
+//	            	Periodo periodo = new Periodo(inicio,fin);
+//	            	listaDePeriodos.add(periodo);
+//	            }
+//	            
+//	            //Actuador objActuador = SGE.getInstance().seleccionarActuador(actuador);
+//	            DispositivoInteligente dispositivo = new DispositivoInteligente(id, nombre_generico,consumoKWHora,objEstado, true,listaDeSensores,listaDePeriodos); 
+//	            listDispositivoInteligente.add(dispositivo);
+//	        }
+//	        
+//	        //Instancio el cliente
+//	        clientes.add(new Cliente(unNombre,unNmbUsuario,unaContrasena,id_posta,unNumDoc,unTelefono,unDomicilio,unaFecha,unaCategoria,listDispositivoEstandar,listDispositivoInteligente));
+//	    }
+//	    
+//	    //Retorno el listado de clientes que obtuve del Jason
+//		return clientes;
+//	}
 
 	private static Estado seleccionarEstado(String estado) {
 		if(estado.equals("Encendido")){
